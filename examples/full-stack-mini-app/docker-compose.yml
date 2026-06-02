@@ -1,0 +1,14 @@
+services:
+  mini-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DATA_FILE: /app/data/app.json
+    volumes:
+      - mini-app-data:/app/data
+
+volumes:
+  mini-app-data:
+

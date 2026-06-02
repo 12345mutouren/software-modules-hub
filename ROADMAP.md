@@ -31,6 +31,8 @@
 
 目标：为每个模块挑一个代表场景做最小示例。
 
+状态：已新增 `examples/full-stack-mini-app`，用一个小型全栈示例覆盖 10 个模块。
+
 候选示例：
 
 - Next.js + Better Auth 登录注册。

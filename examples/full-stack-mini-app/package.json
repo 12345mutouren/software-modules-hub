@@ -1,0 +1,12 @@
+{
+  "name": "full-stack-mini-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A dependency-free mini full-stack app that demonstrates the 10 software modules.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "node --test"
+  }
+}
+

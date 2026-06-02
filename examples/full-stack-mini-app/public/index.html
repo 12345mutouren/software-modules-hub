@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Full Stack Mini App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <div>
+          <p class="eyebrow">Software Modules Hub</p>
+          <h1>Full Stack Mini App</h1>
+          <p class="summary">一个覆盖账号、数据、API、前端、安全、运营和测试的小型示例。</p>
+        </div>
+
+        <div class="status" id="status">检查登录状态中...</div>
+      </section>
+
+      <section class="grid">
+        <form class="card" id="registerForm">
+          <h2>注册</h2>
+          <label>
+            昵称
+            <input name="name" value="Admin User" />
+          </label>
+          <label>
+            邮箱
+            <input name="email" type="email" value="admin@example.com" />
+          </label>
+          <label>
+            密码
+            <input name="password" type="password" value="password123" />
+          </label>
+          <button type="submit">创建账号</button>
+        </form>
+
+        <form class="card" id="loginForm">
+          <h2>登录</h2>
+          <label>
+            邮箱
+            <input name="email" type="email" value="admin@example.com" />
+          </label>
+          <label>
+            密码
+            <input name="password" type="password" value="password123" />
+          </label>
+          <button type="submit">登录</button>
+        </form>
+
+        <form class="card" id="orderForm">
+          <h2>会员订单</h2>
+          <label>
+            计划
+            <select name="planId">
+              <option value="basic">Basic</option>
+              <option value="pro">Pro</option>
+            </select>
+          </label>
+          <button type="submit">创建订单</button>
+        </form>
+
+        <form class="card" id="feedbackForm">
+          <h2>反馈</h2>
+          <label>
+            内容
+            <textarea name="message">这个示例可以帮助我理解完整软件模块。</textarea>
+          </label>
+          <button type="submit">提交反馈</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="toolbar">
+          <button id="loadOrders" type="button">查看订单</button>
+          <button id="loadUsers" type="button">管理员用户列表</button>
+          <button id="logout" type="button">退出</button>
+        </div>
+        <pre id="output">{}</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+

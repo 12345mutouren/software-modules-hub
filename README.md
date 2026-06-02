@@ -34,6 +34,8 @@
 - [GitHub 仓库索引](catalog/github-repositories.md)
 - [模块分类法](catalog/module-taxonomy.md)
 - [第一阶段完成度清单](checklists/phase-1-completeness.md)
+- [第二阶段完成度清单](checklists/phase-2-completeness.md)
+- [可运行示例](examples/README.md)
 - [模块文档模板](templates/module-template.md)
 
 ## 如何使用
@@ -44,6 +46,7 @@
 2. 再读 10 个模块文档，理解每一层有哪些类别。
 3. 遇到想深入的类别，去 [GitHub 仓库索引](catalog/github-repositories.md) 找代表项目。
 4. 用 [完成度清单](checklists/phase-1-completeness.md) 检查自己的软件设想是否缺模块。
+5. 进入 [可运行示例](examples/README.md)，把模块地图和代码对应起来。
 
 ## 仓库类型说明
 
@@ -64,4 +67,3 @@
 - 第二阶段：为每个模块补充最小可运行示例。
 - 第三阶段：组合出多种完整软件模板，例如 SaaS、管理后台、电商、内容社区、AI 应用。
 - 第四阶段：增加代码审计、架构图、部署流程和真实项目拆解。
-
