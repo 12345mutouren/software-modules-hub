@@ -108,12 +108,12 @@
 
 目标：让仓库可以自动检查结构完整性和示例测试，降低后续扩展时遗漏文件或破坏示例的风险。
 
-状态：已新增根级 npm 脚本、无依赖验证脚本、质量文档和 GitHub Actions workflow 模板。
+状态：已新增根级 npm 脚本、无依赖验证脚本、质量文档和 GitHub Actions workflow。
 
 范围：
 
 - `npm run verify` 仓库结构验证。
 - `npm run test:examples` 示例测试。
 - `npm test` 完整质量门。
-- GitHub Actions workflow 模板，可授权后复制到 `.github/workflows/verify.yml`。
+- GitHub Actions 在 push 和 pull request 时运行验证。
 - 质量门说明和自动化检查文档。

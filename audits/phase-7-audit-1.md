@@ -10,6 +10,7 @@ Checked:
 
 - Root `package.json` exists.
 - Root verification script exists.
+- GitHub Actions workflow exists.
 - GitHub Actions workflow template exists.
 - Quality documentation exists.
 - `npm run verify` passes.
@@ -23,6 +24,7 @@ Checked:
 | --- | --- |
 | Root package scripts | Pass |
 | Verification script | Pass |
+| GitHub Actions workflow | Pass |
 | GitHub Actions workflow template | Pass |
 | Quality docs | Pass |
 | `npm run verify` | Pass |
@@ -31,8 +33,8 @@ Checked:
 
 ## Remaining Risks
 
-- GitHub Actions is provided as a template because the current GitHub token lacks `workflow` scope.
-- To enable CI, copy `quality/github-actions-verify.yml` to `.github/workflows/verify.yml` after granting `workflow` scope.
+- GitHub token now includes `workflow` scope.
+- `.github/workflows/verify.yml` is enabled.
 - The verifier checks structure and required sections, not content quality or external link freshness.
 - Future phases should update `tools/verify-repo.mjs` so CI remains meaningful.
 

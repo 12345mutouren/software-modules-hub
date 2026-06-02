@@ -26,15 +26,21 @@ The verifier checks:
 - Full-stack mini app files.
 - GitHub Actions workflow.
 
-## CI Template
+## CI Behavior
 
-The workflow template is stored at:
+GitHub Actions workflow is enabled at:
+
+```text
+.github/workflows/verify.yml
+```
+
+A copyable workflow template is also stored at:
 
 ```text
 quality/github-actions-verify.yml
 ```
 
-After it is copied to `.github/workflows/verify.yml`, GitHub Actions will run on:
+GitHub Actions runs on:
 
 - Push to `main`.
 - Pull requests.

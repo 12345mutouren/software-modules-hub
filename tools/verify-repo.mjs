@@ -158,6 +158,7 @@ requireFiles([
   "examples/full-stack-mini-app/src/app.js",
   "examples/full-stack-mini-app/test/app.test.js",
   "project-kickoff/examples/saas-kickoff-example.md",
+  ".github/workflows/verify.yml",
   "quality/github-actions-verify.yml",
 ]);
 

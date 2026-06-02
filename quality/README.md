@@ -11,7 +11,8 @@
 | Repository verification | `npm run verify` | 关键文件、阶段清单、模块章节、模板章节、案例章节、架构图和 Runbook |
 | Example tests | `npm run test:examples` | 第二阶段可运行示例的 API、权限、CSRF 和业务流程 |
 | Full test | `npm test` | 同时运行仓库验证和示例测试 |
-| GitHub Actions template | `quality/github-actions-verify.yml` | 授权后可复制到 `.github/workflows/verify.yml` |
+| GitHub Actions | `.github/workflows/verify.yml` | 在 push 和 pull request 时运行 `npm test` |
+| GitHub Actions template | `quality/github-actions-verify.yml` | workflow 的可复制备份模板 |
 
 ## Local Use
 
@@ -19,21 +20,21 @@
 npm test
 ```
 
-## Enable GitHub Actions
+## GitHub Actions
 
-当前仓库提供 workflow 模板：
-
-```text
-quality/github-actions-verify.yml
-```
-
-启用时，把它复制到：
+当前仓库已经启用 workflow：
 
 ```text
 .github/workflows/verify.yml
 ```
 
-注意：推送 `.github/workflows/*.yml` 需要 GitHub token 具备 `workflow` scope。
+同时保留一份模板：
+
+```text
+quality/github-actions-verify.yml
+```
+
+注意：后续更新 `.github/workflows/*.yml` 需要 GitHub token 具备 `workflow` scope。
 
 ## Why This Matters
 

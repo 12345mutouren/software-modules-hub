@@ -9,9 +9,10 @@
 - [x] 有 `npm run test:examples`。
 - [x] 有 `npm test`。
 - [x] 有无依赖验证脚本。
-- [x] 有 GitHub Actions workflow 模板。
-- [x] 模板支持 push 到 `main` 时运行。
-- [x] 模板支持 pull request 时运行。
+- [x] 有 GitHub Actions workflow。
+- [x] workflow 支持 push 到 `main` 时运行。
+- [x] workflow 支持 pull request 时运行。
+- [x] 保留 GitHub Actions workflow 模板。
 
 ## 质量文档要求
 
@@ -41,6 +42,7 @@
 | --- | --- |
 | 根脚本 | `package.json` |
 | 验证脚本 | `tools/verify-repo.mjs` |
+| CI | `.github/workflows/verify.yml` |
 | CI 模板 | `quality/github-actions-verify.yml` |
 | 质量文档 | `quality/README.md`、`quality/automated-checks.md` |
 | 审计 | `audits/phase-7-audit-1.md` |
