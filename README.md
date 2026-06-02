@@ -36,6 +36,8 @@
 - [第一阶段完成度清单](checklists/phase-1-completeness.md)
 - [第二阶段完成度清单](checklists/phase-2-completeness.md)
 - [可运行示例](examples/README.md)
+- [完整软件模板组合](templates/complete-apps/README.md)
+- [第三阶段完成度清单](checklists/phase-3-completeness.md)
 - [模块文档模板](templates/module-template.md)
 
 ## 如何使用
@@ -47,6 +49,7 @@
 3. 遇到想深入的类别，去 [GitHub 仓库索引](catalog/github-repositories.md) 找代表项目。
 4. 用 [完成度清单](checklists/phase-1-completeness.md) 检查自己的软件设想是否缺模块。
 5. 进入 [可运行示例](examples/README.md)，把模块地图和代码对应起来。
+6. 阅读 [完整软件模板组合](templates/complete-apps/README.md)，选择一个真实软件方向继续深化。
 
 ## 仓库类型说明
 
