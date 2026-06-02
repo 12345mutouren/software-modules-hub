@@ -50,6 +50,8 @@
 - [第七阶段完成度清单](checklists/phase-7-completeness.md)
 - [学习路线](learning-paths/README.md)
 - [第八阶段完成度清单](checklists/phase-8-completeness.md)
+- [快速参考](reference/README.md)
+- [第九阶段完成度清单](checklists/phase-9-completeness.md)
 - [模块文档模板](templates/module-template.md)
 
 ## 如何使用
@@ -67,6 +69,7 @@
 9. 使用 [决策指南](decision-guides/README.md) 和 [项目启动包](project-kickoff/README.md)，把一个软件想法整理成可执行项目计划。
 10. 运行 [质量门](quality/README.md)，确认仓库结构和示例测试仍然健康。
 11. 按 [学习路线](learning-paths/README.md) 选择角色路径、30 天计划和毕业项目。
+12. 用 [快速参考](reference/README.md) 查术语、入口、技术对比、仓库评估和常见坑。
 
 ## 仓库类型说明
 
@@ -91,3 +94,4 @@
 - 第六阶段：补充选型决策树、项目启动模板、ADR、权限矩阵、API/数据/安全/测试/发布计划。
 - 第七阶段：补充自动化质量门、根级测试命令、仓库验证脚本和 GitHub Actions。
 - 第八阶段：补充角色学习路线、30 天计划、实战练习、毕业项目和自评清单。
+- 第九阶段：补充快速参考、总索引、术语表、技术对比、仓库评估 rubric 和常见坑。

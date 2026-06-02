@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 8 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 9 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -73,6 +73,7 @@ requireFiles([
   "decision-guides/README.md",
   "project-kickoff/README.md",
   "learning-paths/README.md",
+  "reference/README.md",
   ...phaseFiles,
 ]);
 
@@ -154,6 +155,7 @@ requireCount("Operations runbooks", "operations/runbooks", (file) => file.endsWi
 requireCount("Decision guides", "decision-guides", (file) => file.endsWith(".md"), 7);
 requireCount("Kickoff templates", "project-kickoff/templates", (file) => file.endsWith(".md"), 10);
 requireCount("Learning paths", "learning-paths", (file) => file.endsWith(".md"), 6);
+requireCount("Reference files", "reference", (file) => file.endsWith(".md"), 7);
 
 requireFiles([
   "examples/full-stack-mini-app/package.json",
@@ -167,6 +169,12 @@ requireFiles([
   "learning-paths/exercises.md",
   "learning-paths/capstone-projects.md",
   "learning-paths/self-assessment.md",
+  "reference/master-index.md",
+  "reference/glossary.md",
+  "reference/module-artifact-map.md",
+  "reference/technology-comparison.md",
+  "reference/repository-evaluation-rubric.md",
+  "reference/common-pitfalls.md",
 ]);
 
 if (failures.length > 0) {
