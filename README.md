@@ -40,6 +40,9 @@
 - [第三阶段完成度清单](checklists/phase-3-completeness.md)
 - [真实项目案例研究](case-studies/README.md)
 - [第四阶段完成度清单](checklists/phase-4-completeness.md)
+- [架构图](architecture/README.md)
+- [运维 Runbook](operations/README.md)
+- [第五阶段完成度清单](checklists/phase-5-completeness.md)
 - [模块文档模板](templates/module-template.md)
 
 ## 如何使用
@@ -53,6 +56,7 @@
 5. 进入 [可运行示例](examples/README.md)，把模块地图和代码对应起来。
 6. 阅读 [完整软件模板组合](templates/complete-apps/README.md)，选择一个真实软件方向继续深化。
 7. 阅读 [真实项目案例研究](case-studies/README.md)，学习成熟开源项目如何组合这些模块。
+8. 查看 [架构图](architecture/README.md) 和 [运维 Runbook](operations/README.md)，理解软件如何上线和长期维护。
 
 ## 仓库类型说明
 
@@ -73,3 +77,4 @@
 - 第二阶段：为每个模块补充最小可运行示例。
 - 第三阶段：组合出多种完整软件模板，例如 SaaS、管理后台、电商、内容社区、AI 应用。
 - 第四阶段：增加代码审计、架构图、部署流程和真实项目拆解。
+- 第五阶段：补充架构图、部署流程、监控报警、备份恢复和事故响应 Runbook。
