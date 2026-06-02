@@ -12,7 +12,7 @@
 
 The verifier checks:
 
-- Phase 1-7 checklist and audit files.
+- Phase 1-8 checklist and audit files.
 - 10 module documents.
 - Required module sections.
 - 6 complete app templates.
@@ -23,6 +23,7 @@ The verifier checks:
 - 6 operations runbooks.
 - 7 decision guide files.
 - 10 project kickoff templates.
+- 6 learning path files.
 - Full-stack mini app files.
 - GitHub Actions workflow.
 

@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 7 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 8 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -72,6 +72,7 @@ requireFiles([
   "operations/README.md",
   "decision-guides/README.md",
   "project-kickoff/README.md",
+  "learning-paths/README.md",
   ...phaseFiles,
 ]);
 
@@ -152,6 +153,7 @@ for (const file of diagramFiles) {
 requireCount("Operations runbooks", "operations/runbooks", (file) => file.endsWith(".md"), 6);
 requireCount("Decision guides", "decision-guides", (file) => file.endsWith(".md"), 7);
 requireCount("Kickoff templates", "project-kickoff/templates", (file) => file.endsWith(".md"), 10);
+requireCount("Learning paths", "learning-paths", (file) => file.endsWith(".md"), 6);
 
 requireFiles([
   "examples/full-stack-mini-app/package.json",
@@ -160,6 +162,11 @@ requireFiles([
   "project-kickoff/examples/saas-kickoff-example.md",
   ".github/workflows/verify.yml",
   "quality/github-actions-verify.yml",
+  "learning-paths/role-based.md",
+  "learning-paths/30-day-plan.md",
+  "learning-paths/exercises.md",
+  "learning-paths/capstone-projects.md",
+  "learning-paths/self-assessment.md",
 ]);
 
 if (failures.length > 0) {
