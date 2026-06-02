@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 9 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 10 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -74,6 +74,8 @@ requireFiles([
   "project-kickoff/README.md",
   "learning-paths/README.md",
   "reference/README.md",
+  "showcase/README.md",
+  "CHANGELOG.md",
   ...phaseFiles,
 ]);
 
@@ -156,6 +158,7 @@ requireCount("Decision guides", "decision-guides", (file) => file.endsWith(".md"
 requireCount("Kickoff templates", "project-kickoff/templates", (file) => file.endsWith(".md"), 10);
 requireCount("Learning paths", "learning-paths", (file) => file.endsWith(".md"), 6);
 requireCount("Reference files", "reference", (file) => file.endsWith(".md"), 7);
+requireCount("Showcase files", "showcase", (file) => file.endsWith(".md"), 6);
 
 requireFiles([
   "examples/full-stack-mini-app/package.json",
@@ -175,6 +178,11 @@ requireFiles([
   "reference/technology-comparison.md",
   "reference/repository-evaluation-rubric.md",
   "reference/common-pitfalls.md",
+  "showcase/project-one-pager.md",
+  "showcase/repository-tour.md",
+  "showcase/release-playbook.md",
+  "showcase/maintainer-handbook.md",
+  "showcase/shareable-summary.md",
 ]);
 
 if (failures.length > 0) {
@@ -187,4 +195,4 @@ if (failures.length > 0) {
 
 console.log("Repository verification passed.");
 console.log(`Checked ${moduleDirs.length} modules, ${completeApps.length} app templates, ${caseStudies.length} case studies.`);
-console.log(`Checked ${diagramFiles.length} architecture diagrams and root quality gates.`);
+console.log(`Checked ${diagramFiles.length} architecture diagrams, reference files, showcase files, and root quality gates.`);

@@ -72,3 +72,13 @@
 | 安全发布 | [security-release.md](../operations/runbooks/security-release.md) |
 | 监控报警 | [monitoring-alerting.md](../operations/runbooks/monitoring-alerting.md) |
 
+## Showcase And Publish
+
+| Need | Go To |
+| --- | --- |
+| 快速介绍仓库 | [project-one-pager.md](../showcase/project-one-pager.md) |
+| 第一次浏览仓库 | [repository-tour.md](../showcase/repository-tour.md) |
+| 准备发布新阶段 | [release-playbook.md](../showcase/release-playbook.md) |
+| 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
+| 复制项目简介 | [shareable-summary.md](../showcase/shareable-summary.md) |
+| 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
