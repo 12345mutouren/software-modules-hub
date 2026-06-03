@@ -36,6 +36,7 @@
 - [第一阶段完成度清单](checklists/phase-1-completeness.md)
 - [第二阶段完成度清单](checklists/phase-2-completeness.md)
 - [可运行示例](examples/README.md)
+- [模块 Demo 示例](examples/module-demos/README.md)
 - [完整软件模板组合](templates/complete-apps/README.md)
 - [第三阶段完成度清单](checklists/phase-3-completeness.md)
 - [真实项目案例研究](case-studies/README.md)
@@ -56,6 +57,7 @@
 - [第十阶段完成度清单](checklists/phase-10-completeness.md)
 - [项目生成器](starter-generator/README.md)
 - [第十一阶段完成度清单](checklists/phase-11-completeness.md)
+- [第十二阶段完成度清单](checklists/phase-12-completeness.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -77,6 +79,7 @@
 12. 用 [快速参考](reference/README.md) 查术语、入口、技术对比、仓库评估和常见坑。
 13. 用 [展示与发布材料](showcase/README.md) 快速介绍、发布和维护这个仓库。
 14. 用 [项目生成器](starter-generator/README.md) 按软件类型生成项目启动包。
+15. 用 [模块 Demo 示例](examples/module-demos/README.md) 把 10 大模块逐个对应到可运行代码。
 
 ## 仓库类型说明
 
@@ -104,3 +107,4 @@
 - 第九阶段：补充快速参考、总索引、术语表、技术对比、仓库评估 rubric 和常见坑。
 - 第十阶段：补充展示与发布材料、一页概览、仓库导览、发布手册、维护手册和 Changelog。
 - 第十一阶段：补充项目生成器，按软件类型生成产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记。
+- 第十二阶段：补充 10 大模块的可运行 demo，让产品、账号、数据库、后端、前端、安全、运维、测试、商业运营和文档都有对应代码和测试。

@@ -7,6 +7,7 @@
 | Need | Go To |
 | --- | --- |
 | 了解完整软件有哪些模块 | [modules/README.md](../modules/README.md) |
+| 运行 10 大模块 demo | [module-demos](../examples/module-demos/README.md) |
 | 学习 10 大模块细节 | [modules](../modules) |
 | 看模块关系图 | [10-module-system.md](../architecture/diagrams/10-module-system.md) |
 | 按角色学习 | [role-based.md](../learning-paths/role-based.md) |
@@ -17,6 +18,7 @@
 | Need | Go To |
 | --- | --- |
 | 跑一个完整小示例 | [full-stack-mini-app](../examples/full-stack-mini-app/README.md) |
+| 学每个模块的可运行 demo | [module-demos](../examples/module-demos/README.md) |
 | 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
@@ -91,3 +93,12 @@
 | 查看生成器说明 | [starter-generator/README.md](../starter-generator/README.md) |
 | 查看生成器源码 | [create-starter.mjs](../starter-generator/create-starter.mjs) |
 | 查看生成器测试 | [create-starter.test.mjs](../starter-generator/test/create-starter.test.mjs) |
+
+## Run Module Demos
+
+| Need | Go To |
+| --- | --- |
+| 查看模块 demo | [examples/module-demos/README.md](../examples/module-demos/README.md) |
+| 查看 demo 源码 | [module-demos.mjs](../examples/module-demos/src/module-demos.mjs) |
+| 查看 demo 测试 | [module-demos.test.mjs](../examples/module-demos/test/module-demos.test.mjs) |
+| 查看模块映射 | [module-map.md](../examples/module-demos/docs/module-map.md) |

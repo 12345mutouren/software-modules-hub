@@ -6,6 +6,7 @@
 | --- | --- |
 | `npm run verify` | Static repository structure verification |
 | `npm run test:examples` | Run the full-stack mini app test suite |
+| `npm run test:module-demos` | Run the module demos test suite |
 | `npm run test:starter-generator` | Run the starter generator test suite |
 | `npm test` | Run all current automated checks |
 
@@ -13,7 +14,7 @@
 
 The verifier checks:
 
-- Phase 1-11 checklist and audit files.
+- Phase 1-12 checklist and audit files.
 - 10 module documents.
 - Required module sections.
 - 6 complete app templates.
@@ -28,6 +29,7 @@ The verifier checks:
 - 7 reference files.
 - 6 showcase files.
 - Starter generator files.
+- Module demo files.
 - Changelog.
 - Full-stack mini app files.
 - GitHub Actions workflow.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.12.0 - Phase 12 Module Demos
+
+Added:
+
+- Module demos for all 10 software layers.
+- Product flow, account, database, backend API, frontend state, security, operations, testing, business and documentation demos.
+- Module demo tests.
+- Module demo map.
+- Phase 12 checklist and audit.
+
+Updated:
+
+- Root `npm test` now includes module demo tests.
+- README, Roadmap, examples index, Master Index and quality documentation.
+
 ## 0.11.0 - Phase 11 Starter Generator
 
 Added:

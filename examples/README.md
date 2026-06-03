@@ -9,6 +9,7 @@
 | 示例 | 覆盖模块 | 说明 |
 | --- | --- | --- |
 | [full-stack-mini-app](full-stack-mini-app/README.md) | 10/10 | 一个无外部依赖的 Node.js 小型全栈软件示例 |
+| [module-demos](module-demos/README.md) | 10/10 | 10 大模块的可运行小 demo 和测试 |
 
 ## 使用原则
 
@@ -17,4 +18,3 @@
 - 示例要明确映射到 10 个模块。
 - 示例只做代表性实现，不追求生产级完整度。
 - 生产系统应回到各模块文档和 GitHub 仓库索引继续选型。
-
