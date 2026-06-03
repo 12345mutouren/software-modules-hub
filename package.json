@@ -1,12 +1,13 @@
 {
   "name": "software-modules-hub",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "description": "A comprehensive software modules knowledge hub with examples, templates, case studies, architecture diagrams, runbooks, and decision guides.",
   "type": "module",
   "scripts": {
     "verify": "node tools/verify-repo.mjs",
     "test:examples": "npm --prefix examples/full-stack-mini-app test",
-    "test": "npm run verify && npm run test:examples"
+    "test:starter-generator": "node --test starter-generator/test/*.test.mjs",
+    "test": "npm run verify && npm run test:examples && npm run test:starter-generator"
   }
 }

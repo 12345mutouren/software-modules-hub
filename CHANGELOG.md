@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.0 - Phase 11 Starter Generator
+
+Added:
+
+- Starter generator CLI.
+- Six supported software starter types.
+- Generated product brief, module selection, permission matrix, data model, API contract, security review, test plan, launch plan and risk register.
+- Starter generator tests.
+- Phase 11 checklist and audit.
+
+Updated:
+
+- Root `npm test` now includes starter generator tests.
+- README, Roadmap, Master Index and quality documentation.
+
 ## 0.10.0 - Phase 10 Publishing And Showcase Layer
 
 Added:
@@ -60,4 +75,3 @@ Built the foundation:
 - Real project case studies.
 - Architecture diagrams and operations runbooks.
 - Decision guides and project kickoff templates.
-

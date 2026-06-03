@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 10 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 11 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -75,6 +75,7 @@ requireFiles([
   "learning-paths/README.md",
   "reference/README.md",
   "showcase/README.md",
+  "starter-generator/README.md",
   "CHANGELOG.md",
   ...phaseFiles,
 ]);
@@ -160,6 +161,11 @@ requireCount("Learning paths", "learning-paths", (file) => file.endsWith(".md"),
 requireCount("Reference files", "reference", (file) => file.endsWith(".md"), 7);
 requireCount("Showcase files", "showcase", (file) => file.endsWith(".md"), 6);
 
+requireText("package.json", "\"test:starter-generator\"");
+requireText("starter-generator/README.md", "## Supported Types");
+requireText("starter-generator/create-starter.mjs", "saas-subscription");
+requireText("starter-generator/create-starter.mjs", "enterprise-internal-tool");
+
 requireFiles([
   "examples/full-stack-mini-app/package.json",
   "examples/full-stack-mini-app/src/app.js",
@@ -183,6 +189,8 @@ requireFiles([
   "showcase/release-playbook.md",
   "showcase/maintainer-handbook.md",
   "showcase/shareable-summary.md",
+  "starter-generator/create-starter.mjs",
+  "starter-generator/test/create-starter.test.mjs",
 ]);
 
 if (failures.length > 0) {
@@ -195,4 +203,4 @@ if (failures.length > 0) {
 
 console.log("Repository verification passed.");
 console.log(`Checked ${moduleDirs.length} modules, ${completeApps.length} app templates, ${caseStudies.length} case studies.`);
-console.log(`Checked ${diagramFiles.length} architecture diagrams, reference files, showcase files, and root quality gates.`);
+console.log(`Checked ${diagramFiles.length} architecture diagrams, reference files, showcase files, starter generator, and root quality gates.`);

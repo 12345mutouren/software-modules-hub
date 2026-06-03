@@ -54,6 +54,8 @@
 - [第九阶段完成度清单](checklists/phase-9-completeness.md)
 - [展示与发布材料](showcase/README.md)
 - [第十阶段完成度清单](checklists/phase-10-completeness.md)
+- [项目生成器](starter-generator/README.md)
+- [第十一阶段完成度清单](checklists/phase-11-completeness.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -74,6 +76,7 @@
 11. 按 [学习路线](learning-paths/README.md) 选择角色路径、30 天计划和毕业项目。
 12. 用 [快速参考](reference/README.md) 查术语、入口、技术对比、仓库评估和常见坑。
 13. 用 [展示与发布材料](showcase/README.md) 快速介绍、发布和维护这个仓库。
+14. 用 [项目生成器](starter-generator/README.md) 按软件类型生成项目启动包。
 
 ## 仓库类型说明
 
@@ -100,3 +103,4 @@
 - 第八阶段：补充角色学习路线、30 天计划、实战练习、毕业项目和自评清单。
 - 第九阶段：补充快速参考、总索引、术语表、技术对比、仓库评估 rubric 和常见坑。
 - 第十阶段：补充展示与发布材料、一页概览、仓库导览、发布手册、维护手册和 Changelog。
+- 第十一阶段：补充项目生成器，按软件类型生成产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记。

@@ -27,6 +27,7 @@
 | Goal | Files |
 | --- | --- |
 | 从零想一个软件 | `project-kickoff/templates/product-brief.md`、`decision-guides/software-type-selector.md` |
+| 生成项目启动包 | `starter-generator/README.md`、`starter-generator/create-starter.mjs` |
 | 设计账号和权限 | `modules/02-account-system/README.md`、`project-kickoff/templates/permission-matrix.md` |
 | 设计数据库 | `modules/03-database-layer/README.md`、`project-kickoff/templates/data-model.md` |
 | 设计 API | `modules/04-backend-system/README.md`、`project-kickoff/templates/api-contract.md` |
@@ -53,4 +54,3 @@
 - 做项目：从模板和项目启动包开始。
 - 学架构：从架构图和真实项目案例开始。
 - 准备维护：从质量门、发布手册和审计记录开始。
-

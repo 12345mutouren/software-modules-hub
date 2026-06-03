@@ -17,6 +17,7 @@
 | Need | Go To |
 | --- | --- |
 | 跑一个完整小示例 | [full-stack-mini-app](../examples/full-stack-mini-app/README.md) |
+| 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
 | 选择数据库方案 | [database-decision-tree.md](../decision-guides/database-decision-tree.md) |
@@ -82,3 +83,11 @@
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 复制项目简介 | [shareable-summary.md](../showcase/shareable-summary.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
+
+## Generate A Starter
+
+| Need | Go To |
+| --- | --- |
+| 查看生成器说明 | [starter-generator/README.md](../starter-generator/README.md) |
+| 查看生成器源码 | [create-starter.mjs](../starter-generator/create-starter.mjs) |
+| 查看生成器测试 | [create-starter.test.mjs](../starter-generator/test/create-starter.test.mjs) |

@@ -73,6 +73,6 @@ Use phase-based minor versions:
 | Phase 8 | `0.8.0` |
 | Phase 9 | `0.9.0` |
 | Phase 10 | `0.10.0` |
+| Phase 11 | `0.11.0` |
 
 Patch versions can be used for small corrections that do not add a new phase.
-
