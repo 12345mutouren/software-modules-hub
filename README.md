@@ -72,6 +72,17 @@
 - [最终审查](FINAL-REVIEW.md)
 - [第十八阶段完成度清单](checklists/phase-18-completeness.md)
 - [v1.0.0 发布说明](releases/v1.0.0.md)
+- [可运行模板](runnable-templates/README.md)
+- [第十九阶段完成度清单](checklists/phase-19-completeness.md)
+- [第二十阶段完成度清单](checklists/phase-20-completeness.md)
+- [第二十一阶段完成度清单](checklists/phase-21-completeness.md)
+- [部署 Playground](deployment-playground/README.md)
+- [第二十二阶段完成度清单](checklists/phase-22-completeness.md)
+- [文档站](docs-site/README.md)
+- [第二十三阶段完成度清单](checklists/phase-23-completeness.md)
+- [持续更新体系](maintenance/README.md)
+- [第二十四阶段完成度清单](checklists/phase-24-completeness.md)
+- [v1.1.0 发布说明](releases/v1.1.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -96,6 +107,7 @@
 15. 用 [模块 Demo 示例](examples/module-demos/README.md) 把 10 大模块逐个对应到可运行代码。
 16. 用 [生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md) 做上线前准备。
 17. 用 [审计体系](auditing/README.md) 和根级 `npm test` 做最终质量检查。
+18. 用 [可运行模板](runnable-templates/README.md)、[部署 Playground](deployment-playground/README.md)、[文档站](docs-site/README.md) 和 [持续更新体系](maintenance/README.md) 做 v1.1 增强。
 
 ## 仓库类型说明
 
@@ -130,3 +142,9 @@
 - 第十六阶段：补充 GitHub 仓库专业化文件。
 - 第十七阶段：补充审计体系和本地链接检查。
 - 第十八阶段：完成 v1.0.0 最终收口。
+- 第十九阶段：把 starter generator 升级为可生成代码骨架。
+- 第二十阶段：补充 Next.js + Node.js + PostgreSQL 可运行参考模板。
+- 第二十一阶段：补充 React + FastAPI + PostgreSQL 可运行参考模板。
+- 第二十二阶段：补充 Docker Compose 部署 Playground。
+- 第二十三阶段：补充静态文档站构建器。
+- 第二十四阶段：补充持续更新体系和 freshness audit。

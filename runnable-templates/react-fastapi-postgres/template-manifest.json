@@ -1,0 +1,14 @@
+{
+  "stack": "react-fastapi-postgres",
+  "services": ["web", "api", "worker", "postgres", "redis", "object-storage"],
+  "resources": ["workspace", "document", "chunk", "conversation", "message", "citation"],
+  "apiRoutes": [
+    "GET /health",
+    "POST /auth/login",
+    "GET /workspaces",
+    "POST /documents",
+    "POST /conversations"
+  ],
+  "uiScreens": ["Login", "WorkspaceList", "DocumentManager", "Conversation"]
+}
+

@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Home",
+    "source": "README.md",
+    "output": "index.html"
+  },
+  {
+    "title": "Master Index",
+    "source": "reference/master-index.md",
+    "output": "master-index.html"
+  },
+  {
+    "title": "Roadmap",
+    "source": "ROADMAP.md",
+    "output": "roadmap.html"
+  },
+  {
+    "title": "Changelog",
+    "source": "CHANGELOG.md",
+    "output": "changelog.html"
+  },
+  {
+    "title": "Project Status",
+    "source": "PROJECT-STATUS.md",
+    "output": "project-status.html"
+  }
+]
+

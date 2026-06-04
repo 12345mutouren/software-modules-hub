@@ -286,3 +286,83 @@
 - `releases/v1.0.0.md`。
 - `CHANGELOG.md` v1.0.0。
 - 根级质量门覆盖 verifier、链接检查、示例测试、模块 demo 测试和生成器测试。
+
+## 第十九阶段：真实代码脚手架生成器
+
+目标：让 starter generator 不只生成项目规划文档，也能生成可测试的代码骨架。
+
+状态：已新增 `--with-code` 模式，并用测试验证生成后的项目可以运行 `npm test`。
+
+范围：
+
+- 生成 `package.json`。
+- 生成 `src/app.mjs` 和 `src/store.mjs`。
+- 生成 `test/app.test.mjs`。
+- 生成 `.env.example` 和 `docker-compose.yml`。
+- starter generator 测试覆盖代码骨架。
+
+## 第二十阶段：Next.js + Node.js + PostgreSQL 可运行参考模板
+
+目标：提供 Next.js + Node.js + PostgreSQL 的项目骨架和可测试契约。
+
+状态：已新增 `runnable-templates/nextjs-node-postgres`。
+
+范围：
+
+- Web/API/worker/PostgreSQL/Redis/object-storage 服务边界。
+- App contract。
+- Contract tests。
+- PostgreSQL schema starter。
+- 迁移说明。
+
+## 第二十一阶段：React + FastAPI + PostgreSQL 可运行参考模板
+
+目标：提供 React + FastAPI + PostgreSQL 的项目骨架和可测试 manifest。
+
+状态：已新增 `runnable-templates/react-fastapi-postgres`。
+
+范围：
+
+- Template manifest。
+- FastAPI-shaped API entry。
+- React-shaped UI entry。
+- Manifest tests。
+- 真实项目迁移说明。
+
+## 第二十二阶段：Docker Compose 部署 Playground
+
+目标：提供本地准生产服务图和 smoke check。
+
+状态：已新增 `deployment-playground`。
+
+范围：
+
+- Web、API、worker、PostgreSQL、Redis、object-storage。
+- 环境变量样例。
+- Smoke check 脚本。
+
+## 第二十三阶段：静态文档站
+
+目标：把仓库主要入口生成成轻量 HTML 文档站。
+
+状态：已新增 `docs-site`。
+
+范围：
+
+- Site map。
+- 静态站构建脚本。
+- 构建测试。
+
+## 第二十四阶段：持续更新体系
+
+目标：建立 v1.1 之后的刷新节奏和 freshness audit。
+
+状态：已新增 `maintenance` 和 `tools/audit-freshness.mjs`。
+
+范围：
+
+- GitHub 仓库索引刷新计划。
+- 真实项目案例刷新计划。
+- 模板刷新计划。
+- 发布节奏。
+- Freshness audit。

@@ -153,7 +153,7 @@ export function listStarterTypes() {
   return Object.keys(presets);
 }
 
-export function generateStarter({ type, outDir, force = false, generatedAt = currentDate() }) {
+export function generateStarter({ type, outDir, force = false, generatedAt = currentDate(), includeCode = false }) {
   if (!type || !presets[type]) {
     throw new Error(`Unknown starter type: ${type || "(missing)"}`);
   }
@@ -166,7 +166,7 @@ export function generateStarter({ type, outDir, force = false, generatedAt = cur
   const absoluteOutDir = path.resolve(outDir);
   assertWritableOutput(absoluteOutDir, force);
 
-  const files = buildFiles(type, preset, generatedAt);
+  const files = buildFiles(type, preset, generatedAt, includeCode);
   for (const [filePath, content] of Object.entries(files)) {
     const target = path.join(absoluteOutDir, filePath);
     fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -196,9 +196,9 @@ function currentDate() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function buildFiles(type, preset, generatedAt) {
-  return {
-    "README.md": renderReadme(type, preset, generatedAt),
+function buildFiles(type, preset, generatedAt, includeCode) {
+  const files = {
+    "README.md": renderReadme(type, preset, generatedAt, includeCode),
     "docs/product-brief.md": renderProductBrief(preset),
     "docs/module-selection.md": renderModuleSelection(preset),
     "docs/permission-matrix.md": renderPermissionMatrix(preset),
@@ -209,9 +209,15 @@ function buildFiles(type, preset, generatedAt) {
     "docs/launch-plan.md": renderLaunchPlan(preset),
     "docs/risk-register.md": renderRiskRegister(preset),
   };
+
+  if (includeCode) {
+    Object.assign(files, buildCodeScaffoldFiles(type, preset));
+  }
+
+  return files;
 }
 
-function renderReadme(type, preset, generatedAt) {
+function renderReadme(type, preset, generatedAt, includeCode) {
   return `# ${preset.title}
 
 Generated: ${generatedAt}
@@ -243,6 +249,24 @@ ${bulletList(outputFiles.filter((file) => file !== "README.md"))}
 5. Turn API contract into routes and tests.
 6. Run security review before launch.
 7. Complete test plan and launch plan.
+${includeCode ? `
+## Code Scaffold
+
+This starter includes a dependency-free Node.js scaffold:
+
+- \`package.json\`
+- \`src/app.mjs\`
+- \`src/store.mjs\`
+- \`test/app.test.mjs\`
+- \`.env.example\`
+- \`docker-compose.yml\`
+
+Run:
+
+\`\`\`bash
+npm test
+\`\`\`
+` : ""}
 `;
 }
 
@@ -505,6 +529,183 @@ ${rows}
 `;
 }
 
+function buildCodeScaffoldFiles(type, preset) {
+  return {
+    "package.json": renderCodePackageJson(type),
+    ".env.example": renderCodeEnvExample(),
+    "docker-compose.yml": renderCodeDockerCompose(),
+    "src/app.mjs": renderCodeApp(type, preset),
+    "src/store.mjs": renderCodeStore(),
+    "test/app.test.mjs": renderCodeTest(preset),
+  };
+}
+
+function renderCodePackageJson(type) {
+  return JSON.stringify({
+    name: `${type}-starter`,
+    version: "0.1.0",
+    private: true,
+    type: "module",
+    scripts: {
+      test: "node --test",
+    },
+  }, null, 2);
+}
+
+function renderCodeEnvExample() {
+  return `NODE_ENV=development
+DATABASE_URL=postgres://app:app_password@localhost:5432/app
+SESSION_SECRET=replace-with-local-secret
+PUBLIC_URL=http://localhost:3000
+`;
+}
+
+function renderCodeDockerCompose() {
+  return `services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+`;
+}
+
+function renderCodeApp(type, preset) {
+  const resources = JSON.stringify(preset.resources);
+  const metrics = JSON.stringify(preset.metrics);
+
+  return `import { createStore } from "./store.mjs";
+
+export const starterType = ${JSON.stringify(type)};
+export const resources = ${resources};
+export const metrics = ${metrics};
+
+export function createApp() {
+  const store = createStore();
+
+  function health() {
+    return {
+      status: "ok",
+      starterType,
+      resources,
+    };
+  }
+
+  function createResource({ type, ownerId, data }) {
+    if (!resources.includes(type)) {
+      throw new Error("Unknown resource type.");
+    }
+
+    return store.insert(type, {
+      ownerId,
+      data,
+      status: "active",
+    });
+  }
+
+  function listOwnResources({ type, ownerId }) {
+    return store.where(type, "ownerId", ownerId);
+  }
+
+  function canRead(user, record) {
+    return user.role === "admin" || record.ownerId === user.id;
+  }
+
+  return {
+    health,
+    createResource,
+    listOwnResources,
+    canRead,
+  };
+}
+`;
+}
+
+function renderCodeStore() {
+  return `export function createStore() {
+  const tables = new Map();
+
+  function insert(tableName, row) {
+    const rows = table(tableName);
+    const nextRow = {
+      ...row,
+      id: row.id || \`\${tableName}_\${rows.length + 1}\`,
+      createdAt: row.createdAt || new Date().toISOString(),
+    };
+    rows.push(nextRow);
+    return nextRow;
+  }
+
+  function where(tableName, field, value) {
+    return table(tableName).filter((row) => row[field] === value);
+  }
+
+  function table(tableName) {
+    if (!tables.has(tableName)) {
+      tables.set(tableName, []);
+    }
+    return tables.get(tableName);
+  }
+
+  return {
+    insert,
+    where,
+  };
+}
+`;
+}
+
+function renderCodeTest(preset) {
+  const firstResource = preset.resources[0];
+
+  return `import assert from "node:assert/strict";
+import { test } from "node:test";
+
+import { createApp, resources } from "../src/app.mjs";
+
+test("health exposes starter resources", () => {
+  const app = createApp();
+  const health = app.health();
+
+  assert.equal(health.status, "ok");
+  assert.deepEqual(health.resources, resources);
+});
+
+test("user can create and list own resource", () => {
+  const app = createApp();
+  const record = app.createResource({
+    type: ${JSON.stringify(firstResource)},
+    ownerId: "usr_1",
+    data: { name: "Example" },
+  });
+
+  const ownRecords = app.listOwnResources({
+    type: ${JSON.stringify(firstResource)},
+    ownerId: "usr_1",
+  });
+
+  assert.equal(record.ownerId, "usr_1");
+  assert.equal(ownRecords.length, 1);
+});
+
+test("permission helper allows owner or admin", () => {
+  const app = createApp();
+  const record = app.createResource({
+    type: ${JSON.stringify(firstResource)},
+    ownerId: "usr_1",
+    data: {},
+  });
+
+  assert.equal(app.canRead({ id: "usr_1", role: "user" }, record), true);
+  assert.equal(app.canRead({ id: "usr_2", role: "user" }, record), false);
+  assert.equal(app.canRead({ id: "usr_2", role: "admin" }, record), true);
+});
+`;
+}
+
 function bulletList(items) {
   return items.map((item) => `- ${item}`).join("\n");
 }
@@ -514,6 +715,7 @@ function parseArgs(args) {
     type: "",
     outDir: "",
     force: false,
+    includeCode: false,
     list: false,
     help: false,
   };
@@ -527,6 +729,8 @@ function parseArgs(args) {
       parsed.list = true;
     } else if (arg === "--force") {
       parsed.force = true;
+    } else if (arg === "--with-code") {
+      parsed.includeCode = true;
     } else if (arg === "--type") {
       parsed.type = args[index + 1] || "";
       index += 1;
@@ -549,6 +753,7 @@ function renderHelp() {
   return `Usage:
   node starter-generator/create-starter.mjs --list
   node starter-generator/create-starter.mjs --type saas-subscription --out ./generated/my-saas
+  node starter-generator/create-starter.mjs --type saas-subscription --out ./generated/my-saas --with-code
   node starter-generator/create-starter.mjs --type ecommerce --out ./generated/shop --force
 
 Available types:
@@ -574,6 +779,7 @@ function runCli() {
       type: args.type,
       outDir: args.outDir,
       force: args.force,
+      includeCode: args.includeCode,
     });
 
     console.log(`Created ${result.title} at ${result.outDir}`);
@@ -594,4 +800,3 @@ const invokedFile = process.argv[1] ? path.resolve(process.argv[1]) : "";
 if (currentFile === invokedFile) {
   runCli();
 }
-

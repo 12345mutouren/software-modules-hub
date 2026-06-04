@@ -29,6 +29,12 @@ Generate a starter:
 node starter-generator/create-starter.mjs --type saas-subscription --out ./generated/my-saas
 ```
 
+Generate planning docs plus a runnable code scaffold:
+
+```bash
+node starter-generator/create-starter.mjs --type saas-subscription --out ./generated/my-saas --with-code
+```
+
 Overwrite generated starter files in a non-empty directory:
 
 ```bash
@@ -50,6 +56,19 @@ node starter-generator/create-starter.mjs --type ecommerce --out ./generated/sho
 | `docs/launch-plan.md` | 环境、发布、冒烟测试和回滚计划 |
 | `docs/risk-register.md` | 项目风险登记 |
 
+## Optional Code Scaffold
+
+When `--with-code` is used, the generator also creates:
+
+| File | Purpose |
+| --- | --- |
+| `package.json` | Dependency-free testable Node.js scaffold |
+| `.env.example` | Local environment variable example |
+| `docker-compose.yml` | PostgreSQL local service reference |
+| `src/app.mjs` | Starter app behavior |
+| `src/store.mjs` | In-memory data store |
+| `test/app.test.mjs` | Smoke tests for health, resources and permissions |
+
 ## Test
 
 ```bash
@@ -57,4 +76,3 @@ npm run test:starter-generator
 ```
 
 The generator has no third-party dependencies and is covered by Node.js built-in tests.
-

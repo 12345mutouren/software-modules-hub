@@ -20,6 +20,8 @@
 | 跑一个完整小示例 | [full-stack-mini-app](../examples/full-stack-mini-app/README.md) |
 | 学每个模块的可运行 demo | [module-demos](../examples/module-demos/README.md) |
 | 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
+| 生成代码骨架 | [starter-generator](../starter-generator/README.md) |
+| 运行参考模板 | [runnable-templates](../runnable-templates/README.md) |
 | 选择生产架构模板 | [production-templates](../production-templates/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
@@ -70,6 +72,7 @@
 | --- | --- |
 | 架构图 | [architecture](../architecture/README.md) |
 | 生产级架构模板 | [production-templates](../production-templates/README.md) |
+| 部署 Playground | [deployment-playground](../deployment-playground/README.md) |
 | 运维 Runbook | [operations](../operations/README.md) |
 | 运维生产化 | [ops-production](../ops-production/README.md) |
 | 发布检查 | [deployment-checklist.md](../operations/runbooks/deployment-checklist.md) |
@@ -102,6 +105,7 @@
 | 查看项目状态 | [PROJECT-STATUS.md](../PROJECT-STATUS.md) |
 | 查看最终审查 | [FINAL-REVIEW.md](../FINAL-REVIEW.md) |
 | 查看 v1.0 发布说明 | [v1.0.0.md](../releases/v1.0.0.md) |
+| 查看 v1.1 发布说明 | [v1.1.0.md](../releases/v1.1.0.md) |
 
 ## Generate A Starter
 
@@ -110,6 +114,16 @@
 | 查看生成器说明 | [starter-generator/README.md](../starter-generator/README.md) |
 | 查看生成器源码 | [create-starter.mjs](../starter-generator/create-starter.mjs) |
 | 查看生成器测试 | [create-starter.test.mjs](../starter-generator/test/create-starter.test.mjs) |
+
+## Run Templates And Docs Site
+
+| Need | Go To |
+| --- | --- |
+| 查看可运行模板 | [runnable-templates/README.md](../runnable-templates/README.md) |
+| Next.js + Node.js + PostgreSQL 模板 | [nextjs-node-postgres](../runnable-templates/nextjs-node-postgres/README.md) |
+| React + FastAPI + PostgreSQL 模板 | [react-fastapi-postgres](../runnable-templates/react-fastapi-postgres/README.md) |
+| 部署 Playground | [deployment-playground/README.md](../deployment-playground/README.md) |
+| 文档站 | [docs-site/README.md](../docs-site/README.md) |
 
 ## Run Module Demos
 
@@ -129,3 +143,13 @@
 | 链接审计 | [link-audit.md](../auditing/link-audit.md) |
 | 示例代码审计 | [example-code-audit.md](../auditing/example-code-audit.md) |
 | 结构审计 | [structure-audit.md](../auditing/structure-audit.md) |
+
+## Maintain Freshness
+
+| Need | Go To |
+| --- | --- |
+| 持续更新体系 | [maintenance/README.md](../maintenance/README.md) |
+| GitHub 仓库索引刷新 | [github-repository-index.md](../maintenance/refresh-plans/github-repository-index.md) |
+| 真实项目案例刷新 | [case-study-refresh.md](../maintenance/refresh-plans/case-study-refresh.md) |
+| 模板刷新 | [template-refresh.md](../maintenance/refresh-plans/template-refresh.md) |
+| 发布节奏 | [release-cadence.md](../maintenance/release-cadence.md) |

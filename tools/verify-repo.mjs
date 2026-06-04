@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 18 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 24 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -80,6 +80,10 @@ requireFiles([
   "security-compliance/README.md",
   "ops-production/README.md",
   "auditing/README.md",
+  "runnable-templates/README.md",
+  "deployment-playground/README.md",
+  "docs-site/README.md",
+  "maintenance/README.md",
   "CHANGELOG.md",
   "PROJECT-STATUS.md",
   "FINAL-REVIEW.md",
@@ -174,13 +178,21 @@ requireCount("Security compliance files", "security-compliance", (file) => file.
 requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
 requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
 requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
-requireCount("Release files", "releases", (file) => file.endsWith(".md"), 1);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 2);
+requireCount("Runnable template files", "runnable-templates/test", (file) => file.endsWith(".mjs"), 1);
+requireCount("Maintenance refresh plans", "maintenance/refresh-plans", (file) => file.endsWith(".md"), 3);
 
 requireText("package.json", "\"test:starter-generator\"");
 requireText("package.json", "\"test:module-demos\"");
+requireText("package.json", "\"test:runnable-templates\"");
+requireText("package.json", "\"test:deployment-playground\"");
+requireText("package.json", "\"test:docs-site\"");
+requireText("package.json", "\"audit:freshness\"");
 requireText("package.json", "\"check:links\"");
-requireText("package.json", "\"version\": \"1.0.0\"");
+requireText("package.json", "\"version\": \"1.1.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
+requireText("starter-generator/README.md", "Optional Code Scaffold");
+requireText("starter-generator/create-starter.mjs", "--with-code");
 requireText("starter-generator/create-starter.mjs", "saas-subscription");
 requireText("starter-generator/create-starter.mjs", "enterprise-internal-tool");
 requireText("examples/module-demos/README.md", "## Demo List");
@@ -192,8 +204,12 @@ requireText("production-templates/README.md", "## Templates");
 requireText("security-compliance/README.md", "## Files");
 requireText("ops-production/README.md", "## Files");
 requireText("auditing/README.md", "## Audit Types");
-requireText("PROJECT-STATUS.md", "v1.0.0");
-requireText("FINAL-REVIEW.md", "Ready for v1.0.0 release");
+requireText("PROJECT-STATUS.md", "v1.1.0");
+requireText("FINAL-REVIEW.md", "Ready for v1.1.0 release");
+requireText("runnable-templates/README.md", "## Templates");
+requireText("deployment-playground/README.md", "## Run Smoke Check");
+requireText("docs-site/README.md", "## Build");
+requireText("maintenance/README.md", "## Automated Check");
 
 requireFiles([
   "examples/full-stack-mini-app/package.json",
@@ -229,6 +245,27 @@ requireFiles([
   "showcase/shareable-summary.md",
   "starter-generator/create-starter.mjs",
   "starter-generator/test/create-starter.test.mjs",
+  "runnable-templates/nextjs-node-postgres/package.json",
+  "runnable-templates/nextjs-node-postgres/src/app-contract.mjs",
+  "runnable-templates/nextjs-node-postgres/test/app-contract.test.mjs",
+  "runnable-templates/nextjs-node-postgres/docs/schema.sql",
+  "runnable-templates/react-fastapi-postgres/package.json",
+  "runnable-templates/react-fastapi-postgres/template-manifest.json",
+  "runnable-templates/react-fastapi-postgres/api/main.py",
+  "runnable-templates/react-fastapi-postgres/web/App.jsx",
+  "runnable-templates/react-fastapi-postgres/test/template-manifest.test.mjs",
+  "deployment-playground/docker-compose.yml",
+  "deployment-playground/.env.example",
+  "deployment-playground/smoke-check.mjs",
+  "docs-site/site-map.json",
+  "docs-site/build-docs-site.mjs",
+  "docs-site/test/build-docs-site.test.mjs",
+  "maintenance/refresh-plans/github-repository-index.md",
+  "maintenance/refresh-plans/case-study-refresh.md",
+  "maintenance/refresh-plans/template-refresh.md",
+  "maintenance/release-cadence.md",
+  "maintenance/freshness-audit.md",
+  "tools/audit-freshness.mjs",
   "production-templates/infra/docker-compose.reference.yml",
   "production-templates/infra/env.example",
   "production-templates/runbooks/migration-plan.md",
@@ -250,6 +287,7 @@ requireFiles([
   "auditing/structure-audit.md",
   "tools/check-local-links.mjs",
   "releases/v1.0.0.md",
+  "releases/v1.1.0.md",
 ]);
 
 if (failures.length > 0) {

@@ -6,16 +6,20 @@
 | --- | --- |
 | `npm run verify` | Static repository structure verification |
 | `npm run check:links` | Check local Markdown links |
+| `npm run audit:freshness` | Check maintenance and catalog freshness prerequisites |
 | `npm run test:examples` | Run the full-stack mini app test suite |
 | `npm run test:module-demos` | Run the module demos test suite |
 | `npm run test:starter-generator` | Run the starter generator test suite |
+| `npm run test:runnable-templates` | Run runnable template tests |
+| `npm run test:deployment-playground` | Run deployment playground smoke check |
+| `npm run test:docs-site` | Run docs-site builder tests |
 | `npm test` | Run all current automated checks |
 
 ## Verification Coverage
 
 The verifier checks:
 
-- Phase 1-18 checklist and audit files.
+- Phase 1-24 checklist and audit files.
 - 10 module documents.
 - Required module sections.
 - 6 complete app templates.
@@ -37,6 +41,7 @@ The verifier checks:
 - GitHub professionalization files.
 - Audit system files.
 - v1.0 release files.
+- v1.1 runnable template, deployment, docs-site and maintenance files.
 - Changelog.
 - Full-stack mini app files.
 - GitHub Actions workflow.

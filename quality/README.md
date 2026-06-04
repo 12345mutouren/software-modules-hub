@@ -10,10 +10,14 @@
 | --- | --- | --- |
 | Repository verification | `npm run verify` | 关键文件、阶段清单、模块章节、模板章节、案例章节、架构图、Runbook、速查和展示材料 |
 | Local link check | `npm run check:links` | 检查本地 Markdown 链接是否指向存在的文件或目录 |
+| Freshness audit | `npm run audit:freshness` | 检查维护计划和仓库索引刷新前提 |
 | Example tests | `npm run test:examples` | 第二阶段可运行示例的 API、权限、CSRF 和业务流程 |
 | Module demo tests | `npm run test:module-demos` | 第十二阶段 10 大模块 demo 的行为测试 |
 | Starter generator tests | `npm run test:starter-generator` | 第十一阶段项目生成器的软件类型、输出文件和安全覆盖规则 |
-| Full test | `npm test` | 同时运行仓库验证、链接检查、示例测试、模块 demo 测试和项目生成器测试 |
+| Runnable template tests | `npm run test:runnable-templates` | 第二十和二十一阶段可运行参考模板测试 |
+| Deployment playground test | `npm run test:deployment-playground` | 第二十二阶段部署 Playground smoke check |
+| Docs site tests | `npm run test:docs-site` | 第二十三阶段文档站构建测试 |
+| Full test | `npm test` | 同时运行仓库验证、链接检查、freshness audit、示例测试、模块 demo、生成器、可运行模板、部署和文档站测试 |
 | GitHub Actions | `.github/workflows/verify.yml` | 在 push 和 pull request 时运行 `npm test` |
 | GitHub Actions template | `quality/github-actions-verify.yml` | workflow 的可复制备份模板 |
 

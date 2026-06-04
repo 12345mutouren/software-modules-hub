@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.0 - Phase 24 Maintenance And Runnable Templates
+
+Added:
+
+- `--with-code` starter generator mode.
+- Runnable Next.js + Node.js + PostgreSQL reference template.
+- Runnable React + FastAPI + PostgreSQL reference template.
+- Docker Compose deployment playground.
+- Static docs site builder.
+- Maintenance refresh plans and freshness audit.
+- Phase 19-24 checklists and audits.
+
+Updated:
+
+- Root version is now `1.1.0`.
+- Root `npm test` now includes freshness audit, runnable template tests, deployment playground smoke check and docs-site tests.
+- README, Roadmap, Master Index, quality documentation and verifier coverage.
+
 ## 1.0.0 - Phase 18 Final Release
 
 Added:

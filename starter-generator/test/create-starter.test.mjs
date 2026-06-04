@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -64,3 +65,24 @@ test("does not write into a non-empty directory unless forced", () => {
   assert.ok(fs.existsSync(path.join(outDir, "docs", "data-model.md")));
 });
 
+test("generates a runnable code scaffold when requested", () => {
+  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-code-"));
+  const result = generateStarter({
+    type: "content-community",
+    outDir,
+    includeCode: true,
+    generatedAt: "2026-06-04",
+  });
+
+  assert.ok(result.files.includes("src/app.mjs"));
+  assert.ok(result.files.includes("test/app.test.mjs"));
+  assert.ok(fs.existsSync(path.join(outDir, "docker-compose.yml")));
+
+  const readme = fs.readFileSync(path.join(outDir, "README.md"), "utf8");
+  assert.match(readme, /Code Scaffold/);
+
+  execFileSync("npm", ["test"], {
+    cwd: outDir,
+    stdio: "pipe",
+  });
+});
