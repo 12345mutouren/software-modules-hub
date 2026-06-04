@@ -34,6 +34,7 @@
 - [模块 Demo 示例](examples/module-demos/README.md)
 - [完整软件模板组合](templates/complete-apps/README.md)
 - [项目启动器](https://12345mutouren.github.io/software-modules-hub/project-starter.html)
+- [构建计划器](https://12345mutouren.github.io/software-modules-hub/planner.html)
 - [成熟度评分](https://12345mutouren.github.io/software-modules-hub/maturity.html)
 - [可运行模板](runnable-templates/README.md)
 - [可运行应用模板](runnable-apps/README.md)
@@ -59,7 +60,7 @@
 - [治理说明](GOVERNANCE.md)
 - [项目状态](PROJECT-STATUS.md)
 - [最终审查](FINAL-REVIEW.md)
-- [v1.5.0 发布说明](releases/v1.5.0.md)
+- [v1.6.0 发布说明](releases/v1.6.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -72,7 +73,7 @@
 3. 遇到想深入的类别，去 [GitHub 仓库索引](catalog/github-repositories.md) 找代表项目。
 4. 进入 [可运行示例](examples/README.md) 和 [模块 Demo 示例](examples/module-demos/README.md)，把模块地图和代码对应起来。
 5. 阅读 [完整软件模板组合](templates/complete-apps/README.md)，选择一个真实软件方向继续深化。
-6. 使用 [项目启动器](https://12345mutouren.github.io/software-modules-hub/project-starter.html)、[成熟度评分](https://12345mutouren.github.io/software-modules-hub/maturity.html)、[决策指南](decision-guides/README.md)、[项目启动包](project-kickoff/README.md) 和 [项目生成器](starter-generator/README.md)，把一个软件想法整理成可执行项目计划。
+6. 使用 [项目启动器](https://12345mutouren.github.io/software-modules-hub/project-starter.html)、[构建计划器](https://12345mutouren.github.io/software-modules-hub/planner.html)、[成熟度评分](https://12345mutouren.github.io/software-modules-hub/maturity.html)、[决策指南](decision-guides/README.md)、[项目启动包](project-kickoff/README.md) 和 [项目生成器](starter-generator/README.md)，把一个软件想法整理成可执行项目计划。
 7. 用 [可运行模板](runnable-templates/README.md) 和 [可运行应用模板](runnable-apps/README.md) 快速学习实现方式。
 8. 查看 [架构图](architecture/README.md)、[生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md)，准备上线。
 9. 用 [文档站](docs-site/README.md)、[文档站部署包](docs-site/deploy/README.md)、[质量门](quality/README.md)、[审计体系](auditing/README.md) 和 [持续更新体系](maintenance/README.md) 做发布后的维护。
@@ -95,6 +96,6 @@
 - 参考资料：代表性 GitHub 仓库索引、真实项目案例研究、架构图和决策指南。
 - 项目启动：产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记模板。
 - 可运行材料：模块 Demo、完整应用方向模板、项目生成器、可运行技术栈模板和可运行业务应用模板。
-- 项目启动：项目启动器、模板选择器、生成命令、启动包输出说明和第一版发布门槛。
+- 项目启动：项目启动器、构建计划器、模板选择器、生成命令、启动包输出说明和第一版发布门槛。
 - 成熟度评估：10 大模块 readiness scorecard、实时评分、等级判断和优先补强建议。
 - 上线维护：生产级架构、安全合规、运维 Runbook、部署 Playground、产品化文档站、质量门、审计体系和持续更新体系。

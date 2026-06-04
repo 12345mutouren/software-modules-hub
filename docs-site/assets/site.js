@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealMotion();
   initTemplateFilters();
   initProjectStarter();
+  initBuildPlanner();
   initMaturityScorecard();
   initRepositoryBrowser();
   initConstellation();
@@ -116,6 +117,42 @@ function initProjectStarter() {
   };
 
   select.addEventListener("change", updateStarter);
+}
+
+function initBuildPlanner() {
+  const typeSelect = qs("#planner-type");
+  const stageSelect = qs("#planner-stage");
+  const teamSelect = qs("#planner-team");
+  const focus = qs("#planner-focus");
+  const windowLabel = qs("#planner-window");
+  const risk = qs("#planner-risk");
+  const tracks = qsa("[data-planner-track]");
+  if (!typeSelect || !stageSelect || !teamSelect || !focus || !windowLabel || !risk || !tracks.length) return;
+
+  const updatePlanner = () => {
+    const typeOption = typeSelect.selectedOptions[0];
+    const stageOption = stageSelect.selectedOptions[0];
+    const teamOption = teamSelect.selectedOptions[0];
+    const activeStage = stageSelect.value;
+    const activeTracks = [];
+
+    focus.textContent = `${typeOption.dataset.focus} ${teamOption.dataset.focus}`;
+    windowLabel.textContent = stageOption.dataset.window;
+    risk.textContent = `${stageOption.dataset.risk} ${typeOption.dataset.risk}`;
+
+    tracks.forEach((track) => {
+      const active = track.dataset.plannerTrack === activeStage;
+      track.classList.toggle("active", active);
+      if (active) activeTracks.push(track);
+    });
+
+    animateCards(activeTracks);
+  };
+
+  [typeSelect, stageSelect, teamSelect].forEach((control) => {
+    control.addEventListener("change", updatePlanner);
+  });
+  updatePlanner();
 }
 
 function initMaturityScorecard() {

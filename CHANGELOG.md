@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.6.0 - Build Planner
+
+Added:
+
+- Build Planner docs-site page.
+- Interactive planner controls for software type, current stage and team size.
+- Live focus, delivery window and risk summary for six software directions.
+- Four-stage build roadmap from map, prototype and launch to production maintenance.
+- Planner links to Project Starter, Maturity Scorecard, kickoff templates, production templates and deployment materials.
+
+Updated:
+
+- Root version is now `1.6.0`.
+- Home, Explore, Start Here, Master Index and docs-site navigation now include the Build Planner.
+- Docs-site tests now verify the generated planner page.
+- Repository verifier now requires the v1.6.0 release notes and planner assets.
+
 ## 1.5.0 - Maturity Scorecard
 
 Added:

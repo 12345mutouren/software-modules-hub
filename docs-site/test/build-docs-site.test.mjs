@@ -15,6 +15,7 @@ test("builds static docs site pages", () => {
   assert.ok(result.pages.includes("explore.html"));
   assert.ok(result.pages.includes("templates.html"));
   assert.ok(result.pages.includes("project-starter.html"));
+  assert.ok(result.pages.includes("planner.html"));
   assert.ok(result.pages.includes("maturity.html"));
   assert.ok(result.pages.includes("repositories.html"));
   assert.ok(result.pages.includes("master-index.html"));
@@ -38,6 +39,12 @@ test("builds static docs site pages", () => {
   assert.match(projectStarterHtml, /node starter-generator\/create-starter\.mjs --type saas-subscription/);
   assert.match(projectStarterHtml, /enterprise-internal-tool/);
   assert.match(projectStarterHtml, /第一版不是只要能跑/);
+
+  const plannerHtml = fs.readFileSync(path.join(outDir, "planner.html"), "utf8");
+  assert.match(plannerHtml, /Build Planner/);
+  assert.match(plannerHtml, /planner-type/);
+  assert.match(plannerHtml, /data-planner-track/);
+  assert.match(plannerHtml, /把软件想法排成可执行路线/);
 
   const maturityHtml = fs.readFileSync(path.join(outDir, "maturity.html"), "utf8");
   assert.match(maturityHtml, /Maturity Scorecard/);

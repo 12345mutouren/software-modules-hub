@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.5 review for the maturity scorecard release.
+Final v1.6 review for the build planner release.
 
 ## Review Areas
 
@@ -49,6 +49,10 @@ Final v1.5 review for the maturity scorecard release.
 | Starter selector commands | Ready |
 | Generated package overview | Ready |
 | First-release gates | Ready |
+| Build Planner page | Ready |
+| Planner type, stage and team controls | Ready |
+| Planner focus, window and risk summary | Ready |
+| Four-stage build roadmap | Ready |
 | Maturity Scorecard page | Ready |
 | Readiness score calculation | Ready |
 | Module-level scorecards | Ready |
@@ -64,8 +68,9 @@ Final v1.5 review for the maturity scorecard release.
 - Production templates are architecture starters, not deployment guarantees.
 - Docs-site motion depends on CDN-hosted GSAP and Three.js, with readable static content as fallback.
 - Project Starter commands are starter package scaffolds, not a substitute for project-specific engineering review.
+- Build Planner routes are planning guidance and still need project-specific sequencing judgment.
 - Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v1.5.0 release after local and GitHub Actions verification.
+Ready for v1.6.0 release after local and GitHub Actions verification.

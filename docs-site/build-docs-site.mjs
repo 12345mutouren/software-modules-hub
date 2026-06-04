@@ -47,6 +47,12 @@ const journeys = [
     accent: "gold",
   },
   {
+    title: "规划执行顺序",
+    description: "按软件类型、当前阶段和团队规模生成构建路线。",
+    href: "planner.html",
+    accent: "violet",
+  },
+  {
     title: "看可运行示例",
     description: "从 mini app、模块 demo、技术栈模板到业务应用模板。",
     href: "runnable-apps.html",
@@ -191,6 +197,141 @@ const starterOutputs = [
   ["发布计划", "把环境、域名、备份、监控、回滚和上线步骤串起来。"],
 ];
 
+const plannerProfiles = [
+  {
+    type: "saas-subscription",
+    title: "SaaS 订阅系统",
+    focus: "先打通团队空间、角色权限、订阅状态和用量限制。",
+    risk: "订阅、权限和用量统计不一致会直接影响收费和访问控制。",
+  },
+  {
+    type: "admin-dashboard",
+    title: "管理后台",
+    focus: "先做用户管理、内容管理、批量操作、审计日志和导出边界。",
+    risk: "后台越权和批量误操作是第一风险。",
+  },
+  {
+    type: "ecommerce",
+    title: "电商系统",
+    focus: "先做商品、库存、购物车、订单状态机、支付回调和退款边界。",
+    risk: "库存扣减、支付回调和订单状态必须幂等。",
+  },
+  {
+    type: "content-community",
+    title: "内容社区",
+    focus: "先做发布、评论、举报、审核状态、搜索和推荐边界。",
+    risk: "内容审核和可见性规则不清会放大运营风险。",
+  },
+  {
+    type: "ai-knowledge-base",
+    title: "AI 知识库",
+    focus: "先做文档上传、解析、向量索引、引用返回和权限隔离。",
+    risk: "检索结果必须带来源，且不能跨空间泄露文档。",
+  },
+  {
+    type: "enterprise-internal-tool",
+    title: "企业内部工具",
+    focus: "先做组织结构、审批链、工单状态、报表和 SSO 边界。",
+    risk: "组织权限、审批记录和审计日志必须可追踪。",
+  },
+];
+
+const plannerStages = [
+  {
+    id: "map",
+    label: "Map / 梳理想法",
+    window: "1-2 周",
+    focus: "定义用户、核心任务、非目标和 10 模块范围。",
+    risk: "范围发散、角色混乱、核心流程没有闭环。",
+  },
+  {
+    id: "prototype",
+    label: "Prototype / 做出原型",
+    window: "2-4 周",
+    focus: "优先跑通登录、核心数据、主流程和可演示 UI。",
+    risk: "原型只会展示，不能验证权限、数据边界和错误状态。",
+  },
+  {
+    id: "launch",
+    label: "Launch / 准备发布",
+    window: "4-8 周",
+    focus: "补齐权限、安全、测试、监控、备份和发布步骤。",
+    risk: "缺少审计、回滚和异常处理会让上线不可控。",
+  },
+  {
+    id: "production",
+    label: "Production / 长期维护",
+    window: "持续迭代",
+    focus: "建立质量门、更新节奏、事故响应和真实项目复核。",
+    risk: "依赖、仓库索引、文档和安全假设会随时间过期。",
+  },
+];
+
+const plannerTeams = [
+  {
+    id: "solo",
+    label: "1 人",
+    focus: "保持单一主流程，每周只交付一个可验证结果。",
+  },
+  {
+    id: "small",
+    label: "2-5 人",
+    focus: "拆成产品/API/UI/测试四条并行线，接口合同先行。",
+  },
+  {
+    id: "product-team",
+    label: "6 人以上",
+    focus: "增加 ADR、权限评审、发布负责人和每周质量门。",
+  },
+];
+
+const plannerTracks = [
+  {
+    stage: "map",
+    number: "01",
+    title: "定义产品边界",
+    modules: ["产品层", "账号系统", "文档"],
+    checks: ["写 1 页产品简报", "确定游客、用户、管理员和运营角色", "列出第一版必须做和明确不做的功能"],
+    links: [
+      ["产品简报", resolveHref("project-kickoff/templates/product-brief.md")],
+      ["软件类型选择", resolveHref("decision-guides/software-type-selector.md")],
+    ],
+  },
+  {
+    stage: "prototype",
+    number: "02",
+    title: "跑通核心闭环",
+    modules: ["数据库层", "后端系统", "前端/客户端"],
+    checks: ["定义核心表和 API 合同", "实现主流程页面和状态", "用可运行模板验证技术栈"],
+    links: [
+      ["API 合同", resolveHref("project-kickoff/templates/api-contract.md")],
+      ["可运行应用", "runnable-apps.html"],
+    ],
+  },
+  {
+    stage: "launch",
+    number: "03",
+    title: "补齐发布门槛",
+    modules: ["安全", "测试", "运维部署"],
+    checks: ["覆盖权限、越权和输入校验测试", "准备环境变量、备份、监控和回滚", "用成熟度评分找最低分模块"],
+    links: [
+      ["成熟度评分", "maturity.html"],
+      ["生产模板", resolveHref("production-templates/README.md")],
+    ],
+  },
+  {
+    stage: "production",
+    number: "04",
+    title: "进入长期维护",
+    modules: ["商业/运营功能", "运维部署", "文档"],
+    checks: ["维护发布节奏和变更记录", "定期复核仓库索引和链接", "把真实事故、反馈和指标转成下一轮计划"],
+    links: [
+      ["维护体系", resolveHref("maintenance/README.md")],
+      ["发布手册", resolveHref("showcase/release-playbook.md")],
+    ],
+  },
+];
+
 const maturityLevels = [
   ["0-39", "Map", "只适合学习和梳理想法。先补产品、账号、数据和核心流程。"],
   ["40-69", "Prototype", "可以做内部演示。需要补权限、安全、测试和部署恢复能力。"],
@@ -286,6 +427,7 @@ function renderSitePage(page, repositories) {
     templates: () => renderTemplatePage(),
     starter: () => renderProjectStarterPage(),
     maturity: () => renderMaturityScorecardPage(),
+    planner: () => renderBuildPlannerPage(),
     repositories: () => renderRepositoryPage(repositories),
     markdown: () => renderMarkdownPage(page),
   };
@@ -312,6 +454,7 @@ function renderSitePage(page, repositories) {
       <a href="explore.html">Explore</a>
       <a href="templates.html">Templates</a>
       <a href="project-starter.html">Project Starter</a>
+      <a href="planner.html">Build Planner</a>
       <a href="maturity.html">Scorecard</a>
       <a href="repositories.html">GitHub Index</a>
       <a href="modules.html">Modules</a>
@@ -361,8 +504,9 @@ function renderHomePage() {
 <section class="band feature-strip">
   <a class="feature-card reveal" href="templates.html"><span>01</span><strong>模板选择器</strong><p>从 SaaS、电商、AI 知识库、管理后台等方向快速选型。</p></a>
   <a class="feature-card reveal" href="project-starter.html"><span>02</span><strong>项目启动器</strong><p>把软件类型转换成生成命令、启动包和上线门槛。</p></a>
-  <a class="feature-card reveal" href="maturity.html"><span>03</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
-  <a class="feature-card reveal" href="repositories.html"><span>04</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
+  <a class="feature-card reveal" href="planner.html"><span>03</span><strong>构建计划器</strong><p>按软件类型、阶段和团队规模生成执行路线。</p></a>
+  <a class="feature-card reveal" href="maturity.html"><span>04</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
+  <a class="feature-card reveal" href="repositories.html"><span>05</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
 </section>`;
 }
 
@@ -381,7 +525,7 @@ function renderStartPage() {
   <ol class="timeline">
     <li class="reveal"><strong>建立地图</strong><span>读模块总览，知道完整软件有哪些层。</span></li>
     <li class="reveal"><strong>找参考</strong><span>进入 GitHub 仓库浏览页，按模块看代表代码库。</span></li>
-    <li class="reveal"><strong>选方向</strong><span>用模板选择器和项目启动器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
+    <li class="reveal"><strong>选方向</strong><span>用模板选择器、项目启动器和构建计划器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
     <li class="reveal"><strong>跑示例</strong><span>用可运行模板把概念对应到代码。</span></li>
   </ol>
 </section>`;
@@ -404,8 +548,52 @@ function renderExplorePage() {
   </div>
   <div class="link-matrix">
     ${renderLinkColumn("学习", [["模块总览", "modules.html"], ["术语表", resolveHref("reference/glossary.md")], ["30 天计划", resolveHref("learning-paths/30-day-plan.md")]])}
-    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
+    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["构建计划器", "planner.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
     ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["安全合规", resolveHref("security-compliance/README.md")], ["部署包", resolveHref("docs-site/deploy/README.md")]])}
+  </div>
+</section>`;
+}
+
+function renderBuildPlannerPage() {
+  const activeProfile = plannerProfiles[0];
+  const activeStage = plannerStages[0];
+  const activeTeam = plannerTeams[0];
+
+  return `
+<section class="page-hero">
+  <p class="eyebrow reveal">Build Planner</p>
+  <h1 class="reveal">把软件想法排成可执行路线。</h1>
+  <p class="reveal">选择软件类型、当前阶段和团队规模，得到当前最该做的重点、时间窗口、风险提醒和四段构建顺序。</p>
+</section>
+<section class="band planner-control-band">
+  <div class="planner-controls reveal">
+    <label for="planner-type"><span>软件类型</span><select id="planner-type">${plannerProfiles.map(renderPlannerProfileOption).join("")}</select></label>
+    <label for="planner-stage"><span>当前阶段</span><select id="planner-stage">${plannerStages.map(renderPlannerStageOption).join("")}</select></label>
+    <label for="planner-team"><span>团队规模</span><select id="planner-team">${plannerTeams.map(renderPlannerTeamOption).join("")}</select></label>
+  </div>
+  <div class="planner-summary reveal" aria-live="polite">
+    <article><span>Focus</span><strong id="planner-focus">${escapeHtml(`${activeProfile.focus} ${activeTeam.focus}`)}</strong></article>
+    <article><span>Window</span><strong id="planner-window">${escapeHtml(activeStage.window)}</strong></article>
+    <article><span>Risk</span><strong id="planner-risk">${escapeHtml(`${activeStage.risk} ${activeProfile.risk}`)}</strong></article>
+  </div>
+</section>
+<section class="band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Sequence</p>
+    <h2>先把路线排对，再决定写哪段代码。</h2>
+    <p>高亮卡片会随当前阶段变化。完整路线保留在页面上，方便你知道下一段会接到哪里。</p>
+  </div>
+  <div id="planner-sequence" class="planner-roadmap-grid">${plannerTracks.map(renderPlannerTrackCard).join("")}</div>
+</section>
+<section class="band compact-band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Use With</p>
+    <h2>计划器负责排顺序，其他页面负责给材料。</h2>
+  </div>
+  <div class="link-matrix">
+    ${renderLinkColumn("启动", [["Project Starter", "project-starter.html"], ["项目生成器", resolveHref("starter-generator/README.md")], ["启动包模板", resolveHref("project-kickoff/README.md")]])}
+    ${renderLinkColumn("验证", [["Maturity Scorecard", "maturity.html"], ["测试计划", resolveHref("project-kickoff/templates/test-plan.md")], ["安全审查", resolveHref("project-kickoff/templates/security-review.md")]])}
+    ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["部署 Playground", resolveHref("deployment-playground/README.md")], ["运维生产化", resolveHref("ops-production/README.md")]])}
   </div>
 </section>`;
 }
@@ -605,6 +793,30 @@ function renderStarterOutputCard([title, description]) {
   return `<article class="starter-output-card reveal">
   <strong>${escapeHtml(title)}</strong>
   <p>${escapeHtml(description)}</p>
+</article>`;
+}
+
+function renderPlannerProfileOption(profile) {
+  return `<option value="${escapeAttr(profile.type)}" data-focus="${escapeAttr(profile.focus)}" data-risk="${escapeAttr(profile.risk)}">${escapeHtml(profile.title)}</option>`;
+}
+
+function renderPlannerStageOption(stage) {
+  return `<option value="${escapeAttr(stage.id)}" data-focus="${escapeAttr(stage.focus)}" data-window="${escapeAttr(stage.window)}" data-risk="${escapeAttr(stage.risk)}">${escapeHtml(stage.label)}</option>`;
+}
+
+function renderPlannerTeamOption(team) {
+  return `<option value="${escapeAttr(team.id)}" data-focus="${escapeAttr(team.focus)}">${escapeHtml(team.label)}</option>`;
+}
+
+function renderPlannerTrackCard(track) {
+  return `<article class="planner-track-card reveal${track.stage === "map" ? " active" : ""}" data-planner-track="${escapeAttr(track.stage)}">
+  <div class="planner-track-top">
+    <span>${escapeHtml(track.number)}</span>
+    <h2>${escapeHtml(track.title)}</h2>
+  </div>
+  <div class="tag-row">${track.modules.map((moduleName) => `<span>${escapeHtml(moduleName)}</span>`).join("")}</div>
+  <ul>${track.checks.map((check) => `<li>${escapeHtml(check)}</li>`).join("")}</ul>
+  <div class="card-actions">${track.links.map(([label, href]) => `<a class="button compact ghost-light" href="${escapeAttr(href)}">${escapeHtml(label)}</a>`).join("")}</div>
 </article>`;
 }
 

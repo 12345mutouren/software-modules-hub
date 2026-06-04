@@ -180,7 +180,7 @@ requireCount("Security compliance files", "security-compliance", (file) => file.
 requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
 requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
 requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
-requireCount("Release files", "releases", (file) => file.endsWith(".md"), 6);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 7);
 requireCount("Runnable template files", "runnable-templates/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Runnable app index tests", "runnable-apps/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Maintenance refresh plans", "maintenance/refresh-plans", (file) => file.endsWith(".md"), 3);
@@ -195,7 +195,7 @@ requireText("package.json", "\"build:docs-site\"");
 requireText("package.json", "\"test:docs-site\"");
 requireText("package.json", "\"audit:freshness\"");
 requireText("package.json", "\"check:links\"");
-requireText("package.json", "\"version\": \"1.5.0\"");
+requireText("package.json", "\"version\": \"1.6.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
 requireText("starter-generator/README.md", "Optional Code Scaffold");
 requireText("starter-generator/create-starter.mjs", "--with-code");
@@ -210,19 +210,23 @@ requireText("production-templates/README.md", "## Templates");
 requireText("security-compliance/README.md", "## Files");
 requireText("ops-production/README.md", "## Files");
 requireText("auditing/README.md", "## Audit Types");
-requireText("PROJECT-STATUS.md", "v1.5.0");
-requireText("FINAL-REVIEW.md", "Ready for v1.5.0 release");
+requireText("PROJECT-STATUS.md", "v1.6.0");
+requireText("FINAL-REVIEW.md", "Ready for v1.6.0 release");
 requireText("runnable-templates/README.md", "## Templates");
 requireText("runnable-apps/README.md", "## Apps");
 requireText("deployment-playground/README.md", "## Run Smoke Check");
 requireText("docs-site/README.md", "## Build");
 requireText("docs-site/README.md", "project-starter.html");
+requireText("docs-site/README.md", "planner.html");
 requireText("docs-site/README.md", "maturity.html");
 requireText("docs-site/site-map.json", "\"kind\": \"starter\"");
+requireText("docs-site/site-map.json", "\"kind\": \"planner\"");
 requireText("docs-site/site-map.json", "\"kind\": \"maturity\"");
 requireText("docs-site/build-docs-site.mjs", "renderProjectStarterPage");
+requireText("docs-site/build-docs-site.mjs", "renderBuildPlannerPage");
 requireText("docs-site/build-docs-site.mjs", "renderMaturityScorecardPage");
 requireText("docs-site/assets/site.js", "initProjectStarter");
+requireText("docs-site/assets/site.js", "initBuildPlanner");
 requireText("docs-site/assets/site.js", "initMaturityScorecard");
 requireText("maintenance/README.md", "## Automated Check");
 requireText("maintenance/online-audits/github-repository-index-2026-06-04.md", "GitHub REST API");
@@ -327,6 +331,7 @@ requireFiles([
   "releases/v1.3.0.md",
   "releases/v1.4.0.md",
   "releases/v1.5.0.md",
+  "releases/v1.6.0.md",
 ]);
 
 if (failures.length > 0) {

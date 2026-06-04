@@ -237,7 +237,10 @@ a:hover {
 .template-grid,
 .repo-grid,
 .feature-strip,
-.link-matrix {
+.link-matrix,
+.planner-controls,
+.planner-summary,
+.planner-roadmap-grid {
   display: grid;
   gap: 16px;
 }
@@ -251,7 +254,10 @@ a:hover {
 .template-card,
 .repo-card,
 .feature-card,
-.link-column {
+.link-column,
+.planner-controls,
+.planner-summary article,
+.planner-track-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -323,7 +329,7 @@ a:hover {
 }
 
 .feature-strip {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   background: #ece8dc;
 }
 
@@ -378,7 +384,8 @@ a:hover {
 
 .template-card,
 .repo-card,
-.starter-profile-card {
+.starter-profile-card,
+.planner-track-card {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -387,7 +394,8 @@ a:hover {
 
 .template-card h2,
 .repo-card h2,
-.starter-profile-card h2 {
+.starter-profile-card h2,
+.planner-track-card h2 {
   margin: 0;
   font-size: 1.26rem;
   line-height: 1.2;
@@ -428,7 +436,8 @@ a:hover {
   align-items: end;
 }
 
-.repo-toolbar label {
+.repo-toolbar label,
+.planner-controls label {
   display: grid;
   gap: 5px;
   color: var(--muted);
@@ -437,7 +446,8 @@ a:hover {
 }
 
 .repo-toolbar input,
-.repo-toolbar select {
+.repo-toolbar select,
+.planner-controls select {
   width: 100%;
   min-height: 44px;
   border: 1px solid var(--line);
@@ -587,6 +597,83 @@ a:hover {
 
 .maturity-card {
   border-top: 4px solid var(--teal);
+}
+
+.planner-control-band {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(420px, 1.08fr);
+  gap: 18px;
+  align-items: stretch;
+  background: #ece8dc;
+}
+
+.planner-controls {
+  grid-template-columns: 1fr;
+  align-content: start;
+  padding: 22px;
+}
+
+.planner-controls label span,
+.planner-summary span {
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.planner-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.planner-summary article {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 170px;
+  padding: 22px;
+}
+
+.planner-summary span {
+  color: var(--coral);
+}
+
+.planner-summary strong {
+  font-size: 1.03rem;
+  line-height: 1.45;
+}
+
+.planner-roadmap-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.planner-track-card {
+  min-height: 360px;
+  border-top: 4px solid var(--line);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.planner-track-card.active {
+  border-color: var(--coral);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
+}
+
+.planner-track-top {
+  display: grid;
+  gap: 10px;
+}
+
+.planner-track-top span {
+  color: var(--coral);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.planner-track-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: #3f423c;
 }
 
 .score-summary-band {
@@ -855,7 +942,9 @@ th {
   .maturity-grid,
   .level-grid,
   .score-meta-grid,
-  .next-action-list {
+  .next-action-list,
+  .planner-summary,
+  .planner-roadmap-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -870,6 +959,10 @@ th {
   }
 
   .scorecard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planner-control-band {
     grid-template-columns: 1fr;
   }
 }
@@ -905,7 +998,11 @@ th {
   .score-summary-band,
   .score-meta-grid,
   .scorecard-grid,
-  .next-action-list {
+  .next-action-list,
+  .planner-control-band,
+  .planner-controls,
+  .planner-summary,
+  .planner-roadmap-grid {
     grid-template-columns: 1fr;
   }
 

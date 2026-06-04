@@ -27,6 +27,11 @@
     "kind": "starter"
   },
   {
+    "title": "Build Planner",
+    "output": "planner.html",
+    "kind": "planner"
+  },
+  {
     "title": "Maturity Scorecard",
     "output": "maturity.html",
     "kind": "maturity"

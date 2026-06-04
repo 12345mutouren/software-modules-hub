@@ -11,6 +11,7 @@
 | `explore.html` | 分类导航页 |
 | `templates.html` | 软件模板选择器 |
 | `project-starter.html` | 项目启动器，连接软件类型、生成命令、启动包和发布门槛 |
+| `planner.html` | 构建计划器，按软件类型、阶段和团队规模生成执行路线 |
 | `maturity.html` | 10 模块成熟度评分表和发布 readiness 工具 |
 | `repositories.html` | GitHub 模块仓库浏览页 |
 | `modules.html` | 10 大模块说明 |
