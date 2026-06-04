@@ -6,6 +6,7 @@
 
 | Need | Go To |
 | --- | --- |
+| 按目标选择入口 | [START-HERE.md](../START-HERE.md) |
 | 了解完整软件有哪些模块 | [modules/README.md](../modules/README.md) |
 | 运行 10 大模块 demo | [module-demos](../examples/module-demos/README.md) |
 | 学习 10 大模块细节 | [modules](../modules) |
@@ -93,20 +94,16 @@
 | 安全政策 | [SECURITY.md](../SECURITY.md) |
 | 治理说明 | [GOVERNANCE.md](../GOVERNANCE.md) |
 
-## Showcase And Publish
+## Understand And Share
 
 | Need | Go To |
 | --- | --- |
 | 快速介绍仓库 | [project-one-pager.md](../showcase/project-one-pager.md) |
 | 第一次浏览仓库 | [repository-tour.md](../showcase/repository-tour.md) |
-| 准备发布新阶段 | [release-playbook.md](../showcase/release-playbook.md) |
-| 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 复制项目简介 | [shareable-summary.md](../showcase/shareable-summary.md) |
+| 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
+| 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看项目状态 | [PROJECT-STATUS.md](../PROJECT-STATUS.md) |
-| 查看最终审查 | [FINAL-REVIEW.md](../FINAL-REVIEW.md) |
-| 查看 v1.0 发布说明 | [v1.0.0.md](../releases/v1.0.0.md) |
-| 查看 v1.1 发布说明 | [v1.1.0.md](../releases/v1.1.0.md) |
 | 查看 v1.2 发布说明 | [v1.2.0.md](../releases/v1.2.0.md) |
 
 ## Generate A Starter
@@ -166,5 +163,5 @@
 | 真实项目案例刷新 | [case-study-refresh.md](../maintenance/refresh-plans/case-study-refresh.md) |
 | 模板刷新 | [template-refresh.md](../maintenance/refresh-plans/template-refresh.md) |
 | 发布节奏 | [release-cadence.md](../maintenance/release-cadence.md) |
-| 在线审计 | [online-audits/README.md](../maintenance/online-audits/README.md) |
-| 2026-06-04 GitHub 在线审计 | [github-repository-index-2026-06-04.md](../maintenance/online-audits/github-repository-index-2026-06-04.md) |
+| 仓库索引在线复核 | [online-audits/README.md](../maintenance/online-audits/README.md) |
+| 2026-06-04 GitHub 仓库索引复核 | [github-repository-index-2026-06-04.md](../maintenance/online-audits/github-repository-index-2026-06-04.md) |

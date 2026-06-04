@@ -20,7 +20,7 @@
 
 The verifier checks:
 
-- Phase 1-30 checklist and audit files.
+- Internal checklist and audit records.
 - 10 module documents.
 - Required module sections.
 - 6 complete app templates.
@@ -77,9 +77,9 @@ Creating or updating `.github/workflows/*.yml` through GitHub requires a token w
 
 ## Extending Checks
 
-When adding a new phase:
+When adding a new content set:
 
-1. Add the new checklist and audit files.
-2. Add new required files to `tools/verify-repo.mjs`.
+1. Add new required files to `tools/verify-repo.mjs`.
+2. Update `quality/automated-checks.md` if the verification scope changes.
 3. Run `npm test`.
-4. Update the phase audit with the verification result.
+4. Record any important verification result in the relevant maintenance notes.

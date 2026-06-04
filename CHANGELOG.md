@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.0 - Phase 30 Runnable Apps And Online Audit
+## 1.2.0 - Runnable Apps And Online Audit
 
 Added:
 
@@ -10,7 +10,6 @@ Added:
 - Runnable admin dashboard app template.
 - Docs site deployment package for GitHub Pages and Vercel.
 - Online GitHub repository index audit.
-- Phase 25-30 checklists and audits.
 
 Updated:
 
@@ -19,7 +18,7 @@ Updated:
 - Freshness audit now requires the online audit report.
 - README, Roadmap, Master Index, quality documentation and verifier coverage.
 
-## 1.1.0 - Phase 24 Maintenance And Runnable Templates
+## 1.1.0 - Maintenance And Runnable Templates
 
 Added:
 
@@ -29,7 +28,6 @@ Added:
 - Docker Compose deployment playground.
 - Static docs site builder.
 - Maintenance refresh plans and freshness audit.
-- Phase 19-24 checklists and audits.
 
 Updated:
 
@@ -37,7 +35,7 @@ Updated:
 - Root `npm test` now includes freshness audit, runnable template tests, deployment playground smoke check and docs-site tests.
 - README, Roadmap, Master Index, quality documentation and verifier coverage.
 
-## 1.0.0 - Phase 18 Final Release
+## 1.0.0 - Final Release
 
 Added:
 
@@ -47,7 +45,6 @@ Added:
 - GitHub issue templates, pull request template, CODEOWNERS, governance, security policy and MIT license.
 - Audit system and local Markdown link checker.
 - Project status, final review and v1.0.0 release notes.
-- Phase 13-18 checklists and audits.
 
 Updated:
 
@@ -55,7 +52,7 @@ Updated:
 - Root `npm test` now includes local link checking.
 - README, Roadmap, Master Index, quality documentation and verifier coverage.
 
-## 0.12.0 - Phase 12 Module Demos
+## 0.12.0 - Module Demos
 
 Added:
 
@@ -63,14 +60,13 @@ Added:
 - Product flow, account, database, backend API, frontend state, security, operations, testing, business and documentation demos.
 - Module demo tests.
 - Module demo map.
-- Phase 12 checklist and audit.
 
 Updated:
 
 - Root `npm test` now includes module demo tests.
 - README, Roadmap, examples index, Master Index and quality documentation.
 
-## 0.11.0 - Phase 11 Starter Generator
+## 0.11.0 - Starter Generator
 
 Added:
 
@@ -78,14 +74,13 @@ Added:
 - Six supported software starter types.
 - Generated product brief, module selection, permission matrix, data model, API contract, security review, test plan, launch plan and risk register.
 - Starter generator tests.
-- Phase 11 checklist and audit.
 
 Updated:
 
 - Root `npm test` now includes starter generator tests.
 - README, Roadmap, Master Index and quality documentation.
 
-## 0.10.0 - Phase 10 Publishing And Showcase Layer
+## 0.10.0 - Publishing And Showcase Layer
 
 Added:
 
@@ -96,7 +91,6 @@ Added:
 - Maintainer handbook.
 - Shareable project summaries.
 - Changelog.
-- Phase 10 checklist and audit.
 
 Updated:
 
@@ -105,7 +99,7 @@ Updated:
 - Automated verifier coverage.
 - Quality documentation.
 
-## 0.9.0 - Phase 9 Quick Reference Layer
+## 0.9.0 - Quick Reference Layer
 
 Added:
 
@@ -116,7 +110,7 @@ Added:
 - Repository evaluation rubric.
 - Common pitfalls.
 
-## 0.8.0 - Phase 8 Learning Paths
+## 0.8.0 - Learning Paths
 
 Added:
 
@@ -126,7 +120,7 @@ Added:
 - Capstone projects.
 - Self-assessment.
 
-## 0.7.0 - Phase 7 Automated Quality Gates
+## 0.7.0 - Automated Quality Gates
 
 Added:
 
@@ -135,7 +129,7 @@ Added:
 - GitHub Actions workflow.
 - Automated checks documentation.
 
-## 0.1.0 to 0.6.0 - Foundation Phases
+## 0.1.0 to 0.6.0 - Foundation Releases
 
 Built the foundation:
 

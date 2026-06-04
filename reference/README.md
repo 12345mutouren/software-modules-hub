@@ -1,7 +1,5 @@
 # Reference
 
-第九阶段快速参考目录。
-
 这个目录用于快速查概念、找入口、做技术对比、评估 GitHub 仓库和避坑。
 
 ## Quick References
@@ -22,4 +20,3 @@
 - 不知道技术怎么选时，看 technology-comparison。
 - 看到一个 GitHub 仓库不知道值不值得学时，看 repository-evaluation-rubric。
 - 准备开项目或上线前，看 common-pitfalls。
-

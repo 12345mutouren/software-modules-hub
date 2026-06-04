@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.2 review for phases 1-30.
+Final v1.2 review for the public repository release.
 
 ## Review Areas
 

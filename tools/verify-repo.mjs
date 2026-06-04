@@ -60,6 +60,7 @@ const phaseFiles = Array.from({ length: 30 }, (_, index) => index + 1).flatMap((
 
 requireFiles([
   "README.md",
+  "START-HERE.md",
   "ROADMAP.md",
   "CONTRIBUTING.md",
   "catalog/github-repositories.md",

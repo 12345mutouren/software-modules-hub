@@ -5,24 +5,28 @@
     "output": "index.html"
   },
   {
+    "title": "Start Here",
+    "source": "START-HERE.md",
+    "output": "start-here.html"
+  },
+  {
     "title": "Master Index",
     "source": "reference/master-index.md",
     "output": "master-index.html"
   },
   {
-    "title": "Roadmap",
-    "source": "ROADMAP.md",
-    "output": "roadmap.html"
+    "title": "Modules",
+    "source": "modules/README.md",
+    "output": "modules.html"
   },
   {
-    "title": "Changelog",
-    "source": "CHANGELOG.md",
-    "output": "changelog.html"
+    "title": "GitHub Repository Index",
+    "source": "catalog/github-repositories.md",
+    "output": "github-repositories.html"
   },
   {
-    "title": "Project Status",
-    "source": "PROJECT-STATUS.md",
-    "output": "project-status.html"
+    "title": "Runnable Apps",
+    "source": "runnable-apps/README.md",
+    "output": "runnable-apps.html"
   }
 ]
-

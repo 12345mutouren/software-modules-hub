@@ -6,10 +6,10 @@
 
 | Step | Read | Why |
 | --- | --- | --- |
-| 1 | [README.md](../README.md) | 确认仓库目标和阶段范围 |
-| 2 | [modules/README.md](../modules/README.md) | 建立完整软件的 10 层地图 |
-| 3 | [examples/module-demos](../examples/module-demos/README.md) | 运行 10 大模块 demo |
-| 4 | [reference/master-index.md](../reference/master-index.md) | 找到按用途组织的入口 |
+| 1 | [START-HERE.md](../START-HERE.md) | 按目标选择入口 |
+| 2 | [README.md](../README.md) | 确认仓库目标 |
+| 3 | [modules/README.md](../modules/README.md) | 建立完整软件的 10 层地图 |
+| 4 | [examples/module-demos](../examples/module-demos/README.md) | 运行 10 大模块 demo |
 | 5 | [catalog/github-repositories.md](../catalog/github-repositories.md) | 看每类模块有哪些代表仓库 |
 
 ## 30-Minute Tour
@@ -40,7 +40,7 @@
 
 | Goal | Files |
 | --- | --- |
-| 新增阶段 | `showcase/release-playbook.md`、`checklists/phase-*.md`、`audits/phase-*.md` |
+| 发布版本 | `showcase/release-playbook.md`、`CHANGELOG.md`、`quality/automated-checks.md` |
 | 新增模块内容 | `templates/module-template.md`、`modules/*/README.md` |
 | 新增真实项目拆解 | `case-studies/real-projects/README.md` |
 | 新增自动校验 | `tools/verify-repo.mjs`、`quality/automated-checks.md` |
@@ -55,4 +55,4 @@
 - 学概念：从模块和术语表开始。
 - 做项目：从模板和项目启动包开始。
 - 学架构：从架构图和真实项目案例开始。
-- 准备维护：从质量门、发布手册和审计记录开始。
+- 准备维护：从质量门、发布手册和维护记录开始。

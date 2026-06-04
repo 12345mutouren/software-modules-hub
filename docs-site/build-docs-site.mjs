@@ -51,7 +51,7 @@ function renderPage(title, body) {
   <title>${escapeHtml(title)} - Software Modules Hub</title>
 </head>
 <body>
-  <nav><a href="index.html">Home</a> <a href="master-index.html">Master Index</a> <a href="roadmap.html">Roadmap</a></nav>
+  <nav><a href="index.html">Home</a> <a href="start-here.html">Start Here</a> <a href="master-index.html">Master Index</a></nav>
   ${body}
 </body>
 </html>
@@ -87,4 +87,3 @@ if (fileURLToPath(import.meta.url) === path.resolve(process.argv[1] || "")) {
     process.exitCode = 1;
   }
 }
-

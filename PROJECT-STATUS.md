@@ -2,7 +2,7 @@
 
 Current milestone: `v1.2.0`
 
-Status: Phase 1-30 complete.
+Status: `v1.2.0` public release complete.
 
 ## What This Repository Is
 

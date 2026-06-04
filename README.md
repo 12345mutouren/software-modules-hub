@@ -26,6 +26,7 @@
 
 ## 主要入口
 
+- [从这里开始](START-HERE.md)
 - [模块总览](modules/README.md)
 - [模块分类法](catalog/module-taxonomy.md)
 - [GitHub 仓库索引](catalog/github-repositories.md)
@@ -51,7 +52,7 @@
 - [文档站部署包](docs-site/deploy/README.md)
 - [质量门](quality/README.md)
 - [审计体系](auditing/README.md)
-- [在线审计](maintenance/online-audits/README.md)
+- [仓库索引在线复核](maintenance/online-audits/README.md)
 - [持续更新体系](maintenance/README.md)
 - [治理说明](GOVERNANCE.md)
 - [项目状态](PROJECT-STATUS.md)
@@ -64,16 +65,15 @@
 
 如果你刚开始学习，建议按这个顺序阅读：
 
-1. 先读 [模块总览](modules/README.md)，建立完整软件的整体框架。
-2. 再读 10 个模块文档，理解每一层有哪些类别。
+1. 先读 [从这里开始](START-HERE.md)，按目标选择阅读路径。
+2. 再读 [模块总览](modules/README.md)，建立完整软件的整体框架。
 3. 遇到想深入的类别，去 [GitHub 仓库索引](catalog/github-repositories.md) 找代表项目。
 4. 进入 [可运行示例](examples/README.md) 和 [模块 Demo 示例](examples/module-demos/README.md)，把模块地图和代码对应起来。
 5. 阅读 [完整软件模板组合](templates/complete-apps/README.md)，选择一个真实软件方向继续深化。
-6. 阅读 [真实项目案例研究](case-studies/README.md)，学习成熟开源项目如何组合这些模块。
-7. 使用 [决策指南](decision-guides/README.md) 和 [项目启动包](project-kickoff/README.md)，把一个软件想法整理成可执行项目计划。
-8. 用 [项目生成器](starter-generator/README.md)、[可运行模板](runnable-templates/README.md) 和 [可运行应用模板](runnable-apps/README.md) 快速生成或学习实现方式。
-9. 查看 [架构图](architecture/README.md)、[生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md)，准备上线。
-10. 用 [文档站](docs-site/README.md)、[文档站部署包](docs-site/deploy/README.md)、[质量门](quality/README.md)、[审计体系](auditing/README.md) 和 [持续更新体系](maintenance/README.md) 做发布后的维护。
+6. 使用 [决策指南](decision-guides/README.md)、[项目启动包](project-kickoff/README.md) 和 [项目生成器](starter-generator/README.md)，把一个软件想法整理成可执行项目计划。
+7. 用 [可运行模板](runnable-templates/README.md) 和 [可运行应用模板](runnable-apps/README.md) 快速学习实现方式。
+8. 查看 [架构图](architecture/README.md)、[生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md)，准备上线。
+9. 用 [文档站](docs-site/README.md)、[文档站部署包](docs-site/deploy/README.md)、[质量门](quality/README.md)、[审计体系](auditing/README.md) 和 [持续更新体系](maintenance/README.md) 做发布后的维护。
 
 ## 仓库类型说明
 

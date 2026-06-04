@@ -1,7 +1,5 @@
 # Docs Site Deployment
 
-第 29 阶段文档站部署包。
-
 目标：让 `docs-site` 可以被部署到 GitHub Pages 或 Vercel。
 
 ## Files
@@ -24,4 +22,3 @@
 1. Import the repository.
 2. Use `node docs-site/build-docs-site.mjs --out docs-site/dist` as build command.
 3. Use `docs-site/dist` as output directory.
-

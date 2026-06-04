@@ -11,10 +11,11 @@ test("builds static docs site pages", () => {
   const result = buildDocsSite({ outDir });
 
   assert.ok(result.pages.includes("index.html"));
+  assert.ok(result.pages.includes("start-here.html"));
   assert.ok(result.pages.includes("master-index.html"));
+  assert.ok(!result.pages.includes("roadmap.html"));
   assert.ok(fs.existsSync(path.join(outDir, "site-map.json")));
 
   const indexHtml = fs.readFileSync(path.join(outDir, "index.html"), "utf8");
   assert.match(indexHtml, /Software Modules Hub/);
 });
-

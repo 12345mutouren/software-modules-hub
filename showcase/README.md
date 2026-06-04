@@ -1,7 +1,5 @@
 # Showcase
 
-第十阶段展示与发布层。
-
 目标：让这个仓库不只“内容完整”，也能被快速理解、对外展示、按版本发布并持续维护。
 
 ## Files
@@ -20,7 +18,7 @@
 | --- | --- |
 | 想给别人解释这个仓库 | [project-one-pager.md](project-one-pager.md) |
 | 第一次打开仓库，不知道读什么 | [repository-tour.md](repository-tour.md) |
-| 准备提交一个新阶段 | [release-playbook.md](release-playbook.md) |
+| 准备发布一个版本 | [release-playbook.md](release-playbook.md) |
 | 准备长期维护内容质量 | [maintainer-handbook.md](maintainer-handbook.md) |
 | 需要一段项目简介 | [shareable-summary.md](shareable-summary.md) |
 
@@ -30,5 +28,4 @@
 - 先给入口，再给细节。
 - 不夸大成熟度：这是知识地图、模板、示例和审计体系，不是生产级 SaaS 成品。
 - 展示材料必须和实际仓库内容同步。
-- 每次新增阶段都应该更新 README、Roadmap、Checklist、Audit、Verifier 和 Changelog。
-
+- 每次发布都应该更新公开入口、质量验证说明、维护记录和 Changelog。

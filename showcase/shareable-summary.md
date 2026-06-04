@@ -1,6 +1,6 @@
 # Shareable Summary
 
-这些文案可以复制到 GitHub 描述、项目介绍、学习计划或阶段汇报里。
+这些文案可以复制到 GitHub 描述、项目介绍、学习计划或版本汇报里。
 
 ## Short Description
 
@@ -33,4 +33,3 @@ It organizes the answer into 10 core modules, then adds runnable examples, compl
 ## Honest Scope
 
 This repository is a learning and planning hub. It includes one runnable mini app and many structured templates, but it is not a production-ready commercial application by itself.
-
