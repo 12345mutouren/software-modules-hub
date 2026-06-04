@@ -1,0 +1,43 @@
+services:
+  web:
+    image: example/web:local
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - api
+
+  api:
+    image: example/api:local
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    image: example/worker:local
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: app
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+volumes:
+  postgres-data:
+

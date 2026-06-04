@@ -58,6 +58,20 @@
 - [项目生成器](starter-generator/README.md)
 - [第十一阶段完成度清单](checklists/phase-11-completeness.md)
 - [第十二阶段完成度清单](checklists/phase-12-completeness.md)
+- [生产级架构模板](production-templates/README.md)
+- [第十三阶段完成度清单](checklists/phase-13-completeness.md)
+- [安全与合规模板](security-compliance/README.md)
+- [第十四阶段完成度清单](checklists/phase-14-completeness.md)
+- [运维生产化](ops-production/README.md)
+- [第十五阶段完成度清单](checklists/phase-15-completeness.md)
+- [治理说明](GOVERNANCE.md)
+- [第十六阶段完成度清单](checklists/phase-16-completeness.md)
+- [审计体系](auditing/README.md)
+- [第十七阶段完成度清单](checklists/phase-17-completeness.md)
+- [项目状态](PROJECT-STATUS.md)
+- [最终审查](FINAL-REVIEW.md)
+- [第十八阶段完成度清单](checklists/phase-18-completeness.md)
+- [v1.0.0 发布说明](releases/v1.0.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -80,6 +94,8 @@
 13. 用 [展示与发布材料](showcase/README.md) 快速介绍、发布和维护这个仓库。
 14. 用 [项目生成器](starter-generator/README.md) 按软件类型生成项目启动包。
 15. 用 [模块 Demo 示例](examples/module-demos/README.md) 把 10 大模块逐个对应到可运行代码。
+16. 用 [生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md) 做上线前准备。
+17. 用 [审计体系](auditing/README.md) 和根级 `npm test` 做最终质量检查。
 
 ## 仓库类型说明
 
@@ -108,3 +124,9 @@
 - 第十阶段：补充展示与发布材料、一页概览、仓库导览、发布手册、维护手册和 Changelog。
 - 第十一阶段：补充项目生成器，按软件类型生成产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记。
 - 第十二阶段：补充 10 大模块的可运行 demo，让产品、账号、数据库、后端、前端、安全、运维、测试、商业运营和文档都有对应代码和测试。
+- 第十三阶段：补充生产级架构模板。
+- 第十四阶段：补充安全与合规模板。
+- 第十五阶段：补充运维生产化模板。
+- 第十六阶段：补充 GitHub 仓库专业化文件。
+- 第十七阶段：补充审计体系和本地链接检查。
+- 第十八阶段：完成 v1.0.0 最终收口。

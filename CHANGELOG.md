@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.0 - Phase 18 Final Release
+
+Added:
+
+- Production architecture templates.
+- Security and compliance templates.
+- Operations productionization templates.
+- GitHub issue templates, pull request template, CODEOWNERS, governance, security policy and MIT license.
+- Audit system and local Markdown link checker.
+- Project status, final review and v1.0.0 release notes.
+- Phase 13-18 checklists and audits.
+
+Updated:
+
+- Root version is now `1.0.0`.
+- Root `npm test` now includes local link checking.
+- README, Roadmap, Master Index, quality documentation and verifier coverage.
+
 ## 0.12.0 - Phase 12 Module Demos
 
 Added:

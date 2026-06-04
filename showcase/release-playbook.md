@@ -75,5 +75,11 @@ Use phase-based minor versions:
 | Phase 10 | `0.10.0` |
 | Phase 11 | `0.11.0` |
 | Phase 12 | `0.12.0` |
+| Phase 13 | `0.13.0` |
+| Phase 14 | `0.14.0` |
+| Phase 15 | `0.15.0` |
+| Phase 16 | `0.16.0` |
+| Phase 17 | `0.17.0` |
+| Phase 18 | `1.0.0` |
 
 Patch versions can be used for small corrections that do not add a new phase.

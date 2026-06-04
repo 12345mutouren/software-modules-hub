@@ -196,3 +196,93 @@
 - 测试矩阵 demo。
 - 商业运营订单、优惠券和支付状态 demo。
 - 文档生成 demo。
+
+## 第十三阶段：生产级架构模板
+
+目标：把软件模板推进到更接近生产项目的服务结构、技术栈和基础设施设计。
+
+状态：已新增生产级架构模板、三套技术栈、Docker Compose 参考、环境变量样例和迁移计划。
+
+范围：
+
+- Next.js + Node.js + PostgreSQL。
+- React + FastAPI + PostgreSQL。
+- Vue + Go + PostgreSQL。
+- Web、API、Worker、PostgreSQL、Redis、对象存储等服务边界。
+- 生产环境变量样例。
+- 数据库迁移和回滚计划。
+
+## 第十四阶段：安全与合规模板
+
+目标：提供可执行的安全与合规准备材料。
+
+状态：已新增威胁模型、OWASP 检查、隐私数据权利、权限复核、安全测试计划和 SECURITY.md。
+
+范围：
+
+- 威胁模型模板。
+- OWASP 风险检查清单。
+- 用户数据导出和删除流程。
+- 权限复核模板。
+- 安全测试计划。
+- GitHub Security Policy。
+
+## 第十五阶段：运维生产化
+
+目标：把长期运行所需的环境变量、备份、监控、发布回滚和灾难恢复演练标准化。
+
+状态：已新增运维生产化目录和 5 份运维模板。
+
+范围：
+
+- 环境变量标准。
+- 备份脚本计划。
+- 监控报警模板。
+- 发布和回滚脚本模板。
+- 灾难恢复演练。
+
+## 第十六阶段：GitHub 仓库专业化
+
+目标：补齐 GitHub 协作、治理、所有权和许可证文件。
+
+状态：已新增 issue templates、PR template、CODEOWNERS、GOVERNANCE、LICENSE。
+
+范围：
+
+- Bug report。
+- Content update。
+- Starter request。
+- Pull request template。
+- CODEOWNERS。
+- Governance。
+- MIT License。
+
+## 第十七阶段：完整审计体系
+
+目标：让仓库后续可以按内容、链接、仓库索引、示例代码、安全和结构维度复查。
+
+状态：已新增 auditing 目录和本地 Markdown 链接检查脚本。
+
+范围：
+
+- 内容审计。
+- 链接审计。
+- GitHub 仓库审计。
+- 示例代码审计。
+- 安全审计。
+- 结构审计。
+- `npm run check:links`。
+
+## 第十八阶段：v1.0 最终收口
+
+目标：完成 v1.0.0 发布准备。
+
+状态：已新增项目状态、最终审查和 v1.0.0 发布说明，并将版本升到 `1.0.0`。
+
+范围：
+
+- `PROJECT-STATUS.md`。
+- `FINAL-REVIEW.md`。
+- `releases/v1.0.0.md`。
+- `CHANGELOG.md` v1.0.0。
+- 根级质量门覆盖 verifier、链接检查、示例测试、模块 demo 测试和生成器测试。

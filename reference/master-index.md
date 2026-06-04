@@ -20,6 +20,7 @@
 | 跑一个完整小示例 | [full-stack-mini-app](../examples/full-stack-mini-app/README.md) |
 | 学每个模块的可运行 demo | [module-demos](../examples/module-demos/README.md) |
 | 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
+| 选择生产架构模板 | [production-templates](../production-templates/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
 | 选择数据库方案 | [database-decision-tree.md](../decision-guides/database-decision-tree.md) |
@@ -68,12 +69,25 @@
 | Need | Go To |
 | --- | --- |
 | 架构图 | [architecture](../architecture/README.md) |
+| 生产级架构模板 | [production-templates](../production-templates/README.md) |
 | 运维 Runbook | [operations](../operations/README.md) |
+| 运维生产化 | [ops-production](../ops-production/README.md) |
 | 发布检查 | [deployment-checklist.md](../operations/runbooks/deployment-checklist.md) |
 | 备份恢复 | [backup-restore.md](../operations/runbooks/backup-restore.md) |
 | 事故响应 | [incident-response.md](../operations/runbooks/incident-response.md) |
 | 安全发布 | [security-release.md](../operations/runbooks/security-release.md) |
 | 监控报警 | [monitoring-alerting.md](../operations/runbooks/monitoring-alerting.md) |
+
+## Secure And Govern
+
+| Need | Go To |
+| --- | --- |
+| 安全与合规模板 | [security-compliance](../security-compliance/README.md) |
+| 威胁模型 | [threat-model-template.md](../security-compliance/threat-model-template.md) |
+| OWASP 检查 | [owasp-checklist.md](../security-compliance/owasp-checklist.md) |
+| 权限复核 | [access-review.md](../security-compliance/access-review.md) |
+| 安全政策 | [SECURITY.md](../SECURITY.md) |
+| 治理说明 | [GOVERNANCE.md](../GOVERNANCE.md) |
 
 ## Showcase And Publish
 
@@ -85,6 +99,9 @@
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 复制项目简介 | [shareable-summary.md](../showcase/shareable-summary.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
+| 查看项目状态 | [PROJECT-STATUS.md](../PROJECT-STATUS.md) |
+| 查看最终审查 | [FINAL-REVIEW.md](../FINAL-REVIEW.md) |
+| 查看 v1.0 发布说明 | [v1.0.0.md](../releases/v1.0.0.md) |
 
 ## Generate A Starter
 
@@ -102,3 +119,13 @@
 | 查看 demo 源码 | [module-demos.mjs](../examples/module-demos/src/module-demos.mjs) |
 | 查看 demo 测试 | [module-demos.test.mjs](../examples/module-demos/test/module-demos.test.mjs) |
 | 查看模块映射 | [module-map.md](../examples/module-demos/docs/module-map.md) |
+
+## Audit The Repository
+
+| Need | Go To |
+| --- | --- |
+| 查看审计体系 | [auditing/README.md](../auditing/README.md) |
+| 内容审计 | [content-audit.md](../auditing/content-audit.md) |
+| 链接审计 | [link-audit.md](../auditing/link-audit.md) |
+| 示例代码审计 | [example-code-audit.md](../auditing/example-code-audit.md) |
+| 结构审计 | [structure-audit.md](../auditing/structure-audit.md) |

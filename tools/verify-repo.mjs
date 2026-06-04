@@ -53,7 +53,7 @@ function requireFiles(files) {
   files.forEach(requireFile);
 }
 
-const phaseFiles = Array.from({ length: 12 }, (_, index) => index + 1).flatMap((phase) => [
+const phaseFiles = Array.from({ length: 18 }, (_, index) => index + 1).flatMap((phase) => [
   `checklists/phase-${phase}-completeness.md`,
   `audits/phase-${phase}-audit-1.md`,
 ]);
@@ -76,7 +76,16 @@ requireFiles([
   "reference/README.md",
   "showcase/README.md",
   "starter-generator/README.md",
+  "production-templates/README.md",
+  "security-compliance/README.md",
+  "ops-production/README.md",
+  "auditing/README.md",
   "CHANGELOG.md",
+  "PROJECT-STATUS.md",
+  "FINAL-REVIEW.md",
+  "SECURITY.md",
+  "GOVERNANCE.md",
+  "LICENSE",
   ...phaseFiles,
 ]);
 
@@ -160,9 +169,17 @@ requireCount("Kickoff templates", "project-kickoff/templates", (file) => file.en
 requireCount("Learning paths", "learning-paths", (file) => file.endsWith(".md"), 6);
 requireCount("Reference files", "reference", (file) => file.endsWith(".md"), 7);
 requireCount("Showcase files", "showcase", (file) => file.endsWith(".md"), 6);
+requireCount("Production stack templates", "production-templates/stacks", (file) => file.endsWith(".md"), 3);
+requireCount("Security compliance files", "security-compliance", (file) => file.endsWith(".md"), 6);
+requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
+requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
+requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 1);
 
 requireText("package.json", "\"test:starter-generator\"");
 requireText("package.json", "\"test:module-demos\"");
+requireText("package.json", "\"check:links\"");
+requireText("package.json", "\"version\": \"1.0.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
 requireText("starter-generator/create-starter.mjs", "saas-subscription");
 requireText("starter-generator/create-starter.mjs", "enterprise-internal-tool");
@@ -171,6 +188,12 @@ requireText("examples/module-demos/src/module-demos.mjs", "createAccountSystem")
 requireText("examples/module-demos/src/module-demos.mjs", "generateDocumentation");
 requireText("examples/module-demos/test/module-demos.test.mjs", "product layer demo");
 requireText("examples/module-demos/docs/module-map.md", "Product Layer");
+requireText("production-templates/README.md", "## Templates");
+requireText("security-compliance/README.md", "## Files");
+requireText("ops-production/README.md", "## Files");
+requireText("auditing/README.md", "## Audit Types");
+requireText("PROJECT-STATUS.md", "v1.0.0");
+requireText("FINAL-REVIEW.md", "Ready for v1.0.0 release");
 
 requireFiles([
   "examples/full-stack-mini-app/package.json",
@@ -182,6 +205,11 @@ requireFiles([
   "examples/module-demos/docs/module-map.md",
   "project-kickoff/examples/saas-kickoff-example.md",
   ".github/workflows/verify.yml",
+  ".github/ISSUE_TEMPLATE/bug_report.md",
+  ".github/ISSUE_TEMPLATE/content_update.md",
+  ".github/ISSUE_TEMPLATE/starter_request.md",
+  ".github/pull_request_template.md",
+  ".github/CODEOWNERS",
   "quality/github-actions-verify.yml",
   "learning-paths/role-based.md",
   "learning-paths/30-day-plan.md",
@@ -201,6 +229,27 @@ requireFiles([
   "showcase/shareable-summary.md",
   "starter-generator/create-starter.mjs",
   "starter-generator/test/create-starter.test.mjs",
+  "production-templates/infra/docker-compose.reference.yml",
+  "production-templates/infra/env.example",
+  "production-templates/runbooks/migration-plan.md",
+  "security-compliance/threat-model-template.md",
+  "security-compliance/owasp-checklist.md",
+  "security-compliance/privacy-data-rights.md",
+  "security-compliance/access-review.md",
+  "security-compliance/security-test-plan.md",
+  "ops-production/env-var-standard.md",
+  "ops-production/backup-script-plan.md",
+  "ops-production/monitoring-alerting-template.md",
+  "ops-production/release-rollback-script.md",
+  "ops-production/disaster-recovery-drill.md",
+  "auditing/content-audit.md",
+  "auditing/link-audit.md",
+  "auditing/github-repository-audit.md",
+  "auditing/example-code-audit.md",
+  "auditing/security-audit.md",
+  "auditing/structure-audit.md",
+  "tools/check-local-links.mjs",
+  "releases/v1.0.0.md",
 ]);
 
 if (failures.length > 0) {
@@ -213,4 +262,4 @@ if (failures.length > 0) {
 
 console.log("Repository verification passed.");
 console.log(`Checked ${moduleDirs.length} modules, ${completeApps.length} app templates, ${caseStudies.length} case studies.`);
-console.log(`Checked ${diagramFiles.length} architecture diagrams, reference files, showcase files, module demos, starter generator, and root quality gates.`);
+console.log(`Checked ${diagramFiles.length} architecture diagrams, production templates, security, operations, audits, module demos, starter generator, and root quality gates.`);
