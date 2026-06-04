@@ -27,6 +27,11 @@
     "kind": "starter"
   },
   {
+    "title": "Maturity Scorecard",
+    "output": "maturity.html",
+    "kind": "maturity"
+  },
+  {
     "title": "GitHub Repository Browser",
     "source": "catalog/github-repositories.md",
     "output": "repositories.html",

@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.4 review for the project starter experience release.
+Final v1.5 review for the maturity scorecard release.
 
 ## Review Areas
 
@@ -49,6 +49,10 @@ Final v1.4 review for the project starter experience release.
 | Starter selector commands | Ready |
 | Generated package overview | Ready |
 | First-release gates | Ready |
+| Maturity Scorecard page | Ready |
+| Readiness score calculation | Ready |
+| Module-level scorecards | Ready |
+| Priority gap suggestions | Ready |
 | GitHub repository browser page | Ready |
 | GitHub Pages deployment workflow | Ready |
 
@@ -60,7 +64,8 @@ Final v1.4 review for the project starter experience release.
 - Production templates are architecture starters, not deployment guarantees.
 - Docs-site motion depends on CDN-hosted GSAP and Three.js, with readable static content as fallback.
 - Project Starter commands are starter package scaffolds, not a substitute for project-specific engineering review.
+- Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v1.4.0 release after local and GitHub Actions verification.
+Ready for v1.5.0 release after local and GitHub Actions verification.

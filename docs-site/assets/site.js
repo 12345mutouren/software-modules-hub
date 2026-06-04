@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealMotion();
   initTemplateFilters();
   initProjectStarter();
+  initMaturityScorecard();
   initRepositoryBrowser();
   initConstellation();
 });
@@ -115,6 +116,70 @@ function initProjectStarter() {
   };
 
   select.addEventListener("change", updateStarter);
+}
+
+function initMaturityScorecard() {
+  const checks = qsa("[data-score-check]");
+  const moduleCards = qsa("[data-score-module]");
+  const scoreValue = qs("#score-value");
+  const scoreLabel = qs("#score-label");
+  const scoreCompleted = qs("#score-completed");
+  const scoreModules = qs("#score-modules");
+  const scoreBarFill = qs("#score-bar-fill");
+  const nextActions = qs("#score-next-actions");
+  if (!checks.length || !moduleCards.length || !scoreValue || !scoreLabel || !scoreCompleted || !scoreModules || !scoreBarFill || !nextActions) {
+    return;
+  }
+
+  const getLevel = (score) => {
+    if (score >= 90) return "Production Ready";
+    if (score >= 70) return "Launch Candidate";
+    if (score >= 40) return "Prototype";
+    return "Map";
+  };
+
+  const updateScore = () => {
+    const checkedCount = checks.filter((check) => check.checked).length;
+    const score = Math.round((checkedCount / checks.length) * 100);
+    const moduleStates = moduleCards.map((card) => {
+      const moduleChecks = qsa("[data-score-check]", card);
+      const done = moduleChecks.filter((check) => check.checked).length;
+      const missing = moduleChecks
+        .filter((check) => !check.checked)
+        .map((check) => check.closest(".score-check")?.textContent.trim())
+        .filter(Boolean);
+      const moduleScore = qs("[data-module-score]", card);
+      if (moduleScore) moduleScore.textContent = `${done}/${moduleChecks.length}`;
+      card.classList.toggle("complete", done === moduleChecks.length);
+      return {
+        name: card.dataset.scoreModule,
+        done,
+        total: moduleChecks.length,
+        missing,
+      };
+    });
+
+    const completeModules = moduleStates.filter((state) => state.done === state.total).length;
+    scoreValue.textContent = String(score);
+    scoreLabel.textContent = getLevel(score);
+    scoreCompleted.textContent = String(checkedCount);
+    scoreModules.textContent = String(completeModules);
+    scoreBarFill.style.width = `${score}%`;
+
+    const gaps = moduleStates
+      .filter((state) => state.missing.length)
+      .sort((a, b) => a.done - b.done)
+      .slice(0, 3);
+
+    nextActions.innerHTML = gaps.length
+      ? gaps
+          .map((gap) => `<article><strong>${gap.name}</strong><span>${gap.missing[0]}</span></article>`)
+          .join("")
+      : "<p>10 大模块都已经过线。下一步做真实项目安全复核、上线演练和长期维护节奏。</p>";
+  };
+
+  checks.forEach((check) => check.addEventListener("change", updateScore));
+  updateScore();
 }
 
 function animateCards(cards) {

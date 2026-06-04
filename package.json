@@ -1,6 +1,6 @@
 {
   "name": "software-modules-hub",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "description": "A comprehensive software modules knowledge hub with examples, templates, case studies, architecture diagrams, runbooks, and decision guides.",
   "type": "module",

@@ -59,6 +59,12 @@ const journeys = [
     accent: "violet",
   },
   {
+    title: "评估成熟度",
+    description: "用 10 大模块评分表判断一个项目离可发布还有多远。",
+    href: "maturity.html",
+    accent: "green",
+  },
+  {
     title: "维护这个仓库",
     description: "运行质量门、维护索引新鲜度，并按版本发布更新。",
     href: resolveHref("quality/README.md"),
@@ -185,6 +191,66 @@ const starterOutputs = [
   ["发布计划", "把环境、域名、备份、监控、回滚和上线步骤串起来。"],
 ];
 
+const maturityLevels = [
+  ["0-39", "Map", "只适合学习和梳理想法。先补产品、账号、数据和核心流程。"],
+  ["40-69", "Prototype", "可以做内部演示。需要补权限、安全、测试和部署恢复能力。"],
+  ["70-89", "Launch Candidate", "可以准备小范围上线。重点复核审计日志、备份、监控和文档。"],
+  ["90-100", "Production Ready", "具备较完整的发布基础。继续做真实项目安全和合规复核。"],
+];
+
+const maturityScorecard = [
+  {
+    module: "产品层",
+    short: "Product",
+    checks: ["目标用户和核心任务清楚", "主流程和页面范围明确", "成功指标可衡量", "范围边界和非目标写清"],
+  },
+  {
+    module: "账号系统",
+    short: "Identity",
+    checks: ["注册登录方式已选定", "角色和权限矩阵完整", "密码重置和二次验证有方案", "登录记录和异常提醒可追踪"],
+  },
+  {
+    module: "数据库层",
+    short: "Data",
+    checks: ["核心表和关系已定义", "索引、唯一约束和事务边界清楚", "缓存、搜索、文件或向量存储有取舍", "备份和数据导出删除流程明确"],
+  },
+  {
+    module: "后端系统",
+    short: "API",
+    checks: ["核心 API 合同写清", "输入校验和错误语义统一", "资源级权限校验覆盖", "文件、通知和定时任务边界明确"],
+  },
+  {
+    module: "前端/客户端",
+    short: "UI",
+    checks: ["核心页面和状态流完整", "表单、加载、错误和空状态可用", "搜索、筛选、分页或详情流清楚", "桌面和移动端布局不溢出"],
+  },
+  {
+    module: "安全",
+    short: "Security",
+    checks: ["密码和会话不明文暴露", "SQL 注入、XSS、CSRF 有防护", "限流和登录失败限制存在", "隐私授权、删除和导出流程明确"],
+  },
+  {
+    module: "运维部署",
+    short: "Ops",
+    checks: ["开发、测试、生产环境区分", "HTTPS、域名和环境变量清楚", "日志、监控和报警已设计", "备份、回滚和灾难恢复有演练"],
+  },
+  {
+    module: "测试",
+    short: "QA",
+    checks: ["单元和接口测试覆盖核心逻辑", "页面流程和权限测试覆盖", "安全和越权测试存在", "性能或并发冒烟测试存在"],
+  },
+  {
+    module: "商业/运营功能",
+    short: "Business",
+    checks: ["会员、支付、订单或业务对象清楚", "优惠、发票、客服或反馈按需设计", "运营后台和数据统计有入口", "内容审核或推荐风险有处理"],
+  },
+  {
+    module: "文档",
+    short: "Docs",
+    checks: ["产品说明和用户文档可读", "API 和数据库结构文档存在", "部署和管理员手册完整", "FAQ、发布记录和维护说明同步"],
+  },
+];
+
 export function buildDocsSite({ outDir, siteMapPath = "docs-site/site-map.json" }) {
   if (!outDir) {
     throw new Error("Missing output directory.");
@@ -219,6 +285,7 @@ function renderSitePage(page, repositories) {
     explore: () => renderExplorePage(),
     templates: () => renderTemplatePage(),
     starter: () => renderProjectStarterPage(),
+    maturity: () => renderMaturityScorecardPage(),
     repositories: () => renderRepositoryPage(repositories),
     markdown: () => renderMarkdownPage(page),
   };
@@ -245,6 +312,7 @@ function renderSitePage(page, repositories) {
       <a href="explore.html">Explore</a>
       <a href="templates.html">Templates</a>
       <a href="project-starter.html">Project Starter</a>
+      <a href="maturity.html">Scorecard</a>
       <a href="repositories.html">GitHub Index</a>
       <a href="modules.html">Modules</a>
     </nav>
@@ -293,7 +361,8 @@ function renderHomePage() {
 <section class="band feature-strip">
   <a class="feature-card reveal" href="templates.html"><span>01</span><strong>模板选择器</strong><p>从 SaaS、电商、AI 知识库、管理后台等方向快速选型。</p></a>
   <a class="feature-card reveal" href="project-starter.html"><span>02</span><strong>项目启动器</strong><p>把软件类型转换成生成命令、启动包和上线门槛。</p></a>
-  <a class="feature-card reveal" href="repositories.html"><span>03</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
+  <a class="feature-card reveal" href="maturity.html"><span>03</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
+  <a class="feature-card reveal" href="repositories.html"><span>04</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
 </section>`;
 }
 
@@ -335,8 +404,53 @@ function renderExplorePage() {
   </div>
   <div class="link-matrix">
     ${renderLinkColumn("学习", [["模块总览", "modules.html"], ["术语表", resolveHref("reference/glossary.md")], ["30 天计划", resolveHref("learning-paths/30-day-plan.md")]])}
-    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["项目生成器", resolveHref("starter-generator/README.md")], ["可运行应用", "runnable-apps.html"]])}
+    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
     ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["安全合规", resolveHref("security-compliance/README.md")], ["部署包", resolveHref("docs-site/deploy/README.md")]])}
+  </div>
+</section>`;
+}
+
+function renderMaturityScorecardPage() {
+  return `
+<section class="page-hero">
+  <p class="eyebrow reveal">Maturity Scorecard</p>
+  <h1 class="reveal">用 10 大模块判断项目离发布还有多远。</h1>
+  <p class="reveal">勾选已经完成的能力，实时得到总分、成熟度等级、完成模块数和下一步补强方向。</p>
+</section>
+<section class="band score-summary-band">
+  <div class="score-meter reveal" aria-live="polite">
+    <span>Readiness Score</span>
+    <strong id="score-value">0</strong>
+    <p id="score-label">Map</p>
+    <div class="score-bar" aria-hidden="true"><span id="score-bar-fill"></span></div>
+  </div>
+  <div class="score-meta-grid">
+    <div class="score-meta reveal"><strong id="score-completed">0</strong><span>checked items</span></div>
+    <div class="score-meta reveal"><strong id="score-modules">0</strong><span>complete modules</span></div>
+    <div class="score-meta reveal"><strong>40</strong><span>total checks</span></div>
+  </div>
+</section>
+<section class="band compact-band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Levels</p>
+    <h2>分数只是入口，真正要看缺口在哪个模块。</h2>
+  </div>
+  <div class="level-grid">${maturityLevels.map(renderMaturityLevel).join("")}</div>
+</section>
+<section class="band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Checklist</p>
+    <h2>逐项勾选当前项目已经具备的能力。</h2>
+  </div>
+  <div class="scorecard-grid">${maturityScorecard.map(renderScorecardModule).join("")}</div>
+</section>
+<section class="band score-next-band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Next Move</p>
+    <h2>低分模块优先补，不要平均用力。</h2>
+  </div>
+  <div id="score-next-actions" class="next-action-list reveal">
+    <p>先勾选已经完成的能力，这里会显示优先补强模块。</p>
   </div>
 </section>`;
 }
@@ -499,6 +613,35 @@ function renderMaturityGate(title, description) {
   <strong>${escapeHtml(title)}</strong>
   <p>${escapeHtml(description)}</p>
 </article>`;
+}
+
+function renderMaturityLevel([range, label, description]) {
+  return `<article class="level-card reveal">
+  <span>${escapeHtml(range)}</span>
+  <strong>${escapeHtml(label)}</strong>
+  <p>${escapeHtml(description)}</p>
+</article>`;
+}
+
+function renderScorecardModule(moduleItem, moduleIndex) {
+  return `<article class="scorecard-module reveal" data-score-module="${escapeAttr(moduleItem.module)}">
+  <div class="scorecard-module-heading">
+    <span>${escapeHtml(moduleItem.short)}</span>
+    <h2>${escapeHtml(moduleItem.module)}</h2>
+    <strong data-module-score>0/4</strong>
+  </div>
+  <div class="score-check-list">
+    ${moduleItem.checks.map((check, checkIndex) => renderScoreCheck(moduleItem.module, moduleIndex, check, checkIndex)).join("")}
+  </div>
+</article>`;
+}
+
+function renderScoreCheck(moduleName, moduleIndex, check, checkIndex) {
+  const id = `score-${moduleIndex}-${checkIndex}`;
+  return `<label class="score-check" for="${escapeAttr(id)}">
+    <input id="${escapeAttr(id)}" type="checkbox" data-score-check data-module="${escapeAttr(moduleName)}">
+    <span>${escapeHtml(check)}</span>
+  </label>`;
 }
 
 function renderRepositoryCard(repo) {

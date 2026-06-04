@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.5.0 - Maturity Scorecard
+
+Added:
+
+- Maturity Scorecard docs-site page.
+- Interactive readiness score across the 10 software modules.
+- Live checked-item count, completed-module count, readiness level and score bar.
+- Module-level checklist cards for product, identity, data, API, UI, security, ops, QA, business and docs.
+- Next-action panel that highlights the lowest-scoring modules.
+
+Updated:
+
+- Root version is now `1.5.0`.
+- Home, Explore, Start Here and docs-site navigation now include the Maturity Scorecard.
+- Docs-site tests now verify the generated scorecard page.
+- Repository verifier now requires the v1.5.0 release notes and scorecard assets.
+
 ## 1.4.0 - Project Starter Experience
 
 Added:
