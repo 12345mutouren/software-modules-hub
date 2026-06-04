@@ -1,6 +1,6 @@
 {
   "name": "software-modules-hub",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "description": "A comprehensive software modules knowledge hub with examples, templates, case studies, architecture diagrams, runbooks, and decision guides.",
   "type": "module",
@@ -14,6 +14,7 @@
     "test:runnable-templates": "npm --prefix runnable-templates/nextjs-node-postgres test && npm --prefix runnable-templates/react-fastapi-postgres test && node --test runnable-templates/test/*.test.mjs",
     "test:runnable-apps": "npm --prefix runnable-apps/saas-starter-app test && npm --prefix runnable-apps/ecommerce-starter-app test && npm --prefix runnable-apps/ai-knowledge-base-app test && npm --prefix runnable-apps/admin-dashboard-app test && node --test runnable-apps/test/*.test.mjs",
     "test:deployment-playground": "node deployment-playground/smoke-check.mjs",
+    "build:docs-site": "node docs-site/build-docs-site.mjs --out docs-site/dist",
     "test:docs-site": "node --test docs-site/test/*.test.mjs",
     "test": "npm run verify && npm run check:links && npm run audit:freshness && npm run test:examples && npm run test:module-demos && npm run test:starter-generator && npm run test:runnable-templates && npm run test:runnable-apps && npm run test:deployment-playground && npm run test:docs-site"
   }

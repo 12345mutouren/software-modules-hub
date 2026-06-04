@@ -18,9 +18,8 @@ What changed?
 - [ ] `npm test`
 - [ ] `git diff --check`
 - [ ] Links or indexes updated
-- [ ] Checklist and audit updated when adding a phase
+- [ ] Public navigation and verification notes updated when needed
 
 ## Risks
 
 What could break or become outdated?
-

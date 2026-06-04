@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.3.0 - Productized Docs Site
+
+Added:
+
+- Productized docs-site homepage with a Three.js module network.
+- GSAP motion for page reveal and filter interactions.
+- Goal-based Start Here and Explore pages.
+- Template selector page.
+- GitHub repository browser with search and filters.
+- Local docs-site CSS and JavaScript assets.
+- Actual GitHub Pages deployment workflow.
+- Root `build:docs-site` script.
+
+Updated:
+
+- Root version is now `1.3.0`.
+- Docs-site tests now check generated product pages, visual assets and repository browser content.
+- Repository verifier now requires docs-site assets and deployment workflow.
+- Quality and deployment documentation now describe the productized docs-site workflow.
+
 ## 1.2.0 - Runnable Apps And Online Audit
 
 Added:

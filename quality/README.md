@@ -15,6 +15,7 @@
 | Runnable template tests | `npm run test:runnable-templates` | 可运行参考模板测试 |
 | Runnable app tests | `npm run test:runnable-apps` | 可运行应用模板测试 |
 | Deployment playground test | `npm run test:deployment-playground` | 部署 Playground smoke check |
+| Docs site build | `npm run build:docs-site` | 构建产品化静态文档站 |
 | Docs site tests | `npm run test:docs-site` | 文档站构建测试 |
 | Full test | `npm test` | 同时运行仓库验证、链接检查、freshness audit、示例测试、模块 demo、生成器、可运行模板、可运行应用、部署和文档站测试 |
 | GitHub Actions | `.github/workflows/verify.yml` | 在 push 和 pull request 时运行 `npm test` |

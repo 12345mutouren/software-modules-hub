@@ -6,16 +6,17 @@
 
 | File | Purpose |
 | --- | --- |
-| `github-pages-workflow.yml` | 可复制到 `.github/workflows/docs-site.yml` 的 GitHub Pages workflow |
+| `.github/workflows/docs-site.yml` | 当前启用的 GitHub Pages workflow |
+| `github-pages-workflow.yml` | workflow 的备份模板 |
 | `vercel.json` | Vercel 静态站配置 |
 | `deployment-checklist.md` | 部署前检查 |
 
 ## GitHub Pages
 
-1. Copy `docs-site/deploy/github-pages-workflow.yml` to `.github/workflows/docs-site.yml`.
-2. Enable GitHub Pages in repository settings.
-3. Set source to GitHub Actions.
-4. Push to `main`.
+1. GitHub Pages source is set to GitHub Actions.
+2. `.github/workflows/docs-site.yml` builds `docs-site/dist`.
+3. Push to `main`.
+4. Open `https://12345mutouren.github.io/software-modules-hub/` after the workflow succeeds.
 
 ## Vercel
 

@@ -180,7 +180,7 @@ requireCount("Security compliance files", "security-compliance", (file) => file.
 requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
 requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
 requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
-requireCount("Release files", "releases", (file) => file.endsWith(".md"), 3);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 4);
 requireCount("Runnable template files", "runnable-templates/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Runnable app index tests", "runnable-apps/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Maintenance refresh plans", "maintenance/refresh-plans", (file) => file.endsWith(".md"), 3);
@@ -191,10 +191,11 @@ requireText("package.json", "\"test:module-demos\"");
 requireText("package.json", "\"test:runnable-templates\"");
 requireText("package.json", "\"test:runnable-apps\"");
 requireText("package.json", "\"test:deployment-playground\"");
+requireText("package.json", "\"build:docs-site\"");
 requireText("package.json", "\"test:docs-site\"");
 requireText("package.json", "\"audit:freshness\"");
 requireText("package.json", "\"check:links\"");
-requireText("package.json", "\"version\": \"1.2.0\"");
+requireText("package.json", "\"version\": \"1.3.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
 requireText("starter-generator/README.md", "Optional Code Scaffold");
 requireText("starter-generator/create-starter.mjs", "--with-code");
@@ -209,8 +210,8 @@ requireText("production-templates/README.md", "## Templates");
 requireText("security-compliance/README.md", "## Files");
 requireText("ops-production/README.md", "## Files");
 requireText("auditing/README.md", "## Audit Types");
-requireText("PROJECT-STATUS.md", "v1.2.0");
-requireText("FINAL-REVIEW.md", "Ready for v1.2.0 release");
+requireText("PROJECT-STATUS.md", "v1.3.0");
+requireText("FINAL-REVIEW.md", "Ready for v1.3.0 release");
 requireText("runnable-templates/README.md", "## Templates");
 requireText("runnable-apps/README.md", "## Apps");
 requireText("deployment-playground/README.md", "## Run Smoke Check");
@@ -279,7 +280,10 @@ requireFiles([
   "deployment-playground/smoke-check.mjs",
   "docs-site/site-map.json",
   "docs-site/build-docs-site.mjs",
+  "docs-site/assets/site.css",
+  "docs-site/assets/site.js",
   "docs-site/test/build-docs-site.test.mjs",
+  ".github/workflows/docs-site.yml",
   "maintenance/refresh-plans/github-repository-index.md",
   "maintenance/refresh-plans/case-study-refresh.md",
   "maintenance/refresh-plans/template-refresh.md",
@@ -312,6 +316,7 @@ requireFiles([
   "releases/v1.0.0.md",
   "releases/v1.1.0.md",
   "releases/v1.2.0.md",
+  "releases/v1.3.0.md",
 ]);
 
 if (failures.length > 0) {

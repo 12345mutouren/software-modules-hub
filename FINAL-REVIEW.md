@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.2 review for the public repository release.
+Final v1.3 review for the productized docs-site release.
 
 ## Review Areas
 
@@ -41,6 +41,12 @@ Final v1.2 review for the public repository release.
 | Runnable admin dashboard app template | Ready |
 | Docs site deployment package | Ready |
 | Online GitHub catalog audit | Ready |
+| Productized docs-site homepage | Ready |
+| GSAP UI motion | Ready |
+| Three.js module network | Ready |
+| Template selector page | Ready |
+| GitHub repository browser page | Ready |
+| GitHub Pages deployment workflow | Ready |
 
 ## Remaining Limitations
 
@@ -48,7 +54,8 @@ Final v1.2 review for the public repository release.
 - Example code is intentionally dependency-light and not a full production application.
 - Security and compliance materials are templates and need project-specific review.
 - Production templates are architecture starters, not deployment guarantees.
+- Docs-site motion depends on CDN-hosted GSAP and Three.js, with readable static content as fallback.
 
 ## Decision
 
-Ready for v1.2.0 release after local and GitHub Actions verification.
+Ready for v1.3.0 release after local and GitHub Actions verification.

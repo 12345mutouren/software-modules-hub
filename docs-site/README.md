@@ -1,6 +1,18 @@
 # Docs Site
 
-目标：把仓库的读者入口转换为一个轻量静态 HTML 站点，方便部署到 GitHub Pages、Vercel 或任意静态托管服务。
+目标：把仓库的读者入口转换为一个轻量静态 HTML 产品站，方便部署到 GitHub Pages、Vercel 或任意静态托管服务。
+
+## Pages
+
+| Page | Purpose |
+| --- | --- |
+| `index.html` | 带 Three.js 模块网络和 GSAP 动效的首页 |
+| `start-here.html` | 按读者目标选择入口 |
+| `explore.html` | 分类导航页 |
+| `templates.html` | 软件模板选择器 |
+| `repositories.html` | GitHub 模块仓库浏览页 |
+| `modules.html` | 10 大模块说明 |
+| `runnable-apps.html` | 可运行应用模板入口 |
 
 ## Files
 
@@ -8,12 +20,20 @@
 | --- | --- |
 | `site-map.json` | 面向读者的文档站页面清单 |
 | `build-docs-site.mjs` | 无依赖静态站构建脚本 |
+| `assets/site.css` | 产品站视觉系统 |
+| `assets/site.js` | GSAP 动效、筛选交互和 Three.js 首页网络 |
 | `test/build-docs-site.test.mjs` | 构建脚本测试 |
 
 ## Build
 
 ```bash
-node docs-site/build-docs-site.mjs --out docs-site/dist
+npm run build:docs-site
+```
+
+本地预览：
+
+```bash
+python3 -m http.server 4173 --directory docs-site/dist
 ```
 
 ## Test

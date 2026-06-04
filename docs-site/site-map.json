@@ -2,12 +2,30 @@
   {
     "title": "Home",
     "source": "README.md",
-    "output": "index.html"
+    "output": "index.html",
+    "kind": "home"
   },
   {
     "title": "Start Here",
     "source": "START-HERE.md",
-    "output": "start-here.html"
+    "output": "start-here.html",
+    "kind": "start"
+  },
+  {
+    "title": "Explore",
+    "output": "explore.html",
+    "kind": "explore"
+  },
+  {
+    "title": "Template Selector",
+    "output": "templates.html",
+    "kind": "templates"
+  },
+  {
+    "title": "GitHub Repository Browser",
+    "source": "catalog/github-repositories.md",
+    "output": "repositories.html",
+    "kind": "repositories"
   },
   {
     "title": "Master Index",
@@ -18,11 +36,6 @@
     "title": "Modules",
     "source": "modules/README.md",
     "output": "modules.html"
-  },
-  {
-    "title": "GitHub Repository Index",
-    "source": "catalog/github-repositories.md",
-    "output": "github-repositories.html"
   },
   {
     "title": "Runnable Apps",

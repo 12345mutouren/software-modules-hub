@@ -13,6 +13,7 @@
 | `npm run test:runnable-templates` | Run runnable template tests |
 | `npm run test:runnable-apps` | Run runnable app template tests |
 | `npm run test:deployment-playground` | Run deployment playground smoke check |
+| `npm run build:docs-site` | Build the productized static docs site |
 | `npm run test:docs-site` | Run docs-site builder tests |
 | `npm test` | Run all current automated checks |
 
@@ -44,9 +45,10 @@ The verifier checks:
 - v1.0 release files.
 - v1.1 runnable template, deployment, docs-site and maintenance files.
 - v1.2 runnable app and online audit files.
+- Productized docs-site pages, assets and deployment workflow.
 - Changelog.
 - Full-stack mini app files.
-- GitHub Actions workflow.
+- GitHub Actions workflows.
 
 ## CI Behavior
 
@@ -54,6 +56,7 @@ GitHub Actions workflow is enabled at:
 
 ```text
 .github/workflows/verify.yml
+.github/workflows/docs-site.yml
 ```
 
 A copyable workflow template is also stored at:
@@ -62,12 +65,14 @@ A copyable workflow template is also stored at:
 quality/github-actions-verify.yml
 ```
 
-GitHub Actions runs on:
+The verification workflow runs on:
 
 - Push to `main`.
 - Pull requests.
 
-The workflow uses Node.js 22 and runs:
+The docs-site workflow runs on push to `main` and manual dispatch.
+
+The verification workflow uses Node.js 22 and runs:
 
 ```bash
 npm test

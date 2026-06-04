@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v1.2.0`
+Current milestone: `v1.3.0`
 
-Status: `v1.2.0` public release complete.
+Status: `v1.3.0` productized docs-site release complete.
 
 ## What This Repository Is
 
@@ -34,6 +34,7 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Runnable SaaS, ecommerce, AI knowledge base and admin dashboard app templates.
 - Docs site deployment package.
 - Online GitHub repository index audit.
+- Productized docs site with GSAP motion, Three.js module network, template selector, repository browser and GitHub Pages workflow.
 
 ## What This Repository Is Not
 
@@ -61,8 +62,17 @@ The root test runs:
 - Deployment playground smoke check.
 - Docs site tests.
 
+## Docs Site
+
+GitHub Pages is configured with workflow-based deployment:
+
+```text
+https://12345mutouren.github.io/software-modules-hub/
+```
+
 ## Current Release Notes
 
 - [v1.0.0](releases/v1.0.0.md)
 - [v1.1.0](releases/v1.1.0.md)
 - [v1.2.0](releases/v1.2.0.md)
+- [v1.3.0](releases/v1.3.0.md)
