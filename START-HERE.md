@@ -26,6 +26,7 @@
 
 | Goal | Start With |
 | --- | --- |
+| 从软件类型直接进入启动路径 | [Project Starter](https://12345mutouren.github.io/software-modules-hub/project-starter.html) |
 | 选择软件类型 | [decision-guides/software-type-selector.md](decision-guides/software-type-selector.md) |
 | 生成项目启动包 | [starter-generator/README.md](starter-generator/README.md) |
 | 写产品简报 | [project-kickoff/templates/product-brief.md](project-kickoff/templates/product-brief.md) |

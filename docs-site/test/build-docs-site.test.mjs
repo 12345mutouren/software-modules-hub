@@ -14,6 +14,7 @@ test("builds static docs site pages", () => {
   assert.ok(result.pages.includes("start-here.html"));
   assert.ok(result.pages.includes("explore.html"));
   assert.ok(result.pages.includes("templates.html"));
+  assert.ok(result.pages.includes("project-starter.html"));
   assert.ok(result.pages.includes("repositories.html"));
   assert.ok(result.pages.includes("master-index.html"));
   assert.ok(!result.pages.includes("roadmap.html"));
@@ -30,6 +31,12 @@ test("builds static docs site pages", () => {
   const repositoriesHtml = fs.readFileSync(path.join(outDir, "repositories.html"), "utf8");
   assert.match(repositoriesHtml, /repo-search/);
   assert.match(repositoriesHtml, /nextauthjs\/next-auth/);
+
+  const projectStarterHtml = fs.readFileSync(path.join(outDir, "project-starter.html"), "utf8");
+  assert.match(projectStarterHtml, /starter-select/);
+  assert.match(projectStarterHtml, /node starter-generator\/create-starter\.mjs --type saas-subscription/);
+  assert.match(projectStarterHtml, /enterprise-internal-tool/);
+  assert.match(projectStarterHtml, /第一版不是只要能跑/);
 
   const masterIndexHtml = fs.readFileSync(path.join(outDir, "master-index.html"), "utf8");
   assert.doesNotMatch(masterIndexHtml, /@@TOKEN/);

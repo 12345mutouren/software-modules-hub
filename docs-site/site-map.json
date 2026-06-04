@@ -22,6 +22,11 @@
     "kind": "templates"
   },
   {
+    "title": "Project Starter",
+    "output": "project-starter.html",
+    "kind": "starter"
+  },
+  {
     "title": "GitHub Repository Browser",
     "source": "catalog/github-repositories.md",
     "output": "repositories.html",

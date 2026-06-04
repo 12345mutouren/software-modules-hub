@@ -43,7 +43,7 @@ const journeys = [
   {
     title: "启动自己的项目",
     description: "用决策树、项目启动包和生成器把想法变成计划。",
-    href: resolveHref("project-kickoff/README.md"),
+    href: "project-starter.html",
     accent: "gold",
   },
   {
@@ -117,6 +117,74 @@ const templates = [
   },
 ];
 
+const starterProfiles = [
+  {
+    type: "saas-subscription",
+    title: "SaaS 订阅系统",
+    summary: "适合工具类、B2B、AI 产品和会员型产品。",
+    command: "node starter-generator/create-starter.mjs --type saas-subscription --out ./my-saas --with-code",
+    blueprint: resolveHref("templates/complete-apps/saas-subscription/README.md"),
+    runnable: resolveHref("runnable-apps/saas-starter-app/README.md"),
+    gates: ["团队空间和角色权限清楚", "订阅状态能控制功能访问", "账单和用量有审计记录"],
+  },
+  {
+    type: "admin-dashboard",
+    title: "管理后台",
+    summary: "适合运营、客服、审核、配置中心和内部管理。",
+    command: "node starter-generator/create-starter.mjs --type admin-dashboard --out ./my-admin --with-code",
+    blueprint: resolveHref("templates/complete-apps/admin-dashboard/README.md"),
+    runnable: resolveHref("runnable-apps/admin-dashboard-app/README.md"),
+    gates: ["管理员权限不能越权", "批量操作有确认和日志", "敏感数据导出可追踪"],
+  },
+  {
+    type: "ecommerce",
+    title: "电商系统",
+    summary: "适合商品、库存、购物车、订单、支付和发货。",
+    command: "node starter-generator/create-starter.mjs --type ecommerce --out ./my-store --with-code",
+    blueprint: resolveHref("templates/complete-apps/ecommerce/README.md"),
+    runnable: resolveHref("runnable-apps/ecommerce-starter-app/README.md"),
+    gates: ["订单状态机稳定", "库存扣减和支付回调幂等", "优惠券和退款规则可审计"],
+  },
+  {
+    type: "content-community",
+    title: "内容社区",
+    summary: "适合帖子、评论、关注、举报、审核和推荐。",
+    command: "node starter-generator/create-starter.mjs --type content-community --out ./my-community --with-code",
+    blueprint: resolveHref("templates/complete-apps/content-community/README.md"),
+    runnable: resolveHref("catalog/github-repositories.md"),
+    gates: ["内容状态和审核链路清楚", "举报处理有 SLA", "搜索和推荐不会绕过权限"],
+  },
+  {
+    type: "ai-knowledge-base",
+    title: "AI 知识库",
+    summary: "适合文档上传、向量检索、问答、引用和权限隔离。",
+    command: "node starter-generator/create-starter.mjs --type ai-knowledge-base --out ./my-kb --with-code",
+    blueprint: resolveHref("templates/complete-apps/ai-knowledge-base/README.md"),
+    runnable: resolveHref("runnable-apps/ai-knowledge-base-app/README.md"),
+    gates: ["检索结果带引用", "文档权限隔离", "失败解析和重建索引可恢复"],
+  },
+  {
+    type: "enterprise-internal-tool",
+    title: "企业内部工具",
+    summary: "适合审批、工单、资产、报表、SSO 和审计。",
+    command: "node starter-generator/create-starter.mjs --type enterprise-internal-tool --out ./my-internal-tool --with-code",
+    blueprint: resolveHref("templates/complete-apps/enterprise-internal-tool/README.md"),
+    runnable: resolveHref("production-templates/README.md"),
+    gates: ["组织和审批链可配置", "内部数据按角色隔离", "报表、审批、资产变更都有审计"],
+  },
+];
+
+const starterOutputs = [
+  ["产品简报", "确认目标用户、核心任务、范围边界和成功指标。"],
+  ["模块选择", "把 10 个软件模块映射到当前项目需要的功能。"],
+  ["权限矩阵", "明确游客、用户、管理员、运营、客服等角色能做什么。"],
+  ["数据模型", "给出通用表、业务表和字段起点。"],
+  ["API 合同", "把资源、接口、权限和错误处理写成可实现清单。"],
+  ["安全审查", "提前处理认证、授权、输入校验、限流和审计。"],
+  ["测试计划", "覆盖单元、接口、页面、权限、安全和性能冒烟。"],
+  ["发布计划", "把环境、域名、备份、监控、回滚和上线步骤串起来。"],
+];
+
 export function buildDocsSite({ outDir, siteMapPath = "docs-site/site-map.json" }) {
   if (!outDir) {
     throw new Error("Missing output directory.");
@@ -150,6 +218,7 @@ function renderSitePage(page, repositories) {
     start: () => renderStartPage(),
     explore: () => renderExplorePage(),
     templates: () => renderTemplatePage(),
+    starter: () => renderProjectStarterPage(),
     repositories: () => renderRepositoryPage(repositories),
     markdown: () => renderMarkdownPage(page),
   };
@@ -175,6 +244,7 @@ function renderSitePage(page, repositories) {
       <a href="start-here.html">Start Here</a>
       <a href="explore.html">Explore</a>
       <a href="templates.html">Templates</a>
+      <a href="project-starter.html">Project Starter</a>
       <a href="repositories.html">GitHub Index</a>
       <a href="modules.html">Modules</a>
     </nav>
@@ -195,7 +265,7 @@ function renderHomePage() {
     <p class="hero-text reveal">按产品、账号、数据库、后端、前端、安全、运维、测试、商业和文档拆解现代软件，并配套代码示例、GitHub 仓库索引、模板和上线资料。</p>
     <div class="hero-actions reveal">
       <a class="button primary" href="start-here.html">从这里开始</a>
-      <a class="button ghost" href="repositories.html">浏览 GitHub 模块库</a>
+      <a class="button ghost" href="project-starter.html">启动一个项目</a>
     </div>
   </div>
 </section>
@@ -222,8 +292,8 @@ function renderHomePage() {
 </section>
 <section class="band feature-strip">
   <a class="feature-card reveal" href="templates.html"><span>01</span><strong>模板选择器</strong><p>从 SaaS、电商、AI 知识库、管理后台等方向快速选型。</p></a>
-  <a class="feature-card reveal" href="repositories.html"><span>02</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
-  <a class="feature-card reveal" href="explore.html"><span>03</span><strong>分类导航页</strong><p>把学习、启动项目、运行示例和上线维护分开。</p></a>
+  <a class="feature-card reveal" href="project-starter.html"><span>02</span><strong>项目启动器</strong><p>把软件类型转换成生成命令、启动包和上线门槛。</p></a>
+  <a class="feature-card reveal" href="repositories.html"><span>03</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
 </section>`;
 }
 
@@ -242,7 +312,7 @@ function renderStartPage() {
   <ol class="timeline">
     <li class="reveal"><strong>建立地图</strong><span>读模块总览，知道完整软件有哪些层。</span></li>
     <li class="reveal"><strong>找参考</strong><span>进入 GitHub 仓库浏览页，按模块看代表代码库。</span></li>
-    <li class="reveal"><strong>选方向</strong><span>用模板选择器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
+    <li class="reveal"><strong>选方向</strong><span>用模板选择器和项目启动器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
     <li class="reveal"><strong>跑示例</strong><span>用可运行模板把概念对应到代码。</span></li>
   </ol>
 </section>`;
@@ -265,8 +335,58 @@ function renderExplorePage() {
   </div>
   <div class="link-matrix">
     ${renderLinkColumn("学习", [["模块总览", "modules.html"], ["术语表", resolveHref("reference/glossary.md")], ["30 天计划", resolveHref("learning-paths/30-day-plan.md")]])}
-    ${renderLinkColumn("构建", [["项目生成器", resolveHref("starter-generator/README.md")], ["可运行模板", resolveHref("runnable-templates/README.md")], ["可运行应用", "runnable-apps.html"]])}
+    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["项目生成器", resolveHref("starter-generator/README.md")], ["可运行应用", "runnable-apps.html"]])}
     ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["安全合规", resolveHref("security-compliance/README.md")], ["部署包", resolveHref("docs-site/deploy/README.md")]])}
+  </div>
+</section>`;
+}
+
+function renderProjectStarterPage() {
+  const active = starterProfiles[0];
+
+  return `
+<section class="page-hero">
+  <p class="eyebrow reveal">Project Starter</p>
+  <h1 class="reveal">把“我要做什么软件”变成项目启动包。</h1>
+  <p class="reveal">选择一个软件类型，直接拿到生成命令、模板入口、可运行参考和第一版上线前必须过的门槛。</p>
+</section>
+<section class="band starter-command-band">
+  <div class="starter-picker reveal">
+    <label for="starter-select">我要做</label>
+    <select id="starter-select" aria-label="Choose software starter type">
+      ${starterProfiles.map((profile) => `<option value="${escapeAttr(profile.type)}">${escapeHtml(profile.title)}</option>`).join("")}
+    </select>
+    <p id="starter-summary">${escapeHtml(active.summary)}</p>
+  </div>
+  <div class="starter-command reveal">
+    <span>生成命令</span>
+    <code id="starter-command">${escapeHtml(active.command)}</code>
+  </div>
+</section>
+<section class="band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Starter Profiles</p>
+    <h2>6 种常见软件，一键进入不同启动路径。</h2>
+  </div>
+  <div class="starter-profile-grid">${starterProfiles.map((profile, index) => renderStarterProfileCard(profile, index === 0)).join("")}</div>
+</section>
+<section class="band compact-band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Generated Package</p>
+    <h2>启动包会输出这些决策文件。</h2>
+  </div>
+  <div class="starter-output-grid">${starterOutputs.map(renderStarterOutputCard).join("")}</div>
+</section>
+<section class="band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">First Release Gate</p>
+    <h2>第一版不是只要能跑，还要能被解释、测试和恢复。</h2>
+  </div>
+  <div class="maturity-grid">
+    ${renderMaturityGate("产品清楚", "目标用户、核心流程、角色和成功指标能在 1 页内讲清。")}
+    ${renderMaturityGate("数据有边界", "用户只能访问自己的数据，关键表和审计字段已经定义。")}
+    ${renderMaturityGate("接口可验证", "核心 API 有输入校验、权限校验和错误语义。")}
+    ${renderMaturityGate("上线可恢复", "环境变量、备份、监控、回滚和发布步骤都有文档。")}
   </div>
 </section>`;
 }
@@ -349,6 +469,35 @@ function renderTemplateCard(template) {
     <a class="button compact" href="${escapeAttr(template.href)}">看蓝图</a>
     <a class="button compact ghost-light" href="${escapeAttr(template.runnable)}">看实现</a>
   </div>
+</article>`;
+}
+
+function renderStarterProfileCard(profile, active = false) {
+  return `<article class="starter-profile-card reveal${active ? " active" : ""}" data-starter-profile="${escapeAttr(profile.type)}" data-summary="${escapeAttr(profile.summary)}" data-command="${escapeAttr(profile.command)}">
+  <div>
+    <p class="eyebrow">${escapeHtml(profile.type)}</p>
+    <h2>${escapeHtml(profile.title)}</h2>
+    <p>${escapeHtml(profile.summary)}</p>
+  </div>
+  <ul>${profile.gates.map((gate) => `<li>${escapeHtml(gate)}</li>`).join("")}</ul>
+  <div class="card-actions">
+    <a class="button compact" href="${escapeAttr(profile.blueprint)}">看蓝图</a>
+    <a class="button compact ghost-light" href="${escapeAttr(profile.runnable)}">看实现</a>
+  </div>
+</article>`;
+}
+
+function renderStarterOutputCard([title, description]) {
+  return `<article class="starter-output-card reveal">
+  <strong>${escapeHtml(title)}</strong>
+  <p>${escapeHtml(description)}</p>
+</article>`;
+}
+
+function renderMaturityGate(title, description) {
+  return `<article class="maturity-card reveal">
+  <strong>${escapeHtml(title)}</strong>
+  <p>${escapeHtml(description)}</p>
 </article>`;
 }
 

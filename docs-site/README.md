@@ -10,6 +10,7 @@
 | `start-here.html` | 按读者目标选择入口 |
 | `explore.html` | 分类导航页 |
 | `templates.html` | 软件模板选择器 |
+| `project-starter.html` | 项目启动器，连接软件类型、生成命令、启动包和发布门槛 |
 | `repositories.html` | GitHub 模块仓库浏览页 |
 | `modules.html` | 10 大模块说明 |
 | `runnable-apps.html` | 可运行应用模板入口 |

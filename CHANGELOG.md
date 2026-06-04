@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.4.0 - Project Starter Experience
+
+Added:
+
+- Project Starter docs-site page for turning a software type into a starter path.
+- Interactive starter selector with generated commands for six software types.
+- Starter profile cards connected to blueprints, runnable references and first-release gates.
+- Generated package overview for product brief, module selection, permissions, data model, API, security, tests and launch planning.
+
+Updated:
+
+- Root version is now `1.4.0`.
+- Home, Start Here, Explore and docs-site navigation now route project builders to the Project Starter page.
+- Docs-site tests now verify the generated Project Starter page.
+- Repository verifier now requires the v1.4.0 release notes and version state.
+
 ## 1.3.0 - Productized Docs Site
 
 Added:

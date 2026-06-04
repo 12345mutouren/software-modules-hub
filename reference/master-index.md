@@ -22,6 +22,7 @@
 | 学每个模块的可运行 demo | [module-demos](../examples/module-demos/README.md) |
 | 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
 | 生成代码骨架 | [starter-generator](../starter-generator/README.md) |
+| 从软件类型进入项目启动器 | [Project Starter](https://12345mutouren.github.io/software-modules-hub/project-starter.html) |
 | 运行参考模板 | [runnable-templates](../runnable-templates/README.md) |
 | 运行应用模板 | [runnable-apps](../runnable-apps/README.md) |
 | 选择生产架构模板 | [production-templates](../production-templates/README.md) |
@@ -104,7 +105,7 @@
 | 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看 v1.3 发布说明 | [v1.3.0.md](../releases/v1.3.0.md) |
+| 查看 v1.4 发布说明 | [v1.4.0.md](../releases/v1.4.0.md) |
 
 ## Generate A Starter
 

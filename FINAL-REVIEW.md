@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.3 review for the productized docs-site release.
+Final v1.4 review for the project starter experience release.
 
 ## Review Areas
 
@@ -45,6 +45,10 @@ Final v1.3 review for the productized docs-site release.
 | GSAP UI motion | Ready |
 | Three.js module network | Ready |
 | Template selector page | Ready |
+| Project Starter page | Ready |
+| Starter selector commands | Ready |
+| Generated package overview | Ready |
+| First-release gates | Ready |
 | GitHub repository browser page | Ready |
 | GitHub Pages deployment workflow | Ready |
 
@@ -55,7 +59,8 @@ Final v1.3 review for the productized docs-site release.
 - Security and compliance materials are templates and need project-specific review.
 - Production templates are architecture starters, not deployment guarantees.
 - Docs-site motion depends on CDN-hosted GSAP and Three.js, with readable static content as fallback.
+- Project Starter commands are starter package scaffolds, not a substitute for project-specific engineering review.
 
 ## Decision
 
-Ready for v1.3.0 release after local and GitHub Actions verification.
+Ready for v1.4.0 release after local and GitHub Actions verification.

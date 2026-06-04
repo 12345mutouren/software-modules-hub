@@ -4,6 +4,7 @@ const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)
 document.addEventListener("DOMContentLoaded", () => {
   initRevealMotion();
   initTemplateFilters();
+  initProjectStarter();
   initRepositoryBrowser();
   initConstellation();
 });
@@ -94,6 +95,26 @@ function initRepositoryBrowser() {
     control.addEventListener("input", applyFilters);
     control.addEventListener("change", applyFilters);
   });
+}
+
+function initProjectStarter() {
+  const select = qs("#starter-select");
+  const summary = qs("#starter-summary");
+  const command = qs("#starter-command");
+  const cards = qsa("[data-starter-profile]");
+  if (!select || !summary || !command || !cards.length) return;
+
+  const updateStarter = () => {
+    const active = cards.find((card) => card.dataset.starterProfile === select.value);
+    if (!active) return;
+
+    cards.forEach((card) => card.classList.toggle("active", card === active));
+    summary.textContent = active.dataset.summary;
+    command.textContent = active.dataset.command;
+    animateCards([active]);
+  };
+
+  select.addEventListener("change", updateStarter);
 }
 
 function animateCards(cards) {
