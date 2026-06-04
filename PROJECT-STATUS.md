@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v1.1.0`
+Current milestone: `v1.2.0`
 
-Status: Phase 1-24 complete.
+Status: Phase 1-30 complete.
 
 ## What This Repository Is
 
@@ -31,6 +31,9 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Deployment playground.
 - Docs site builder.
 - Maintenance refresh plans and freshness audit.
+- Runnable SaaS, ecommerce, AI knowledge base and admin dashboard app templates.
+- Docs site deployment package.
+- Online GitHub repository index audit.
 
 ## What This Repository Is Not
 
@@ -54,6 +57,7 @@ The root test runs:
 - Module demo tests.
 - Starter generator tests.
 - Runnable template tests.
+- Runnable app template tests.
 - Deployment playground smoke check.
 - Docs site tests.
 
@@ -61,3 +65,4 @@ The root test runs:
 
 - [v1.0.0](releases/v1.0.0.md)
 - [v1.1.0](releases/v1.1.0.md)
+- [v1.2.0](releases/v1.2.0.md)

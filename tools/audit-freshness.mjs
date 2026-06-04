@@ -9,6 +9,8 @@ const requiredFiles = [
   "maintenance/refresh-plans/template-refresh.md",
   "maintenance/release-cadence.md",
   "maintenance/freshness-audit.md",
+  "maintenance/online-audits/README.md",
+  "maintenance/online-audits/github-repository-index-2026-06-04.md",
   "catalog/github-repositories.md",
   "case-studies/real-projects/README.md",
   "CHANGELOG.md",
@@ -41,4 +43,3 @@ if (failures.length > 0) {
 
 console.log("Freshness audit passed.");
 console.log(`Catalog GitHub URLs checked: ${githubUrlCount}`);
-

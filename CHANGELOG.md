@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.2.0 - Phase 30 Runnable Apps And Online Audit
+
+Added:
+
+- Runnable SaaS app template.
+- Runnable ecommerce app template.
+- Runnable AI knowledge base app template.
+- Runnable admin dashboard app template.
+- Docs site deployment package for GitHub Pages and Vercel.
+- Online GitHub repository index audit.
+- Phase 25-30 checklists and audits.
+
+Updated:
+
+- Root version is now `1.2.0`.
+- Root `npm test` now includes runnable app template tests.
+- Freshness audit now requires the online audit report.
+- README, Roadmap, Master Index, quality documentation and verifier coverage.
+
 ## 1.1.0 - Phase 24 Maintenance And Runnable Templates
 
 Added:

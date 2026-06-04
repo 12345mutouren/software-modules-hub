@@ -82,7 +82,17 @@
 - [第二十三阶段完成度清单](checklists/phase-23-completeness.md)
 - [持续更新体系](maintenance/README.md)
 - [第二十四阶段完成度清单](checklists/phase-24-completeness.md)
+- [可运行应用模板](runnable-apps/README.md)
+- [第二十五阶段完成度清单](checklists/phase-25-completeness.md)
+- [第二十六阶段完成度清单](checklists/phase-26-completeness.md)
+- [第二十七阶段完成度清单](checklists/phase-27-completeness.md)
+- [第二十八阶段完成度清单](checklists/phase-28-completeness.md)
+- [文档站部署包](docs-site/deploy/README.md)
+- [第二十九阶段完成度清单](checklists/phase-29-completeness.md)
+- [在线审计](maintenance/online-audits/README.md)
+- [第三十阶段完成度清单](checklists/phase-30-completeness.md)
 - [v1.1.0 发布说明](releases/v1.1.0.md)
+- [v1.2.0 发布说明](releases/v1.2.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -108,6 +118,8 @@
 16. 用 [生产级架构模板](production-templates/README.md)、[安全与合规模板](security-compliance/README.md) 和 [运维生产化](ops-production/README.md) 做上线前准备。
 17. 用 [审计体系](auditing/README.md) 和根级 `npm test` 做最终质量检查。
 18. 用 [可运行模板](runnable-templates/README.md)、[部署 Playground](deployment-playground/README.md)、[文档站](docs-site/README.md) 和 [持续更新体系](maintenance/README.md) 做 v1.1 增强。
+19. 用 [可运行应用模板](runnable-apps/README.md) 学习 SaaS、电商、AI 知识库和管理后台的核心业务实现。
+20. 用 [文档站部署包](docs-site/deploy/README.md) 和 [在线审计](maintenance/online-audits/README.md) 做 v1.2 发布后的展示和维护。
 
 ## 仓库类型说明
 
@@ -148,3 +160,9 @@
 - 第二十二阶段：补充 Docker Compose 部署 Playground。
 - 第二十三阶段：补充静态文档站构建器。
 - 第二十四阶段：补充持续更新体系和 freshness audit。
+- 第二十五阶段：补充 SaaS 可运行应用模板。
+- 第二十六阶段：补充电商可运行应用模板。
+- 第二十七阶段：补充 AI 知识库可运行应用模板。
+- 第二十八阶段：补充管理后台可运行应用模板。
+- 第二十九阶段：补充文档站部署包。
+- 第三十阶段：补充 GitHub 仓库索引在线审计。

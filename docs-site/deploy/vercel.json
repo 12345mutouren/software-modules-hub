@@ -1,0 +1,6 @@
+{
+  "buildCommand": "node docs-site/build-docs-site.mjs --out docs-site/dist",
+  "outputDirectory": "docs-site/dist",
+  "installCommand": "npm install --ignore-scripts"
+}
+

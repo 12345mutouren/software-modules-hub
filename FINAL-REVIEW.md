@@ -4,7 +4,7 @@ Date: 2026-06-04
 
 ## Scope
 
-Final v1.1 review for phases 1-24.
+Final v1.2 review for phases 1-30.
 
 ## Review Areas
 
@@ -35,6 +35,12 @@ Final v1.1 review for phases 1-24.
 | Deployment playground | Ready |
 | Docs site builder | Ready |
 | Maintenance refresh system | Ready |
+| Runnable SaaS app template | Ready |
+| Runnable ecommerce app template | Ready |
+| Runnable AI knowledge base app template | Ready |
+| Runnable admin dashboard app template | Ready |
+| Docs site deployment package | Ready |
+| Online GitHub catalog audit | Ready |
 
 ## Remaining Limitations
 
@@ -45,4 +51,4 @@ Final v1.1 review for phases 1-24.
 
 ## Decision
 
-Ready for v1.1.0 release after local and GitHub Actions verification.
+Ready for v1.2.0 release after local and GitHub Actions verification.

@@ -15,9 +15,10 @@
 | Module demo tests | `npm run test:module-demos` | 第十二阶段 10 大模块 demo 的行为测试 |
 | Starter generator tests | `npm run test:starter-generator` | 第十一阶段项目生成器的软件类型、输出文件和安全覆盖规则 |
 | Runnable template tests | `npm run test:runnable-templates` | 第二十和二十一阶段可运行参考模板测试 |
+| Runnable app tests | `npm run test:runnable-apps` | 第二十五到二十八阶段可运行应用模板测试 |
 | Deployment playground test | `npm run test:deployment-playground` | 第二十二阶段部署 Playground smoke check |
 | Docs site tests | `npm run test:docs-site` | 第二十三阶段文档站构建测试 |
-| Full test | `npm test` | 同时运行仓库验证、链接检查、freshness audit、示例测试、模块 demo、生成器、可运行模板、部署和文档站测试 |
+| Full test | `npm test` | 同时运行仓库验证、链接检查、freshness audit、示例测试、模块 demo、生成器、可运行模板、可运行应用、部署和文档站测试 |
 | GitHub Actions | `.github/workflows/verify.yml` | 在 push 和 pull request 时运行 `npm test` |
 | GitHub Actions template | `quality/github-actions-verify.yml` | workflow 的可复制备份模板 |
 

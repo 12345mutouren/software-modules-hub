@@ -22,6 +22,7 @@
 | 生成项目启动包 | [starter-generator](../starter-generator/README.md) |
 | 生成代码骨架 | [starter-generator](../starter-generator/README.md) |
 | 运行参考模板 | [runnable-templates](../runnable-templates/README.md) |
+| 运行应用模板 | [runnable-apps](../runnable-apps/README.md) |
 | 选择生产架构模板 | [production-templates](../production-templates/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
@@ -106,6 +107,7 @@
 | 查看最终审查 | [FINAL-REVIEW.md](../FINAL-REVIEW.md) |
 | 查看 v1.0 发布说明 | [v1.0.0.md](../releases/v1.0.0.md) |
 | 查看 v1.1 发布说明 | [v1.1.0.md](../releases/v1.1.0.md) |
+| 查看 v1.2 发布说明 | [v1.2.0.md](../releases/v1.2.0.md) |
 
 ## Generate A Starter
 
@@ -124,6 +126,17 @@
 | React + FastAPI + PostgreSQL 模板 | [react-fastapi-postgres](../runnable-templates/react-fastapi-postgres/README.md) |
 | 部署 Playground | [deployment-playground/README.md](../deployment-playground/README.md) |
 | 文档站 | [docs-site/README.md](../docs-site/README.md) |
+| 文档站部署包 | [docs-site/deploy/README.md](../docs-site/deploy/README.md) |
+
+## Run App Templates
+
+| Need | Go To |
+| --- | --- |
+| 查看可运行应用模板 | [runnable-apps/README.md](../runnable-apps/README.md) |
+| SaaS 应用模板 | [saas-starter-app](../runnable-apps/saas-starter-app/README.md) |
+| 电商应用模板 | [ecommerce-starter-app](../runnable-apps/ecommerce-starter-app/README.md) |
+| AI 知识库应用模板 | [ai-knowledge-base-app](../runnable-apps/ai-knowledge-base-app/README.md) |
+| 管理后台应用模板 | [admin-dashboard-app](../runnable-apps/admin-dashboard-app/README.md) |
 
 ## Run Module Demos
 
@@ -153,3 +166,5 @@
 | 真实项目案例刷新 | [case-study-refresh.md](../maintenance/refresh-plans/case-study-refresh.md) |
 | 模板刷新 | [template-refresh.md](../maintenance/refresh-plans/template-refresh.md) |
 | 发布节奏 | [release-cadence.md](../maintenance/release-cadence.md) |
+| 在线审计 | [online-audits/README.md](../maintenance/online-audits/README.md) |
+| 2026-06-04 GitHub 在线审计 | [github-repository-index-2026-06-04.md](../maintenance/online-audits/github-repository-index-2026-06-04.md) |
