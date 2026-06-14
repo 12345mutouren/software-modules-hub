@@ -106,6 +106,7 @@
 | 管理后台 | [ant-design/ant-design-pro](https://github.com/ant-design/ant-design-pro) | starter | 后台模板 |
 | 管理框架 | [marmelab/react-admin](https://github.com/marmelab/react-admin) | framework | CRUD 后台 |
 | 管理框架 | [refinedev/refine](https://github.com/refinedev/refine) | framework | 内部工具 |
+| AI Agent UI | [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | framework | Agent 前端栈、Generative UI 和 AG-UI |
 | 移动/桌面 | [flutter/flutter](https://github.com/flutter/flutter) | framework | 跨平台 |
 | 移动 App | [facebook/react-native](https://github.com/facebook/react-native) | framework | React Native |
 | 桌面 | [electron/electron](https://github.com/electron/electron) | framework | 桌面应用 |

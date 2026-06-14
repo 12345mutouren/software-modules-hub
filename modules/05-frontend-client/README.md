@@ -12,6 +12,7 @@
 - 管理后台：用户管理、内容管理、权限管理、数据统计。
 - 交互体验：表单、按钮、搜索、筛选、分页、弹窗、加载状态、错误提示。
 - 响应式适配：电脑、平板、手机都能用。
+- AI 前端层：Agent UI、Generative UI、共享状态、人机确认。
 
 ## 客户端类别
 
@@ -23,6 +24,7 @@
 | 管理后台 | 面向管理员和运营 | CRUD、审核、统计、配置 |
 | 小程序 | 微信、支付宝等平台 | 国内轻量应用和交易场景 |
 | 嵌入式 UI | 插件、Widget、iframe | 第三方集成 |
+| AI Agent UI | Copilot、Generative UI、工具调用、人机确认 | AI 知识库、后台助手、企业内部工具 |
 
 ## 页面类别
 
@@ -87,6 +89,7 @@
 | [ant-design/ant-design-pro](https://github.com/ant-design/ant-design-pro) | starter | 管理后台模板 |
 | [marmelab/react-admin](https://github.com/marmelab/react-admin) | framework | 后台管理框架 |
 | [refinedev/refine](https://github.com/refinedev/refine) | framework | 内部工具、后台、Dashboard |
+| [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | framework | Agent 前端栈、Generative UI 和 AG-UI 集成 |
 | [flutter/flutter](https://github.com/flutter/flutter) | framework | 跨平台移动和桌面 |
 | [facebook/react-native](https://github.com/facebook/react-native) | framework | 跨平台移动 App |
 | [electron/electron](https://github.com/electron/electron) | framework | 桌面软件 |
@@ -101,6 +104,6 @@
 - [ ] 是否有搜索、筛选、排序和分页策略。
 - [ ] 是否适配手机、平板和桌面。
 - [ ] 是否有管理后台。
+- [ ] 如果引入 AI Agent UI，是否限制工具权限、用户确认和状态写入边界。
 - [ ] 是否考虑可访问性。
 - [ ] 是否和后端 API 文档对齐。
-

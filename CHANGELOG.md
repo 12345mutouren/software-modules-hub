@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.8.0 - AI Frontend Stack Reference
+
+Added:
+
+- CopilotKit/CopilotKit in the GitHub repository catalog and frontend module docs.
+- AI Agent UI / Generative UI category in the frontend module.
+- Stack Composer AI frontend layer selector with CopilotKit / AG-UI and custom Agent UI options.
+
+Updated:
+
+- Root version is now `1.8.0`.
+- Home, Start Here, Master Index and docs-site copy now describe AI frontend layer selection.
+- Docs-site tests now verify the generated AI frontend layer selector.
+- Repository verifier now requires CopilotKit references and the v1.8.0 release notes.
+
 ## 1.7.0 - Stack Composer
 
 Added:

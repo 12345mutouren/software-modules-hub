@@ -50,6 +50,8 @@ test("builds static docs site pages", () => {
   const composerHtml = fs.readFileSync(path.join(outDir, "stack-composer.html"), "utf8");
   assert.match(composerHtml, /Stack Composer/);
   assert.match(composerHtml, /composer-type/);
+  assert.match(composerHtml, /composer-agent/);
+  assert.match(composerHtml, /CopilotKit \/ AG-UI/);
   assert.match(composerHtml, /data-composer-extra/);
   assert.match(composerHtml, /把技术选择组合成一套可执行架构/);
 

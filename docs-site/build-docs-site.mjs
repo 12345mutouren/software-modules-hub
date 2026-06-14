@@ -54,7 +54,7 @@ const journeys = [
   },
   {
     title: "组合技术栈",
-    description: "选择登录、数据、部署和附加能力，生成推荐栈。",
+    description: "选择登录、数据、部署、AI 前端层和附加能力，生成推荐栈。",
     href: "stack-composer.html",
     accent: "coral",
   },
@@ -476,6 +476,30 @@ const composerDeployOptions = [
   },
 ];
 
+const composerAgentOptions = [
+  {
+    id: "none",
+    label: "暂不引入",
+    stack: "",
+    risk: "",
+    repos: [],
+  },
+  {
+    id: "copilotkit",
+    label: "CopilotKit / AG-UI",
+    stack: "CopilotKit + AG-UI + Generative UI",
+    risk: "要限制 Agent 工具权限、共享状态写入、人机确认和生成 UI 的安全边界。",
+    repos: ["CopilotKit", "AG-UI", "LangChain", "Mastra"],
+  },
+  {
+    id: "custom-agent-ui",
+    label: "自定义 Agent UI",
+    stack: "自定义 Chat UI + Tool Call Renderer + 状态同步",
+    risk: "灵活但成本高；必须自己处理流式消息、工具渲染、恢复和审计。",
+    repos: ["Vercel AI SDK", "assistant-ui", "OpenAI Agents SDK"],
+  },
+];
+
 const composerExtras = [
   {
     id: "payments",
@@ -655,7 +679,7 @@ function renderHomePage() {
 </section>
 <section class="band stats-band" aria-label="Repository highlights">
   <div class="stat reveal"><strong>10</strong><span>核心模块</span></div>
-  <div class="stat reveal"><strong>120</strong><span>GitHub 仓库链接</span></div>
+  <div class="stat reveal"><strong>121</strong><span>GitHub 仓库链接</span></div>
   <div class="stat reveal"><strong>6</strong><span>完整软件模板</span></div>
   <div class="stat reveal"><strong>4</strong><span>可运行业务应用</span></div>
 </section>
@@ -678,7 +702,7 @@ function renderHomePage() {
   <a class="feature-card reveal" href="templates.html"><span>01</span><strong>模板选择器</strong><p>从 SaaS、电商、AI 知识库、管理后台等方向快速选型。</p></a>
   <a class="feature-card reveal" href="project-starter.html"><span>02</span><strong>项目启动器</strong><p>把软件类型转换成生成命令、启动包和上线门槛。</p></a>
   <a class="feature-card reveal" href="planner.html"><span>03</span><strong>构建计划器</strong><p>按软件类型、阶段和团队规模生成执行路线。</p></a>
-  <a class="feature-card reveal" href="stack-composer.html"><span>04</span><strong>技术栈组合器</strong><p>把登录、数据、部署和附加能力组合成推荐栈。</p></a>
+  <a class="feature-card reveal" href="stack-composer.html"><span>04</span><strong>技术栈组合器</strong><p>把登录、数据、部署、AI 前端层和附加能力组合成推荐栈。</p></a>
   <a class="feature-card reveal" href="maturity.html"><span>05</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
   <a class="feature-card reveal" href="repositories.html"><span>06</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
 </section>`;
@@ -733,15 +757,17 @@ function renderStackComposerPage() {
   const activeAuth = composerAuthOptions[0];
   const activeData = composerDataOptions[0];
   const activeDeploy = composerDeployOptions[0];
+  const activeAgent = composerAgentOptions[0];
   const activeExtras = composerExtras.filter((extra) => extra.checked);
-  const activeRepos = unique([activeAuth, activeData, activeDeploy, ...activeExtras].flatMap((item) => item.repos));
-  const activeRisks = [activeAuth, activeData, activeDeploy, ...activeExtras].map((item) => item.risk);
+  const activeItems = [activeAuth, activeData, activeDeploy, activeAgent, ...activeExtras];
+  const activeRepos = unique(activeItems.flatMap((item) => item.repos));
+  const activeRisks = activeItems.map((item) => item.risk).filter(Boolean);
 
   return `
 <section class="page-hero">
   <p class="eyebrow reveal">Stack Composer</p>
   <h1 class="reveal">把技术选择组合成一套可执行架构。</h1>
-  <p class="reveal">选择软件类型、登录方式、数据层、部署方式和附加能力，实时得到推荐栈、风险提醒、参考仓库和生成命令。</p>
+  <p class="reveal">选择软件类型、登录方式、数据层、部署方式、AI 前端层和附加能力，实时得到推荐栈、风险提醒、参考仓库和生成命令。</p>
 </section>
 <section class="band composer-control-band">
   <div class="composer-controls reveal">
@@ -749,13 +775,14 @@ function renderStackComposerPage() {
     <label for="composer-auth"><span>登录方案</span><select id="composer-auth">${composerAuthOptions.map(renderComposerOption).join("")}</select></label>
     <label for="composer-data"><span>数据层</span><select id="composer-data">${composerDataOptions.map(renderComposerOption).join("")}</select></label>
     <label for="composer-deploy"><span>部署方式</span><select id="composer-deploy">${composerDeployOptions.map(renderComposerOption).join("")}</select></label>
+    <label for="composer-agent"><span>AI 前端层</span><select id="composer-agent">${composerAgentOptions.map(renderComposerOption).join("")}</select></label>
     <fieldset class="composer-extra-list">
       <legend>附加能力</legend>
       ${composerExtras.map(renderComposerExtra).join("")}
     </fieldset>
   </div>
   <div class="composer-summary-grid reveal" aria-live="polite">
-    <article><span>Recommended Stack</span><strong id="composer-stack">${escapeHtml([activeAuth.stack, activeData.stack, activeDeploy.stack, ...activeExtras.map((extra) => extra.stack)].join(" + "))}</strong></article>
+    <article><span>Recommended Stack</span><strong id="composer-stack">${escapeHtml(activeItems.map((item) => item.stack).filter(Boolean).join(" + "))}</strong></article>
     <article><span>Project Focus</span><strong id="composer-focus">${escapeHtml(activeProfile.focus)}</strong></article>
     <article><span>Build Command</span><code id="composer-command">${escapeHtml(activeProfile.command)}</code></article>
   </div>

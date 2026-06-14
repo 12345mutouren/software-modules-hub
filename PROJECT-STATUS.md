@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v1.7.0`
+Current milestone: `v1.8.0`
 
-Status: `v1.7.0` stack composer release complete.
+Status: `v1.8.0` AI frontend stack reference release complete.
 
 ## What This Repository Is
 
@@ -37,7 +37,8 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Productized docs site with GSAP motion, Three.js module network, template selector, repository browser and GitHub Pages workflow.
 - Project Starter page that connects software types to generator commands, blueprints, runnable references, generated package files and first-release gates.
 - Build Planner page that turns software type, current stage and team size into an execution roadmap.
-- Stack Composer page that turns auth, data, deployment and optional capabilities into a recommended technical stack.
+- Stack Composer page that turns auth, data, deployment, AI frontend layer and optional capabilities into a recommended technical stack.
+- CopilotKit / AG-UI reference coverage for AI Agent UI and Generative UI frontend stacks.
 - Maturity Scorecard page that scores readiness across the 10 software modules and suggests priority gaps.
 
 ## What This Repository Is Not
@@ -84,3 +85,4 @@ https://12345mutouren.github.io/software-modules-hub/
 - [v1.5.0](releases/v1.5.0.md)
 - [v1.6.0](releases/v1.6.0.md)
 - [v1.7.0](releases/v1.7.0.md)
+- [v1.8.0](releases/v1.8.0.md)

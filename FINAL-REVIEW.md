@@ -4,7 +4,7 @@ Date: 2026-06-14
 
 ## Scope
 
-Final v1.7 review for the stack composer release.
+Final v1.8 review for the AI frontend stack reference release.
 
 ## Review Areas
 
@@ -55,9 +55,12 @@ Final v1.7 review for the stack composer release.
 | Four-stage build roadmap | Ready |
 | Stack Composer page | Ready |
 | Composer auth, data and deploy controls | Ready |
+| Composer AI frontend layer selector | Ready |
 | Composer optional capability toggles | Ready |
 | Recommended stack and risk output | Ready |
 | Reference repo chips and release gates | Ready |
+| CopilotKit catalog entry | Ready |
+| AI Agent UI frontend category | Ready |
 | Maturity Scorecard page | Ready |
 | Readiness score calculation | Ready |
 | Module-level scorecards | Ready |
@@ -75,8 +78,9 @@ Final v1.7 review for the stack composer release.
 - Project Starter commands are starter package scaffolds, not a substitute for project-specific engineering review.
 - Build Planner routes are planning guidance and still need project-specific sequencing judgment.
 - Stack Composer outputs are starting recommendations and still require project-specific architecture review.
+- AI frontend frameworks still require project-specific security review for tool permissions, state writes and human confirmation.
 - Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v1.7.0 release after local and GitHub Actions verification.
+Ready for v1.8.0 release after local and GitHub Actions verification.

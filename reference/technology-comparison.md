@@ -41,6 +41,7 @@
 | Vue / Nuxt | Vue 生态项目 | 团队和生态偏好影响大 |
 | React Admin / Refine | 管理后台和 CRUD | 定制复杂交互时要看框架边界 |
 | Flutter / React Native | 移动 App | Web 与移动共用逻辑有限 |
+| CopilotKit / AG-UI | 产品内 AI Copilot、Agent UI、Generative UI | 需要设计工具权限、状态同步、人机确认和安全边界 |
 
 ## Deployment
 
@@ -51,4 +52,3 @@
 | Kubernetes | 企业、高可用、复杂服务 | 运维成本高 |
 | Serverless | 事件处理、低运维 | 冷启动、限制和可观测性要评估 |
 | Coolify / CapRover / Dokku | 自托管 PaaS | 仍需要维护服务器 |
-

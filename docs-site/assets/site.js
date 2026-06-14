@@ -161,6 +161,7 @@ function initStackComposer() {
   const authSelect = qs("#composer-auth");
   const dataSelect = qs("#composer-data");
   const deploySelect = qs("#composer-deploy");
+  const agentSelect = qs("#composer-agent");
   const extras = qsa("[data-composer-extra]");
   const stack = qs("#composer-stack");
   const focus = qs("#composer-focus");
@@ -168,7 +169,7 @@ function initStackComposer() {
   const risks = qs("#composer-risks");
   const repos = qs("#composer-repos");
   const gates = qs("#composer-gates");
-  if (!typeSelect || !authSelect || !dataSelect || !deploySelect || !stack || !focus || !command || !risks || !repos || !gates) return;
+  if (!typeSelect || !authSelect || !dataSelect || !deploySelect || !agentSelect || !stack || !focus || !command || !risks || !repos || !gates) return;
 
   const optionPayload = (option) => ({
     stack: option.dataset.stack,
@@ -178,7 +179,7 @@ function initStackComposer() {
 
   const updateComposer = () => {
     const typeOption = typeSelect.selectedOptions[0];
-    const selected = [authSelect, dataSelect, deploySelect].map((select) => optionPayload(select.selectedOptions[0]));
+    const selected = [authSelect, dataSelect, deploySelect, agentSelect].map((select) => optionPayload(select.selectedOptions[0]));
     const selectedExtras = extras
       .filter((extra) => extra.checked)
       .map((extra) => ({
@@ -205,7 +206,7 @@ function initStackComposer() {
     animateCards(qsa(".composer-output-card"));
   };
 
-  [typeSelect, authSelect, dataSelect, deploySelect, ...extras].forEach((control) => {
+  [typeSelect, authSelect, dataSelect, deploySelect, agentSelect, ...extras].forEach((control) => {
     control.addEventListener("change", updateComposer);
   });
   updateComposer();
