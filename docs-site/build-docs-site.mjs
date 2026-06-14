@@ -65,6 +65,12 @@ const journeys = [
     accent: "green",
   },
   {
+    title: "复用底层代码",
+    description: "查看 core、security、auth 代码包和管理后台代码底座。",
+    href: resolveHref("packages/README.md"),
+    accent: "teal",
+  },
+  {
     title: "准备上线部署",
     description: "查看生产架构、安全合规、运维 Runbook 和部署 Playground。",
     href: resolveHref("production-templates/README.md"),
@@ -705,6 +711,7 @@ function renderHomePage() {
   <a class="feature-card reveal" href="stack-composer.html"><span>04</span><strong>技术栈组合器</strong><p>把登录、数据、部署、AI 前端层和附加能力组合成推荐栈。</p></a>
   <a class="feature-card reveal" href="maturity.html"><span>05</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
   <a class="feature-card reveal" href="repositories.html"><span>06</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
+  <a class="feature-card reveal" href="${resolveHref("packages/README.md")}"><span>07</span><strong>底层代码包</strong><p>复用 core、security、auth 包和管理后台代码底座。</p></a>
 </section>`;
 }
 
@@ -746,7 +753,7 @@ function renderExplorePage() {
   </div>
   <div class="link-matrix">
     ${renderLinkColumn("学习", [["模块总览", "modules.html"], ["术语表", resolveHref("reference/glossary.md")], ["30 天计划", resolveHref("learning-paths/30-day-plan.md")]])}
-    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["构建计划器", "planner.html"], ["技术栈组合器", "stack-composer.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
+    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["构建计划器", "planner.html"], ["技术栈组合器", "stack-composer.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"], ["底层代码包", resolveHref("packages/README.md")]])}
     ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["安全合规", resolveHref("security-compliance/README.md")], ["部署包", resolveHref("docs-site/deploy/README.md")]])}
   </div>
 </section>`;
