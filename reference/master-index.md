@@ -24,6 +24,7 @@
 | 生成代码骨架 | [starter-generator](../starter-generator/README.md) |
 | 从软件类型进入项目启动器 | [Project Starter](https://12345mutouren.github.io/software-modules-hub/project-starter.html) |
 | 按阶段生成构建路线 | [Build Planner](https://12345mutouren.github.io/software-modules-hub/planner.html) |
+| 组合登录、数据和部署技术栈 | [Stack Composer](https://12345mutouren.github.io/software-modules-hub/stack-composer.html) |
 | 评估项目成熟度 | [Maturity Scorecard](https://12345mutouren.github.io/software-modules-hub/maturity.html) |
 | 运行参考模板 | [runnable-templates](../runnable-templates/README.md) |
 | 运行应用模板 | [runnable-apps](../runnable-apps/README.md) |
@@ -107,7 +108,7 @@
 | 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看 v1.6 发布说明 | [v1.6.0.md](../releases/v1.6.0.md) |
+| 查看 v1.7 发布说明 | [v1.7.0.md](../releases/v1.7.0.md) |
 
 ## Generate A Starter
 

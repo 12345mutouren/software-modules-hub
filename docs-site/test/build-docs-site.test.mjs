@@ -16,6 +16,7 @@ test("builds static docs site pages", () => {
   assert.ok(result.pages.includes("templates.html"));
   assert.ok(result.pages.includes("project-starter.html"));
   assert.ok(result.pages.includes("planner.html"));
+  assert.ok(result.pages.includes("stack-composer.html"));
   assert.ok(result.pages.includes("maturity.html"));
   assert.ok(result.pages.includes("repositories.html"));
   assert.ok(result.pages.includes("master-index.html"));
@@ -45,6 +46,12 @@ test("builds static docs site pages", () => {
   assert.match(plannerHtml, /planner-type/);
   assert.match(plannerHtml, /data-planner-track/);
   assert.match(plannerHtml, /把软件想法排成可执行路线/);
+
+  const composerHtml = fs.readFileSync(path.join(outDir, "stack-composer.html"), "utf8");
+  assert.match(composerHtml, /Stack Composer/);
+  assert.match(composerHtml, /composer-type/);
+  assert.match(composerHtml, /data-composer-extra/);
+  assert.match(composerHtml, /把技术选择组合成一套可执行架构/);
 
   const maturityHtml = fs.readFileSync(path.join(outDir, "maturity.html"), "utf8");
   assert.match(maturityHtml, /Maturity Scorecard/);

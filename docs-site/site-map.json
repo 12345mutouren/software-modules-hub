@@ -32,6 +32,11 @@
     "kind": "planner"
   },
   {
+    "title": "Stack Composer",
+    "output": "stack-composer.html",
+    "kind": "composer"
+  },
+  {
     "title": "Maturity Scorecard",
     "output": "maturity.html",
     "kind": "maturity"

@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.7.0 - Stack Composer
+
+Added:
+
+- Stack Composer docs-site page.
+- Interactive controls for software type, auth strategy, data layer, deployment style and optional capabilities.
+- Live recommended stack output, project focus, starter command, risk review, reference repo chips and release gates.
+- Stack options for password/OAuth, magic link, enterprise SSO, passkey, PostgreSQL, search, MongoDB, vector search, managed hosting, containers, serverless and private cloud.
+
+Updated:
+
+- Root version is now `1.7.0`.
+- Home, Explore, Start Here, Master Index and docs-site navigation now include the Stack Composer.
+- Docs-site tests now verify the generated composer page.
+- Repository verifier now requires the v1.7.0 release notes and composer assets.
+
 ## 1.6.0 - Build Planner
 
 Added:

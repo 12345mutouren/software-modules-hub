@@ -53,6 +53,12 @@ const journeys = [
     accent: "violet",
   },
   {
+    title: "组合技术栈",
+    description: "选择登录、数据、部署和附加能力，生成推荐栈。",
+    href: "stack-composer.html",
+    accent: "coral",
+  },
+  {
     title: "看可运行示例",
     description: "从 mini app、模块 demo、技术栈模板到业务应用模板。",
     href: "runnable-apps.html",
@@ -332,6 +338,171 @@ const plannerTracks = [
   },
 ];
 
+const composerProfiles = [
+  {
+    type: "saas-subscription",
+    title: "SaaS 订阅系统",
+    focus: "优先选择团队空间、订阅、用量、权限和审计都能长期演进的栈。",
+    command: "node starter-generator/create-starter.mjs --type saas-subscription --out ./my-saas --with-code",
+    gates: ["订阅状态控制功能访问", "账单 Webhook 幂等", "团队角色和用量审计可追踪"],
+  },
+  {
+    type: "admin-dashboard",
+    title: "管理后台",
+    focus: "优先选择 RBAC、审计日志、批量操作确认和数据导出边界清楚的栈。",
+    command: "node starter-generator/create-starter.mjs --type admin-dashboard --out ./my-admin --with-code",
+    gates: ["管理员越权测试覆盖", "批量操作有确认和回滚", "敏感导出有审计记录"],
+  },
+  {
+    type: "ecommerce",
+    title: "电商系统",
+    focus: "优先选择事务、库存、订单状态机、支付回调和退款规则可靠的栈。",
+    command: "node starter-generator/create-starter.mjs --type ecommerce --out ./my-store --with-code",
+    gates: ["库存扣减防超卖", "支付回调幂等", "订单、退款和优惠券状态可审计"],
+  },
+  {
+    type: "content-community",
+    title: "内容社区",
+    focus: "优先选择内容状态、审核队列、搜索、推荐和举报流程都能扩展的栈。",
+    command: "node starter-generator/create-starter.mjs --type content-community --out ./my-community --with-code",
+    gates: ["内容可见性不绕过权限", "举报和审核 SLA 清楚", "搜索索引和推荐策略可解释"],
+  },
+  {
+    type: "ai-knowledge-base",
+    title: "AI 知识库",
+    focus: "优先选择文档解析、向量索引、引用返回、权限隔离和重建索引可恢复的栈。",
+    command: "node starter-generator/create-starter.mjs --type ai-knowledge-base --out ./my-kb --with-code",
+    gates: ["回答带引用", "向量检索按空间隔离", "解析失败和重建索引可恢复"],
+  },
+  {
+    type: "enterprise-internal-tool",
+    title: "企业内部工具",
+    focus: "优先选择 SSO、组织权限、审批链、报表和审计日志成熟的栈。",
+    command: "node starter-generator/create-starter.mjs --type enterprise-internal-tool --out ./my-internal-tool --with-code",
+    gates: ["SSO 和组织同步可控", "审批链可配置", "报表、资产和工单变更有审计"],
+  },
+];
+
+const composerAuthOptions = [
+  {
+    id: "password-oauth",
+    label: "账号密码 + OAuth",
+    stack: "Auth.js / Lucia + 邮箱验证 + OAuth",
+    risk: "必须补密码重置、登录失败限流、邮箱验证和登录记录。",
+    repos: ["Auth.js", "Lucia", "Keycloak"],
+  },
+  {
+    id: "magic-link",
+    label: "Magic Link / 邮箱验证码",
+    stack: "Magic Link + 短期 token + 邮件队列",
+    risk: "要控制 token 过期、重复点击、邮件延迟和账号枚举风险。",
+    repos: ["Auth.js", "Supabase Auth", "Resend"],
+  },
+  {
+    id: "sso",
+    label: "企业 SSO",
+    stack: "OIDC / SAML SSO + SCIM 同步 + RBAC",
+    risk: "要提前定义组织同步、离职禁用、角色映射和审计留痕。",
+    repos: ["Keycloak", "BoxyHQ", "Ory"],
+  },
+  {
+    id: "passkey",
+    label: "Passkey",
+    stack: "WebAuthn / Passkey + 备用恢复方式",
+    risk: "要设计设备丢失、跨设备恢复和管理员协助流程。",
+    repos: ["SimpleWebAuthn", "Auth.js", "Ory"],
+  },
+];
+
+const composerDataOptions = [
+  {
+    id: "postgres",
+    label: "PostgreSQL",
+    stack: "PostgreSQL + Prisma / Drizzle + Redis",
+    risk: "适合大多数业务；重点是事务边界、索引、唯一约束和备份。",
+    repos: ["PostgreSQL", "Prisma", "Drizzle ORM", "Redis"],
+  },
+  {
+    id: "postgres-search",
+    label: "PostgreSQL + Search",
+    stack: "PostgreSQL + Meilisearch / Elasticsearch + Redis",
+    risk: "搜索索引要处理同步延迟、权限过滤和重建流程。",
+    repos: ["PostgreSQL", "Meilisearch", "Elasticsearch", "Redis"],
+  },
+  {
+    id: "mongo",
+    label: "MongoDB",
+    stack: "MongoDB + Redis + 对象存储",
+    risk: "适合灵活结构；要控制 schema 漂移、索引和跨集合一致性。",
+    repos: ["MongoDB", "Mongoose", "Redis", "MinIO"],
+  },
+  {
+    id: "vector",
+    label: "PostgreSQL + Vector",
+    stack: "PostgreSQL + pgvector / Qdrant + 对象存储",
+    risk: "AI 场景必须处理权限隔离、引用、重嵌入和索引重建。",
+    repos: ["pgvector", "Qdrant", "LangChain", "MinIO"],
+  },
+];
+
+const composerDeployOptions = [
+  {
+    id: "vercel-managed",
+    label: "Vercel / 托管服务",
+    stack: "Next.js + Vercel + 托管数据库 + GitHub Actions",
+    risk: "上线快；要提前确认环境变量、冷启动、队列和后台任务边界。",
+    repos: ["Vercel", "Next.js", "GitHub Actions"],
+  },
+  {
+    id: "container",
+    label: "容器部署",
+    stack: "Docker Compose / Coolify + PostgreSQL + Redis + 对象存储",
+    risk: "更可控；要补备份、监控、HTTPS、滚动发布和回滚。",
+    repos: ["Docker", "Coolify", "Traefik", "PostgreSQL"],
+  },
+  {
+    id: "serverless",
+    label: "Serverless",
+    stack: "Serverless API + 队列 + 托管数据库 + 对象存储",
+    risk: "弹性好；要控制超时、幂等、队列重试和数据库连接。",
+    repos: ["Cloudflare Workers", "Supabase", "Upstash", "SST"],
+  },
+  {
+    id: "enterprise",
+    label: "企业内网 / 私有云",
+    stack: "Kubernetes / VM + OIDC + 私有网络 + 集中日志",
+    risk: "适合企业；要处理网络边界、SSO、审计、备份和权限复核。",
+    repos: ["Kubernetes", "Keycloak", "Grafana", "OpenTelemetry"],
+  },
+];
+
+const composerExtras = [
+  {
+    id: "payments",
+    label: "支付/订阅",
+    stack: "Stripe Checkout + Webhook + 发票/退款记录",
+    risk: "支付回调必须幂等，订阅状态和权限访问必须一致。",
+    repos: ["Stripe Samples", "Lago", "Kill Bill"],
+    checked: true,
+  },
+  {
+    id: "admin",
+    label: "管理后台",
+    stack: "RBAC Admin + 审计日志 + 导出审批",
+    risk: "后台要覆盖越权测试、批量操作确认和敏感导出审计。",
+    repos: ["React Admin", "Refine", "Twenty"],
+    checked: false,
+  },
+  {
+    id: "ai-search",
+    label: "AI 检索",
+    stack: "文档解析 + 向量检索 + 引用返回 + 重建索引",
+    risk: "AI 检索不能绕过数据权限，回答必须带来源和失败兜底。",
+    repos: ["pgvector", "Qdrant", "LangChain", "LlamaIndex"],
+    checked: false,
+  },
+];
+
 const maturityLevels = [
   ["0-39", "Map", "只适合学习和梳理想法。先补产品、账号、数据和核心流程。"],
   ["40-69", "Prototype", "可以做内部演示。需要补权限、安全、测试和部署恢复能力。"],
@@ -428,6 +599,7 @@ function renderSitePage(page, repositories) {
     starter: () => renderProjectStarterPage(),
     maturity: () => renderMaturityScorecardPage(),
     planner: () => renderBuildPlannerPage(),
+    composer: () => renderStackComposerPage(),
     repositories: () => renderRepositoryPage(repositories),
     markdown: () => renderMarkdownPage(page),
   };
@@ -455,6 +627,7 @@ function renderSitePage(page, repositories) {
       <a href="templates.html">Templates</a>
       <a href="project-starter.html">Project Starter</a>
       <a href="planner.html">Build Planner</a>
+      <a href="stack-composer.html">Stack Composer</a>
       <a href="maturity.html">Scorecard</a>
       <a href="repositories.html">GitHub Index</a>
       <a href="modules.html">Modules</a>
@@ -505,8 +678,9 @@ function renderHomePage() {
   <a class="feature-card reveal" href="templates.html"><span>01</span><strong>模板选择器</strong><p>从 SaaS、电商、AI 知识库、管理后台等方向快速选型。</p></a>
   <a class="feature-card reveal" href="project-starter.html"><span>02</span><strong>项目启动器</strong><p>把软件类型转换成生成命令、启动包和上线门槛。</p></a>
   <a class="feature-card reveal" href="planner.html"><span>03</span><strong>构建计划器</strong><p>按软件类型、阶段和团队规模生成执行路线。</p></a>
-  <a class="feature-card reveal" href="maturity.html"><span>04</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
-  <a class="feature-card reveal" href="repositories.html"><span>05</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
+  <a class="feature-card reveal" href="stack-composer.html"><span>04</span><strong>技术栈组合器</strong><p>把登录、数据、部署和附加能力组合成推荐栈。</p></a>
+  <a class="feature-card reveal" href="maturity.html"><span>05</span><strong>成熟度评分</strong><p>按 10 大模块评估一个项目是否接近可发布。</p></a>
+  <a class="feature-card reveal" href="repositories.html"><span>06</span><strong>GitHub 仓库浏览页</strong><p>按模块和仓库类型筛选学习对象。</p></a>
 </section>`;
 }
 
@@ -525,7 +699,7 @@ function renderStartPage() {
   <ol class="timeline">
     <li class="reveal"><strong>建立地图</strong><span>读模块总览，知道完整软件有哪些层。</span></li>
     <li class="reveal"><strong>找参考</strong><span>进入 GitHub 仓库浏览页，按模块看代表代码库。</span></li>
-    <li class="reveal"><strong>选方向</strong><span>用模板选择器、项目启动器和构建计划器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
+    <li class="reveal"><strong>选方向</strong><span>用模板选择器、项目启动器、构建计划器和技术栈组合器确定 SaaS、电商、AI 知识库或管理后台。</span></li>
     <li class="reveal"><strong>跑示例</strong><span>用可运行模板把概念对应到代码。</span></li>
   </ol>
 </section>`;
@@ -548,8 +722,74 @@ function renderExplorePage() {
   </div>
   <div class="link-matrix">
     ${renderLinkColumn("学习", [["模块总览", "modules.html"], ["术语表", resolveHref("reference/glossary.md")], ["30 天计划", resolveHref("learning-paths/30-day-plan.md")]])}
-    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["构建计划器", "planner.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
+    ${renderLinkColumn("构建", [["项目启动器", "project-starter.html"], ["构建计划器", "planner.html"], ["技术栈组合器", "stack-composer.html"], ["成熟度评分", "maturity.html"], ["可运行应用", "runnable-apps.html"]])}
     ${renderLinkColumn("上线", [["生产模板", resolveHref("production-templates/README.md")], ["安全合规", resolveHref("security-compliance/README.md")], ["部署包", resolveHref("docs-site/deploy/README.md")]])}
+  </div>
+</section>`;
+}
+
+function renderStackComposerPage() {
+  const activeProfile = composerProfiles[0];
+  const activeAuth = composerAuthOptions[0];
+  const activeData = composerDataOptions[0];
+  const activeDeploy = composerDeployOptions[0];
+  const activeExtras = composerExtras.filter((extra) => extra.checked);
+  const activeRepos = unique([activeAuth, activeData, activeDeploy, ...activeExtras].flatMap((item) => item.repos));
+  const activeRisks = [activeAuth, activeData, activeDeploy, ...activeExtras].map((item) => item.risk);
+
+  return `
+<section class="page-hero">
+  <p class="eyebrow reveal">Stack Composer</p>
+  <h1 class="reveal">把技术选择组合成一套可执行架构。</h1>
+  <p class="reveal">选择软件类型、登录方式、数据层、部署方式和附加能力，实时得到推荐栈、风险提醒、参考仓库和生成命令。</p>
+</section>
+<section class="band composer-control-band">
+  <div class="composer-controls reveal">
+    <label for="composer-type"><span>软件类型</span><select id="composer-type">${composerProfiles.map(renderComposerProfileOption).join("")}</select></label>
+    <label for="composer-auth"><span>登录方案</span><select id="composer-auth">${composerAuthOptions.map(renderComposerOption).join("")}</select></label>
+    <label for="composer-data"><span>数据层</span><select id="composer-data">${composerDataOptions.map(renderComposerOption).join("")}</select></label>
+    <label for="composer-deploy"><span>部署方式</span><select id="composer-deploy">${composerDeployOptions.map(renderComposerOption).join("")}</select></label>
+    <fieldset class="composer-extra-list">
+      <legend>附加能力</legend>
+      ${composerExtras.map(renderComposerExtra).join("")}
+    </fieldset>
+  </div>
+  <div class="composer-summary-grid reveal" aria-live="polite">
+    <article><span>Recommended Stack</span><strong id="composer-stack">${escapeHtml([activeAuth.stack, activeData.stack, activeDeploy.stack, ...activeExtras.map((extra) => extra.stack)].join(" + "))}</strong></article>
+    <article><span>Project Focus</span><strong id="composer-focus">${escapeHtml(activeProfile.focus)}</strong></article>
+    <article><span>Build Command</span><code id="composer-command">${escapeHtml(activeProfile.command)}</code></article>
+  </div>
+</section>
+<section class="band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Decision Output</p>
+    <h2>组合结果要能直接拿去开工。</h2>
+    <p>这里输出的不是唯一答案，而是一个起点：先用推荐栈开局，再用风险和门槛检查它是否适合当前项目。</p>
+  </div>
+  <div class="composer-output-grid">
+    <article class="composer-output-card reveal">
+      <span>Risk Review</span>
+      <div id="composer-risks" class="composer-list">${activeRisks.map((risk) => `<p>${escapeHtml(risk)}</p>`).join("")}</div>
+    </article>
+    <article class="composer-output-card reveal">
+      <span>Reference Repos</span>
+      <div id="composer-repos" class="repo-chip-row">${activeRepos.map((repo) => `<a href="repositories.html">${escapeHtml(repo)}</a>`).join("")}</div>
+    </article>
+    <article class="composer-output-card reveal">
+      <span>Release Gates</span>
+      <div id="composer-gates" class="composer-list">${activeProfile.gates.map((gate) => `<p>${escapeHtml(gate)}</p>`).join("")}</div>
+    </article>
+  </div>
+</section>
+<section class="band compact-band">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Use With</p>
+    <h2>技术栈只是骨架，还要接回项目路线和成熟度检查。</h2>
+  </div>
+  <div class="link-matrix">
+    ${renderLinkColumn("规划", [["Project Starter", "project-starter.html"], ["Build Planner", "planner.html"], ["Maturity Scorecard", "maturity.html"]])}
+    ${renderLinkColumn("决策", [["账号方案", resolveHref("decision-guides/auth-decision-tree.md")], ["数据库方案", resolveHref("decision-guides/database-decision-tree.md")], ["部署方案", resolveHref("decision-guides/deployment-decision-tree.md")]])}
+    ${renderLinkColumn("实现", [["可运行模板", resolveHref("runnable-templates/README.md")], ["可运行应用", "runnable-apps.html"], ["GitHub 仓库索引", "repositories.html"]])}
   </div>
 </section>`;
 }
@@ -818,6 +1058,21 @@ function renderPlannerTrackCard(track) {
   <ul>${track.checks.map((check) => `<li>${escapeHtml(check)}</li>`).join("")}</ul>
   <div class="card-actions">${track.links.map(([label, href]) => `<a class="button compact ghost-light" href="${escapeAttr(href)}">${escapeHtml(label)}</a>`).join("")}</div>
 </article>`;
+}
+
+function renderComposerProfileOption(profile) {
+  return `<option value="${escapeAttr(profile.type)}" data-focus="${escapeAttr(profile.focus)}" data-command="${escapeAttr(profile.command)}" data-gates="${escapeAttr(profile.gates.join("|"))}">${escapeHtml(profile.title)}</option>`;
+}
+
+function renderComposerOption(option) {
+  return `<option value="${escapeAttr(option.id)}" data-stack="${escapeAttr(option.stack)}" data-risk="${escapeAttr(option.risk)}" data-repos="${escapeAttr(option.repos.join("|"))}">${escapeHtml(option.label)}</option>`;
+}
+
+function renderComposerExtra(extra) {
+  return `<label class="composer-option${extra.checked ? " active" : ""}">
+  <input type="checkbox" data-composer-extra="${escapeAttr(extra.id)}" data-stack="${escapeAttr(extra.stack)}" data-risk="${escapeAttr(extra.risk)}" data-repos="${escapeAttr(extra.repos.join("|"))}"${extra.checked ? " checked" : ""}>
+  <span>${escapeHtml(extra.label)}</span>
+</label>`;
 }
 
 function renderMaturityGate(title, description) {

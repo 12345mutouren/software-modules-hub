@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTemplateFilters();
   initProjectStarter();
   initBuildPlanner();
+  initStackComposer();
   initMaturityScorecard();
   initRepositoryBrowser();
   initConstellation();
@@ -155,6 +156,61 @@ function initBuildPlanner() {
   updatePlanner();
 }
 
+function initStackComposer() {
+  const typeSelect = qs("#composer-type");
+  const authSelect = qs("#composer-auth");
+  const dataSelect = qs("#composer-data");
+  const deploySelect = qs("#composer-deploy");
+  const extras = qsa("[data-composer-extra]");
+  const stack = qs("#composer-stack");
+  const focus = qs("#composer-focus");
+  const command = qs("#composer-command");
+  const risks = qs("#composer-risks");
+  const repos = qs("#composer-repos");
+  const gates = qs("#composer-gates");
+  if (!typeSelect || !authSelect || !dataSelect || !deploySelect || !stack || !focus || !command || !risks || !repos || !gates) return;
+
+  const optionPayload = (option) => ({
+    stack: option.dataset.stack,
+    risk: option.dataset.risk,
+    repos: splitDataList(option.dataset.repos),
+  });
+
+  const updateComposer = () => {
+    const typeOption = typeSelect.selectedOptions[0];
+    const selected = [authSelect, dataSelect, deploySelect].map((select) => optionPayload(select.selectedOptions[0]));
+    const selectedExtras = extras
+      .filter((extra) => extra.checked)
+      .map((extra) => ({
+        stack: extra.dataset.stack,
+        risk: extra.dataset.risk,
+        repos: splitDataList(extra.dataset.repos),
+      }));
+    const allItems = [...selected, ...selectedExtras];
+    const riskItems = allItems.map((item) => item.risk).filter(Boolean);
+    const repoItems = uniqueList(allItems.flatMap((item) => item.repos));
+    const gateItems = splitDataList(typeOption.dataset.gates);
+
+    stack.textContent = allItems.map((item) => item.stack).filter(Boolean).join(" + ");
+    focus.textContent = typeOption.dataset.focus;
+    command.textContent = typeOption.dataset.command;
+    risks.innerHTML = riskItems.map((risk) => `<p>${risk}</p>`).join("");
+    repos.innerHTML = repoItems.map((repo) => `<a href="repositories.html">${repo}</a>`).join("");
+    gates.innerHTML = gateItems.map((gate) => `<p>${gate}</p>`).join("");
+
+    extras.forEach((extra) => {
+      const option = extra.closest(".composer-option");
+      if (option) option.classList.toggle("active", extra.checked);
+    });
+    animateCards(qsa(".composer-output-card"));
+  };
+
+  [typeSelect, authSelect, dataSelect, deploySelect, ...extras].forEach((control) => {
+    control.addEventListener("change", updateComposer);
+  });
+  updateComposer();
+}
+
 function initMaturityScorecard() {
   const checks = qsa("[data-score-check]");
   const moduleCards = qsa("[data-score-module]");
@@ -226,6 +282,14 @@ function animateCards(cards) {
     { opacity: 0, y: 12 },
     { opacity: 1, y: 0, duration: 0.35, stagger: 0.025, ease: "power2.out" },
   );
+}
+
+function splitDataList(value = "") {
+  return value.split("|").map((item) => item.trim()).filter(Boolean);
+}
+
+function uniqueList(values) {
+  return [...new Set(values.filter(Boolean))];
 }
 
 async function initConstellation() {

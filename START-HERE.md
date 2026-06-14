@@ -28,6 +28,7 @@
 | --- | --- |
 | 从软件类型直接进入启动路径 | [Project Starter](https://12345mutouren.github.io/software-modules-hub/project-starter.html) |
 | 把当前阶段排成执行路线 | [Build Planner](https://12345mutouren.github.io/software-modules-hub/planner.html) |
+| 组合登录、数据库和部署技术栈 | [Stack Composer](https://12345mutouren.github.io/software-modules-hub/stack-composer.html) |
 | 评估项目离发布还有多远 | [Maturity Scorecard](https://12345mutouren.github.io/software-modules-hub/maturity.html) |
 | 选择软件类型 | [decision-guides/software-type-selector.md](decision-guides/software-type-selector.md) |
 | 生成项目启动包 | [starter-generator/README.md](starter-generator/README.md) |

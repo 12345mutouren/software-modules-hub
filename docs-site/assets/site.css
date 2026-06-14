@@ -240,7 +240,10 @@ a:hover {
 .link-matrix,
 .planner-controls,
 .planner-summary,
-.planner-roadmap-grid {
+.planner-roadmap-grid,
+.composer-controls,
+.composer-summary-grid,
+.composer-output-grid {
   display: grid;
   gap: 16px;
 }
@@ -257,7 +260,10 @@ a:hover {
 .link-column,
 .planner-controls,
 .planner-summary article,
-.planner-track-card {
+.planner-track-card,
+.composer-controls,
+.composer-summary-grid article,
+.composer-output-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -437,7 +443,8 @@ a:hover {
 }
 
 .repo-toolbar label,
-.planner-controls label {
+.planner-controls label,
+.composer-controls label {
   display: grid;
   gap: 5px;
   color: var(--muted);
@@ -447,7 +454,8 @@ a:hover {
 
 .repo-toolbar input,
 .repo-toolbar select,
-.planner-controls select {
+.planner-controls select,
+.composer-controls select {
   width: 100%;
   min-height: 44px;
   border: 1px solid var(--line);
@@ -674,6 +682,130 @@ a:hover {
   margin: 0;
   padding-left: 18px;
   color: #3f423c;
+}
+
+.composer-control-band {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+  gap: 18px;
+  align-items: stretch;
+  background: #ece8dc;
+}
+
+.composer-controls {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  padding: 22px;
+}
+
+.composer-controls label span,
+.composer-summary-grid span,
+.composer-output-card > span {
+  color: var(--coral);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.composer-extra-list {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  border: 0;
+  padding: 8px 0 0;
+}
+
+.composer-extra-list legend {
+  width: 100%;
+  margin-bottom: 2px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 760;
+}
+
+.composer-option {
+  display: inline-grid;
+  grid-template-columns: 18px 1fr;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f7f4ec;
+  padding: 8px 12px;
+  color: #3f423c;
+  cursor: pointer;
+}
+
+.composer-option.active {
+  border-color: var(--teal);
+  background: #eef6f2;
+}
+
+.composer-option input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--teal);
+}
+
+.composer-summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.composer-summary-grid article,
+.composer-output-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 22px;
+}
+
+.composer-summary-grid strong {
+  font-size: 1.03rem;
+  line-height: 1.45;
+}
+
+.composer-summary-grid code {
+  display: block;
+  border-radius: 6px;
+  background: #181818;
+  color: #faf7ef;
+  padding: 14px;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.composer-output-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.composer-list {
+  display: grid;
+  gap: 10px;
+}
+
+.composer-list p {
+  margin: 0;
+  border-left: 3px solid var(--teal);
+  background: #f7f4ec;
+  padding: 10px 12px;
+  color: #3f423c;
+}
+
+.repo-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.repo-chip-row a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f7f4ec;
+  padding: 7px 10px;
+  color: var(--teal);
+  font-weight: 780;
 }
 
 .score-summary-band {
@@ -944,7 +1076,9 @@ th {
   .score-meta-grid,
   .next-action-list,
   .planner-summary,
-  .planner-roadmap-grid {
+  .planner-roadmap-grid,
+  .composer-summary-grid,
+  .composer-output-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -963,6 +1097,10 @@ th {
   }
 
   .planner-control-band {
+    grid-template-columns: 1fr;
+  }
+
+  .composer-control-band {
     grid-template-columns: 1fr;
   }
 }
@@ -1002,7 +1140,11 @@ th {
   .planner-control-band,
   .planner-controls,
   .planner-summary,
-  .planner-roadmap-grid {
+  .planner-roadmap-grid,
+  .composer-control-band,
+  .composer-controls,
+  .composer-summary-grid,
+  .composer-output-grid {
     grid-template-columns: 1fr;
   }
 
