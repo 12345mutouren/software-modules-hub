@@ -12,8 +12,9 @@ test("api exposes a health endpoint", async () => {
 });
 
 test("api runs register, login, content, review, export and audit flow", async () => {
-  const api = createApiApp();
-  await api.handle({ method: "POST", path: "/auth/register", body: { email: "admin@example.com", password: "StrongPass123", roles: ["admin"] } });
+  const api = createApiApp({
+    seedUsers: [{ email: "admin@example.com", password: "StrongPass123", roles: ["admin"] }],
+  });
   await api.handle({ method: "POST", path: "/auth/register", body: { email: "writer@example.com", password: "StrongPass123" } });
 
   const adminLogin = await api.handle({ method: "POST", path: "/auth/login", body: { email: "admin@example.com", password: "StrongPass123" } });
@@ -27,6 +28,7 @@ test("api runs register, login, content, review, export and audit flow", async (
     headers: writerHeaders,
     body: { title: "<script>bad()</script>Launch Note", body: "Body" },
   });
+  const contentList = await api.handle({ method: "GET", path: "/content", headers: adminHeaders });
   const reviewed = await api.handle({
     method: "POST",
     path: `/content/${created.body.content.id}/review`,
@@ -34,16 +36,31 @@ test("api runs register, login, content, review, export and audit flow", async (
     body: { decision: "approved" },
   });
   const exportResponse = await api.handle({ method: "POST", path: "/exports", headers: adminHeaders, body: { type: "content" } });
+  const exportsList = await api.handle({ method: "GET", path: "/exports", headers: adminHeaders });
   const auditResponse = await api.handle({ method: "GET", path: "/audit-logs", headers: adminHeaders });
 
   assert.equal(created.status, 201);
   assert.match(created.body.content.title, /&lt;script&gt;/);
+  assert.equal(contentList.body.content.length, 1);
   assert.equal(reviewed.body.content.reviewStatus, "approved");
   assert.equal(exportResponse.body.exportJob.status, "queued");
+  assert.equal(exportsList.body.exportJobs.length, 1);
   assert.deepEqual(
     auditResponse.body.auditLogs.map((entry) => entry.action),
     ["user.registered", "user.registered", "session.created", "session.created", "content.created", "content.approved", "export.created"],
   );
+});
+
+test("api public registration cannot assign privileged roles", async () => {
+  const api = createApiApp();
+  const registration = await api.handle({
+    method: "POST",
+    path: "/auth/register",
+    body: { email: "fake-admin@example.com", password: "StrongPass123", roles: ["admin"] },
+  });
+
+  assert.equal(registration.status, 201);
+  assert.deepEqual(registration.body.user.roles, ["user"]);
 });
 
 test("api blocks missing auth and missing permissions", async () => {

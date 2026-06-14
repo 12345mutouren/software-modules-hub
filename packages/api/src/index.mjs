@@ -3,7 +3,7 @@ import { createAuthService } from "../../auth/src/index.mjs";
 import { createDataStore, seedDefaultRoles } from "../../data/src/index.mjs";
 import { escapeHtml } from "../../security/src/index.mjs";
 
-export function createApiApp({ now = () => new Date() } = {}) {
+export function createApiApp({ now = () => new Date(), seedUsers = [] } = {}) {
   const data = createDataStore({ now });
   seedDefaultRoles(data);
 
@@ -20,6 +20,15 @@ export function createApiApp({ now = () => new Date() } = {}) {
     auditLog,
     userRepository: data.users,
     sessionRepository: data.sessions,
+  });
+
+  seedUsers.forEach((user) => {
+    auth.register({
+      email: user.email,
+      password: user.password,
+      roles: user.roles ?? ["user"],
+      status: user.status ?? "active",
+    });
   });
 
   async function handle(request) {
@@ -44,8 +53,8 @@ export function createApiApp({ now = () => new Date() } = {}) {
       const user = auth.register({
         email: body.email,
         password: body.password,
-        roles: body.roles ?? ["user"],
-        status: body.status ?? "active",
+        roles: ["user"],
+        status: "active",
       });
       return { status: 201, body: { user } };
     }
@@ -54,6 +63,12 @@ export function createApiApp({ now = () => new Date() } = {}) {
       const body = requireBody(request, ["email", "password"]);
       const result = auth.login({ email: body.email, password: body.password, ip: request.ip });
       return { status: 200, body: result };
+    }
+
+    if (method === "GET" && pathname === "/me") {
+      const token = getBearerToken(request.headers);
+      const user = auth.requireSession(token);
+      return { status: 200, body: { user } };
     }
 
     if (method === "POST" && pathname === "/content") {
@@ -67,6 +82,12 @@ export function createApiApp({ now = () => new Date() } = {}) {
       });
       auditLog.record({ actorId: user.id, action: "content.created", resourceType: "content", resourceId: content.id });
       return { status: 201, body: { content } };
+    }
+
+    if (method === "GET" && pathname === "/content") {
+      const { user, readAll } = requireContentRead(request);
+      const content = data.content.list((item) => readAll || item.authorId === user.id);
+      return { status: 200, body: { content } };
     }
 
     const reviewMatch = pathname.match(/^\/content\/([^/]+)\/review$/);
@@ -96,6 +117,11 @@ export function createApiApp({ now = () => new Date() } = {}) {
       return { status: 201, body: { exportJob } };
     }
 
+    if (method === "GET" && pathname === "/exports") {
+      requirePermission(request, "export:create");
+      return { status: 200, body: { exportJobs: data.exportJobs.list() } };
+    }
+
     if (method === "GET" && pathname === "/audit-logs") {
       requirePermission(request, "audit:read");
       return { status: 200, body: { auditLogs: auditLog.list() } };
@@ -107,6 +133,17 @@ export function createApiApp({ now = () => new Date() } = {}) {
   function requirePermission(request, permission) {
     const token = getBearerToken(request.headers);
     return auth.requirePermission(token, permission);
+  }
+
+  function requireContentRead(request) {
+    try {
+      return { user: requirePermission(request, "content:read:all"), readAll: true };
+    } catch (error) {
+      if (error instanceof AppError && error.code === "FORBIDDEN") {
+        return { user: requirePermission(request, "content:read:own"), readAll: false };
+      }
+      throw error;
+    }
   }
 
   return { handle, data };

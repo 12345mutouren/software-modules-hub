@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.1.0 - Real Web Admin App
+
+Added:
+
+- `apps/web-admin-app` with a dependency-light Node.js HTTP server.
+- Browser admin UI for login, content creation, content review, export jobs and audit logs.
+- Static HTML, CSS and JavaScript admin workspace.
+- Demo admin and writer accounts seeded through the API foundation.
+- HTTP tests for static assets, admin workflow and permission denial.
+- Root `test:web-admin` script.
+
+Updated:
+
+- Root version is now `2.1.0`.
+- Public registration in the API now always creates normal users instead of accepting privileged roles.
+- API package now exposes `/me`, `GET /content` and `GET /exports`.
+- README, Start Here, Master Index, Project Status and Final Review now describe the web admin app.
+- Repository verifier now requires the web admin app and v2.1.0 release notes.
+- Root `npm test` now runs web admin tests.
+
 ## 2.0.0 - Data And API Foundation
 
 Added:

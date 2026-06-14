@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v2.0.0`
+Current milestone: `v2.1.0`
 
-Status: `v2.0.0` data and API foundation release complete.
+Status: `v2.1.0` real web admin app release complete.
 
 ## What This Repository Is
 
@@ -43,6 +43,7 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Data foundation package with User, Session, Role, AuditLog, Content and ExportJob repositories.
 - API foundation package with health, auth, content, review, export and audit-log routes.
 - Admin code foundation app that reuses the packages for registration, login, content review, export jobs and audit logs.
+- Web admin app that serves a browser UI over the API foundation for login, content review, exports and audit logs.
 - Maturity Scorecard page that scores readiness across the 10 software modules and suggests priority gaps.
 
 ## What This Repository Is Not
@@ -70,6 +71,7 @@ The root test runs:
 - Runnable app template tests.
 - Code foundation package tests.
 - Data and API foundation tests.
+- Web admin app HTTP tests.
 - Deployment playground smoke check.
 - Docs site tests.
 
@@ -94,3 +96,4 @@ https://12345mutouren.github.io/software-modules-hub/
 - [v1.8.0](releases/v1.8.0.md)
 - [v1.9.0](releases/v1.9.0.md)
 - [v2.0.0](releases/v2.0.0.md)
+- [v2.1.0](releases/v2.1.0.md)

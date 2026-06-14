@@ -30,6 +30,7 @@ npm run test:data-api
 - `api` 组合 `auth`、`security` 和 `data`，但不绑定具体 Web 框架。
 - 应用通过明确权限字符串调用底层包，例如 `content:review`、`export:create`、`audit:read`。
 
-## First App
+## Apps
 
 - [admin-code-foundation](../apps/admin-code-foundation/README.md)
+- [web-admin-app](../apps/web-admin-app/README.md)

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Modules Admin</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <strong>Software Modules Admin</strong>
+        <span id="sessionLabel">未登录</span>
+      </div>
+      <nav>
+        <button id="quickAdmin" type="button">Admin</button>
+        <button id="quickWriter" type="button">Writer</button>
+        <button id="logoutButton" type="button">退出</button>
+      </nav>
+    </header>
+
+    <main class="workspace">
+      <section class="panel login-panel">
+        <div class="panel-heading">
+          <span>Session</span>
+          <h1>管理后台</h1>
+        </div>
+        <form id="loginForm" class="form-grid">
+          <label>
+            邮箱
+            <input name="email" type="email" value="admin@example.com" autocomplete="username" />
+          </label>
+          <label>
+            密码
+            <input name="password" type="password" value="StrongPass123" autocomplete="current-password" />
+          </label>
+          <button type="submit">登录</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <span>Content</span>
+          <h2>内容审核</h2>
+        </div>
+        <form id="contentForm" class="form-grid">
+          <label>
+            标题
+            <input name="title" value="Launch Note" />
+          </label>
+          <label class="wide">
+            正文
+            <textarea name="body">Ship the data and API foundation.</textarea>
+          </label>
+          <button type="submit">创建内容</button>
+        </form>
+        <div id="contentList" class="table-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <span>Exports</span>
+          <h2>导出任务</h2>
+        </div>
+        <form id="exportForm" class="form-grid compact">
+          <label>
+            类型
+            <select name="type">
+              <option value="content">content</option>
+              <option value="audit">audit</option>
+              <option value="users">users</option>
+            </select>
+          </label>
+          <button type="submit">创建导出</button>
+        </form>
+        <div id="exportList" class="table-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <span>Audit</span>
+          <h2>审计日志</h2>
+        </div>
+        <div class="toolbar">
+          <button id="refreshButton" type="button">刷新</button>
+        </div>
+        <div id="auditList" class="table-list"></div>
+      </section>
+
+      <section class="console-panel">
+        <strong>Response</strong>
+        <pre id="output">{}</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

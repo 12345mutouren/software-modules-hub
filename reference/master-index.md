@@ -32,6 +32,7 @@
 | 查看数据层代码包 | [packages/data](../packages/data/README.md) |
 | 查看 API 层代码包 | [packages/api](../packages/api/README.md) |
 | 跑管理后台代码底座 | [admin-code-foundation](../apps/admin-code-foundation/README.md) |
+| 打开 Web 管理后台 | [web-admin-app](../apps/web-admin-app/README.md) |
 | 选择生产架构模板 | [production-templates](../production-templates/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
@@ -112,7 +113,7 @@
 | 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看 v2.0 发布说明 | [v2.0.0.md](../releases/v2.0.0.md) |
+| 查看 v2.1 发布说明 | [v2.1.0.md](../releases/v2.1.0.md) |
 
 ## Generate A Starter
 

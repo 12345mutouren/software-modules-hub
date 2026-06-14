@@ -180,7 +180,7 @@ requireCount("Security compliance files", "security-compliance", (file) => file.
 requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
 requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
 requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
-requireCount("Release files", "releases", (file) => file.endsWith(".md"), 11);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 12);
 requireCount("Runnable template files", "runnable-templates/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Runnable app index tests", "runnable-apps/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Maintenance refresh plans", "maintenance/refresh-plans", (file) => file.endsWith(".md"), 3);
@@ -195,9 +195,10 @@ requireText("package.json", "\"build:docs-site\"");
 requireText("package.json", "\"test:docs-site\"");
 requireText("package.json", "\"test:code-foundation\"");
 requireText("package.json", "\"test:data-api\"");
+requireText("package.json", "\"test:web-admin\"");
 requireText("package.json", "\"audit:freshness\"");
 requireText("package.json", "\"check:links\"");
-requireText("package.json", "\"version\": \"2.0.0\"");
+requireText("package.json", "\"version\": \"2.1.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
 requireText("starter-generator/README.md", "Optional Code Scaffold");
 requireText("starter-generator/create-starter.mjs", "--with-code");
@@ -212,8 +213,8 @@ requireText("production-templates/README.md", "## Templates");
 requireText("security-compliance/README.md", "## Files");
 requireText("ops-production/README.md", "## Files");
 requireText("auditing/README.md", "## Audit Types");
-requireText("PROJECT-STATUS.md", "v2.0.0");
-requireText("FINAL-REVIEW.md", "Ready for v2.0.0 release");
+requireText("PROJECT-STATUS.md", "v2.1.0");
+requireText("FINAL-REVIEW.md", "Ready for v2.1.0 release");
 requireText("runnable-templates/README.md", "## Templates");
 requireText("runnable-apps/README.md", "## Apps");
 requireText("deployment-playground/README.md", "## Run Smoke Check");
@@ -246,8 +247,11 @@ requireText("packages/auth/src/index.mjs", "createAuthService");
 requireText("packages/data/src/index.mjs", "createDataStore");
 requireText("packages/api/src/index.mjs", "createApiApp");
 requireText("apps/admin-code-foundation/src/app.mjs", "createAdminCodeFoundationApp");
+requireText("apps/web-admin-app/src/server.mjs", "createWebAdminServer");
+requireText("apps/web-admin-app/public/app.js", "refreshAuditLogs");
 requireText("releases/v1.9.0.md", "Code Foundation");
 requireText("releases/v2.0.0.md", "Data And API Foundation");
+requireText("releases/v2.1.0.md", "Real Web Admin App");
 requireText("maintenance/README.md", "## Automated Check");
 requireText("maintenance/online-audits/github-repository-index-2026-06-04.md", "GitHub REST API");
 
@@ -329,6 +333,13 @@ requireFiles([
   "apps/admin-code-foundation/package.json",
   "apps/admin-code-foundation/src/app.mjs",
   "apps/admin-code-foundation/test/app.test.mjs",
+  "apps/web-admin-app/README.md",
+  "apps/web-admin-app/package.json",
+  "apps/web-admin-app/src/server.mjs",
+  "apps/web-admin-app/public/index.html",
+  "apps/web-admin-app/public/styles.css",
+  "apps/web-admin-app/public/app.js",
+  "apps/web-admin-app/test/server.test.mjs",
   "deployment-playground/docker-compose.yml",
   "deployment-playground/.env.example",
   "deployment-playground/smoke-check.mjs",
@@ -378,6 +389,7 @@ requireFiles([
   "releases/v1.8.0.md",
   "releases/v1.9.0.md",
   "releases/v2.0.0.md",
+  "releases/v2.1.0.md",
 ]);
 
 if (failures.length > 0) {
@@ -390,4 +402,4 @@ if (failures.length > 0) {
 
 console.log("Repository verification passed.");
 console.log(`Checked ${moduleDirs.length} modules, ${completeApps.length} app templates, ${caseStudies.length} case studies.`);
-console.log(`Checked ${diagramFiles.length} architecture diagrams, production templates, security, operations, audits, module demos, starter generator, code foundation packages, data/API foundation, and root quality gates.`);
+console.log(`Checked ${diagramFiles.length} architecture diagrams, production templates, security, operations, audits, module demos, starter generator, code foundation packages, data/API foundation, web admin app, and root quality gates.`);

@@ -43,6 +43,7 @@
 - [数据层代码包](packages/data/README.md)
 - [API 层代码包](packages/api/README.md)
 - [管理后台代码底座](apps/admin-code-foundation/README.md)
+- [Web 管理后台应用](apps/web-admin-app/README.md)
 - [项目生成器](starter-generator/README.md)
 - [真实项目案例研究](case-studies/README.md)
 - [架构图](architecture/README.md)
@@ -65,7 +66,7 @@
 - [治理说明](GOVERNANCE.md)
 - [项目状态](PROJECT-STATUS.md)
 - [最终审查](FINAL-REVIEW.md)
-- [v2.0.0 发布说明](releases/v2.0.0.md)
+- [v2.1.0 发布说明](releases/v2.1.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -102,6 +103,7 @@
 - 项目启动：产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记模板。
 - 可运行材料：模块 Demo、完整应用方向模板、项目生成器、可运行技术栈模板和可运行业务应用模板。
 - 底层代码：`core`、`security`、`auth`、`data`、`api` 五个可测试代码包，以及复用这些包的管理后台代码底座。
+- Web 应用：一个可启动的管理后台，浏览器里可登录、创建内容、审核、导出和查看审计日志。
 - 项目启动：项目启动器、构建计划器、技术栈组合器、模板选择器、生成命令、启动包输出说明和第一版发布门槛。
 - AI 产品选型：CopilotKit/AG-UI 等 AI Agent UI、Generative UI 和人机确认参考。
 - 成熟度评估：10 大模块 readiness scorecard、实时评分、等级判断和优先补强建议。

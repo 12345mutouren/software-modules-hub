@@ -26,6 +26,7 @@
 | `packages/data/README.md` | 数据模型和 Repository 层 |
 | `packages/api/README.md` | HTTP 风格 API 路由、校验、权限和错误响应 |
 | `apps/admin-code-foundation/README.md` | 复用底层包的管理后台代码底座 |
+| `apps/web-admin-app/README.md` | 可启动的浏览器管理后台 |
 
 ## Files
 
