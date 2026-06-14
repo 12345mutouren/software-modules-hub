@@ -180,7 +180,7 @@ requireCount("Security compliance files", "security-compliance", (file) => file.
 requireCount("Operations production files", "ops-production", (file) => file.endsWith(".md"), 6);
 requireCount("Audit system files", "auditing", (file) => file.endsWith(".md"), 7);
 requireCount("GitHub issue templates", ".github/ISSUE_TEMPLATE", (file) => file.endsWith(".md"), 3);
-requireCount("Release files", "releases", (file) => file.endsWith(".md"), 9);
+requireCount("Release files", "releases", (file) => file.endsWith(".md"), 10);
 requireCount("Runnable template files", "runnable-templates/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Runnable app index tests", "runnable-apps/test", (file) => file.endsWith(".mjs"), 1);
 requireCount("Maintenance refresh plans", "maintenance/refresh-plans", (file) => file.endsWith(".md"), 3);
@@ -193,9 +193,10 @@ requireText("package.json", "\"test:runnable-apps\"");
 requireText("package.json", "\"test:deployment-playground\"");
 requireText("package.json", "\"build:docs-site\"");
 requireText("package.json", "\"test:docs-site\"");
+requireText("package.json", "\"test:code-foundation\"");
 requireText("package.json", "\"audit:freshness\"");
 requireText("package.json", "\"check:links\"");
-requireText("package.json", "\"version\": \"1.8.0\"");
+requireText("package.json", "\"version\": \"1.9.0\"");
 requireText("starter-generator/README.md", "## Supported Types");
 requireText("starter-generator/README.md", "Optional Code Scaffold");
 requireText("starter-generator/create-starter.mjs", "--with-code");
@@ -210,8 +211,8 @@ requireText("production-templates/README.md", "## Templates");
 requireText("security-compliance/README.md", "## Files");
 requireText("ops-production/README.md", "## Files");
 requireText("auditing/README.md", "## Audit Types");
-requireText("PROJECT-STATUS.md", "v1.8.0");
-requireText("FINAL-REVIEW.md", "Ready for v1.8.0 release");
+requireText("PROJECT-STATUS.md", "v1.9.0");
+requireText("FINAL-REVIEW.md", "Ready for v1.9.0 release");
 requireText("runnable-templates/README.md", "## Templates");
 requireText("runnable-apps/README.md", "## Apps");
 requireText("deployment-playground/README.md", "## Run Smoke Check");
@@ -237,6 +238,12 @@ requireText("docs-site/assets/site.js", "initMaturityScorecard");
 requireText("catalog/github-repositories.md", "CopilotKit/CopilotKit");
 requireText("modules/05-frontend-client/README.md", "CopilotKit/CopilotKit");
 requireText("releases/v1.8.0.md", "CopilotKit");
+requireText("packages/README.md", "Code Foundation Packages");
+requireText("packages/core/src/index.mjs", "createMemoryRepository");
+requireText("packages/security/src/index.mjs", "hashPassword");
+requireText("packages/auth/src/index.mjs", "createAuthService");
+requireText("apps/admin-code-foundation/src/app.mjs", "createAdminCodeFoundationApp");
+requireText("releases/v1.9.0.md", "Code Foundation");
 requireText("maintenance/README.md", "## Automated Check");
 requireText("maintenance/online-audits/github-repository-index-2026-06-04.md", "GitHub REST API");
 
@@ -296,6 +303,20 @@ requireFiles([
   "runnable-apps/admin-dashboard-app/src/app.mjs",
   "runnable-apps/admin-dashboard-app/test/app.test.mjs",
   "runnable-apps/test/runnable-apps.test.mjs",
+  "packages/README.md",
+  "packages/core/package.json",
+  "packages/core/src/index.mjs",
+  "packages/core/test/core.test.mjs",
+  "packages/security/package.json",
+  "packages/security/src/index.mjs",
+  "packages/security/test/security.test.mjs",
+  "packages/auth/package.json",
+  "packages/auth/src/index.mjs",
+  "packages/auth/test/auth.test.mjs",
+  "apps/admin-code-foundation/README.md",
+  "apps/admin-code-foundation/package.json",
+  "apps/admin-code-foundation/src/app.mjs",
+  "apps/admin-code-foundation/test/app.test.mjs",
   "deployment-playground/docker-compose.yml",
   "deployment-playground/.env.example",
   "deployment-playground/smoke-check.mjs",
@@ -342,6 +363,8 @@ requireFiles([
   "releases/v1.5.0.md",
   "releases/v1.6.0.md",
   "releases/v1.7.0.md",
+  "releases/v1.8.0.md",
+  "releases/v1.9.0.md",
 ]);
 
 if (failures.length > 0) {
@@ -354,4 +377,4 @@ if (failures.length > 0) {
 
 console.log("Repository verification passed.");
 console.log(`Checked ${moduleDirs.length} modules, ${completeApps.length} app templates, ${caseStudies.length} case studies.`);
-console.log(`Checked ${diagramFiles.length} architecture diagrams, production templates, security, operations, audits, module demos, starter generator, and root quality gates.`);
+console.log(`Checked ${diagramFiles.length} architecture diagrams, production templates, security, operations, audits, module demos, starter generator, code foundation packages, and root quality gates.`);

@@ -28,6 +28,8 @@
 | 评估项目成熟度 | [Maturity Scorecard](https://12345mutouren.github.io/software-modules-hub/maturity.html) |
 | 运行参考模板 | [runnable-templates](../runnable-templates/README.md) |
 | 运行应用模板 | [runnable-apps](../runnable-apps/README.md) |
+| 复用底层代码包 | [packages](../packages/README.md) |
+| 跑管理后台代码底座 | [admin-code-foundation](../apps/admin-code-foundation/README.md) |
 | 选择生产架构模板 | [production-templates](../production-templates/README.md) |
 | 选择软件类型 | [software-type-selector.md](../decision-guides/software-type-selector.md) |
 | 选择账号方案 | [auth-decision-tree.md](../decision-guides/auth-decision-tree.md) |
@@ -108,7 +110,7 @@
 | 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看 v1.8 发布说明 | [v1.8.0.md](../releases/v1.8.0.md) |
+| 查看 v1.9 发布说明 | [v1.9.0.md](../releases/v1.9.0.md) |
 
 ## Generate A Starter
 

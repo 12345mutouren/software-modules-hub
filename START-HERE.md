@@ -44,6 +44,8 @@
 | 逐个运行 10 大模块 demo | [examples/module-demos/README.md](examples/module-demos/README.md) |
 | 看技术栈参考模板 | [runnable-templates/README.md](runnable-templates/README.md) |
 | 看业务应用模板 | [runnable-apps/README.md](runnable-apps/README.md) |
+| 看可复用底层代码包 | [packages/README.md](packages/README.md) |
+| 跑管理后台代码底座 | [apps/admin-code-foundation/README.md](apps/admin-code-foundation/README.md) |
 | 本地试部署流程 | [deployment-playground/README.md](deployment-playground/README.md) |
 
 ## I Want To Prepare For Launch

@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v1.8.0`
+Current milestone: `v1.9.0`
 
-Status: `v1.8.0` AI frontend stack reference release complete.
+Status: `v1.9.0` code foundation release complete.
 
 ## What This Repository Is
 
@@ -39,6 +39,8 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Build Planner page that turns software type, current stage and team size into an execution roadmap.
 - Stack Composer page that turns auth, data, deployment, AI frontend layer and optional capabilities into a recommended technical stack.
 - CopilotKit / AG-UI reference coverage for AI Agent UI and Generative UI frontend stacks.
+- Code foundation packages for core errors, repositories, audit logs, password hashing, rate limiting, auth sessions and RBAC permission checks.
+- Admin code foundation app that reuses the packages for registration, login, content review, export jobs and audit logs.
 - Maturity Scorecard page that scores readiness across the 10 software modules and suggests priority gaps.
 
 ## What This Repository Is Not
@@ -64,6 +66,7 @@ The root test runs:
 - Starter generator tests.
 - Runnable template tests.
 - Runnable app template tests.
+- Code foundation package tests.
 - Deployment playground smoke check.
 - Docs site tests.
 
@@ -86,3 +89,4 @@ https://12345mutouren.github.io/software-modules-hub/
 - [v1.6.0](releases/v1.6.0.md)
 - [v1.7.0](releases/v1.7.0.md)
 - [v1.8.0](releases/v1.8.0.md)
+- [v1.9.0](releases/v1.9.0.md)

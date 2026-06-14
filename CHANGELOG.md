@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.9.0 - Code Foundation
+
+Added:
+
+- `packages/core` with typed app errors, assertions, ID factory, system clock, in-memory repository and audit log.
+- `packages/security` with password policy, scrypt password hashing, verification, login rate limiting and HTML escaping.
+- `packages/auth` with registration, login, sessions, RBAC permission checks and audit events.
+- `apps/admin-code-foundation` showing the packages reused by a management workflow.
+- Root `test:code-foundation` script.
+
+Updated:
+
+- Root version is now `1.9.0`.
+- README, Start Here, Master Index, Project Status and Final Review now describe the code foundation.
+- Repository verifier now requires the code foundation packages, admin app and v1.9.0 release notes.
+- Root `npm test` now runs code foundation tests.
+
 ## 1.8.0 - AI Frontend Stack Reference
 
 Added:

@@ -18,6 +18,13 @@
 | `modules.html` | 10 大模块说明 |
 | `runnable-apps.html` | 可运行应用模板入口 |
 
+## Code Foundation
+
+| Entry | Purpose |
+| --- | --- |
+| `packages/README.md` | 可复用底层代码包：core、security、auth |
+| `apps/admin-code-foundation/README.md` | 复用底层包的管理后台代码底座 |
+
 ## Files
 
 | File | Purpose |

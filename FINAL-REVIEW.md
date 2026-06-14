@@ -4,7 +4,7 @@ Date: 2026-06-14
 
 ## Scope
 
-Final v1.8 review for the AI frontend stack reference release.
+Final v1.9 review for the code foundation release.
 
 ## Review Areas
 
@@ -39,6 +39,10 @@ Final v1.8 review for the AI frontend stack reference release.
 | Runnable ecommerce app template | Ready |
 | Runnable AI knowledge base app template | Ready |
 | Runnable admin dashboard app template | Ready |
+| Core package | Ready |
+| Security package | Ready |
+| Auth package | Ready |
+| Admin code foundation app | Ready |
 | Docs site deployment package | Ready |
 | Online GitHub catalog audit | Ready |
 | Productized docs-site homepage | Ready |
@@ -79,8 +83,9 @@ Final v1.8 review for the AI frontend stack reference release.
 - Build Planner routes are planning guidance and still need project-specific sequencing judgment.
 - Stack Composer outputs are starting recommendations and still require project-specific architecture review.
 - AI frontend frameworks still require project-specific security review for tool permissions, state writes and human confirmation.
+- Code foundation packages are intentionally dependency-light and use in-memory repositories so the boundaries stay clear before adding PostgreSQL, Redis or framework adapters.
 - Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v1.8.0 release after local and GitHub Actions verification.
+Ready for v1.9.0 release after local and GitHub Actions verification.
