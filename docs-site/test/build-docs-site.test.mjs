@@ -31,7 +31,7 @@ test("builds static docs site pages", () => {
   assert.match(indexHtml, /module-constellation/);
   assert.match(indexHtml, /gsap/);
   assert.match(indexHtml, /底层代码包/);
-  assert.match(indexHtml, /core、security、auth、data、api/);
+  assert.match(indexHtml, /core、security、auth、database、data、api/);
   assert.match(indexHtml, /Web 管理后台/);
 
   const repositoriesHtml = fs.readFileSync(path.join(outDir, "repositories.html"), "utf8");

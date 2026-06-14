@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.2.0 - Professional Backend Foundation
+
+Added:
+
+- `packages/database` with migration ledger, table registry, unique indexes and transaction rollback.
+- Memory and JSON file database adapters with the same storage contract.
+- Generic database repository factory for durable data stores.
+- Durable database tests for database, data, API and web admin layers.
+- API service layer for content, export and audit business logic.
+- `DATA_FILE` support for the web admin app.
+- Root `test:database` script.
+
+Updated:
+
+- Root version is now `2.2.0`.
+- Data package can now run on database adapters instead of only in-memory repositories.
+- Default role seeding is idempotent for persistent databases.
+- API can run against durable storage across app restarts.
+- README, Start Here, Master Index, Project Status and Final Review now describe the database foundation.
+- Repository verifier now requires the database package and v2.2.0 release notes.
+- Root `npm test` now runs database foundation tests.
+
 ## 2.1.0 - Real Web Admin App
 
 Added:

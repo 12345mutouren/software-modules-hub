@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { test } from "node:test";
 
 import { createSystemClock } from "../../core/src/index.mjs";
+import { createJsonFileDatabase } from "../../database/src/index.mjs";
 import { createDataStore, dataModels, seedDefaultRoles } from "../src/index.mjs";
 
 test("data store exposes the expected software models", () => {
@@ -44,8 +48,11 @@ test("repositories update records through the same validation rules", () => {
 test("seedDefaultRoles creates role records for RBAC", () => {
   const store = createDataStore();
   const roles = seedDefaultRoles(store);
+  const repeatedRoles = seedDefaultRoles(store);
 
   assert.equal(roles.length, 4);
+  assert.equal(repeatedRoles.length, 4);
+  assert.equal(store.roles.list().length, 4);
   assert.deepEqual(store.roles.find((role) => role.name === "admin").permissions, [
     "content:create",
     "content:read:all",
@@ -53,4 +60,22 @@ test("seedDefaultRoles creates role records for RBAC", () => {
     "export:create",
     "audit:read",
   ]);
+});
+
+test("data store can run on a durable database adapter", () => {
+  const filePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-data-")), "app.json");
+  const firstStore = createDataStore({ database: createJsonFileDatabase({ filePath }) });
+  const user = firstStore.users.create({
+    email: "durable@example.com",
+    roles: ["user"],
+    status: "active",
+    passwordHash: "hash",
+    passwordSalt: "salt",
+  });
+  firstStore.content.create({ authorId: user.id, title: "Persisted", body: "Body" });
+
+  const secondStore = createDataStore({ database: createJsonFileDatabase({ filePath }) });
+
+  assert.equal(secondStore.users.get(user.id).email, "durable@example.com");
+  assert.equal(secondStore.content.list().length, 1);
 });

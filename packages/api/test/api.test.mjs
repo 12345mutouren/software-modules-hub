@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { test } from "node:test";
 
+import { createJsonFileDatabase } from "../../database/src/index.mjs";
 import { createApiApp } from "../src/index.mjs";
 
 test("api exposes a health endpoint", async () => {
@@ -61,6 +65,27 @@ test("api public registration cannot assign privileged roles", async () => {
 
   assert.equal(registration.status, 201);
   assert.deepEqual(registration.body.user.roles, ["user"]);
+});
+
+test("api can run against a durable database adapter", async () => {
+  const filePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-api-")), "app.json");
+  const firstApi = createApiApp({
+    database: createJsonFileDatabase({ filePath }),
+    seedUsers: [{ email: "admin@example.com", password: "StrongPass123", roles: ["admin"] }],
+  });
+  const adminLogin = await firstApi.handle({ method: "POST", path: "/auth/login", body: { email: "admin@example.com", password: "StrongPass123" } });
+  await firstApi.handle({
+    method: "POST",
+    path: "/content",
+    headers: bearer(adminLogin.body.session.token),
+    body: { title: "Durable Note", body: "Stored on disk" },
+  });
+
+  const secondApi = createApiApp({ database: createJsonFileDatabase({ filePath }) });
+  const contentList = await secondApi.handle({ method: "GET", path: "/content", headers: bearer(adminLogin.body.session.token) });
+
+  assert.equal(contentList.status, 200);
+  assert.equal(contentList.body.content[0].title, "Durable Note");
 });
 
 test("api blocks missing auth and missing permissions", async () => {

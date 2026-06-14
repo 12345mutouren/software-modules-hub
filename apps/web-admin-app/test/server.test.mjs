@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { after, before, test } from "node:test";
 
-import { createWebAdminServer } from "../src/server.mjs";
+import { createDemoApi, createWebAdminServer } from "../src/server.mjs";
 
 let server;
 let baseUrl;
@@ -17,7 +20,11 @@ after(async () => {
 });
 
 async function request(path, { method = "GET", token, body } = {}) {
-  const response = await fetch(`${baseUrl}${path}`, {
+  return requestFrom(baseUrl, path, { method, token, body });
+}
+
+async function requestFrom(url, path, { method = "GET", token, body } = {}) {
+  const response = await fetch(`${url}${path}`, {
     method,
     headers: {
       "content-type": "application/json",
@@ -98,4 +105,38 @@ test("writer cannot access admin-only surfaces", async () => {
 
   assert.equal(exportDenied.status, 403);
   assert.equal(auditDenied.status, 403);
+});
+
+test("web app can use a durable database file", async () => {
+  const dataFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-web-")), "app.json");
+  const durableServer = createWebAdminServer({ api: createDemoApi({ dataFile }) });
+  await new Promise((resolve) => durableServer.listen(0, resolve));
+  const durableUrl = `http://127.0.0.1:${durableServer.address().port}`;
+
+  try {
+    const adminLogin = await requestFrom(durableUrl, "/api/auth/login", {
+      method: "POST",
+      body: { email: "admin@example.com", password: "StrongPass123" },
+    });
+    await requestFrom(durableUrl, "/api/content", {
+      method: "POST",
+      token: adminLogin.body.session.token,
+      body: { title: "Durable admin item", body: "Stored through web server" },
+    });
+
+    const restartedServer = createWebAdminServer({ api: createDemoApi({ dataFile }) });
+    await new Promise((resolve) => restartedServer.listen(0, resolve));
+
+    try {
+      const restartedUrl = `http://127.0.0.1:${restartedServer.address().port}`;
+      const content = await requestFrom(restartedUrl, "/api/content", { token: adminLogin.body.session.token });
+
+      assert.equal(content.status, 200);
+      assert.equal(content.body.content[0].title, "Durable admin item");
+    } finally {
+      await new Promise((resolve) => restartedServer.close(resolve));
+    }
+  } finally {
+    await new Promise((resolve) => durableServer.close(resolve));
+  }
 });

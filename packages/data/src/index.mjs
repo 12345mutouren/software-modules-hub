@@ -1,4 +1,5 @@
 import { assertCondition, createMemoryRepository } from "../../core/src/index.mjs";
+import { createDatabaseRepository, databaseTables, runMigrations } from "../../database/src/index.mjs";
 
 export const dataModels = {
   User: ["email", "roles", "status", "passwordHash", "passwordSalt"],
@@ -9,14 +10,18 @@ export const dataModels = {
   ExportJob: ["type", "status", "requestedBy"],
 };
 
-export function createDataStore({ now = () => new Date() } = {}) {
+export function createDataStore({ now = () => new Date(), database } = {}) {
+  if (database) {
+    runMigrations(database, { now });
+  }
+
   return {
-    users: createUserRepository({ now }),
-    sessions: createSessionRepository({ now }),
-    roles: createRoleRepository({ now }),
-    auditLogs: createAuditLogRepository({ now }),
-    content: createContentRepository({ now }),
-    exportJobs: createExportJobRepository({ now }),
+    users: createUserRepository({ now, database }),
+    sessions: createSessionRepository({ now, database }),
+    roles: createRoleRepository({ now, database }),
+    auditLogs: createAuditLogRepository({ now, database }),
+    content: createContentRepository({ now, database }),
+    exportJobs: createExportJobRepository({ now, database }),
   };
 }
 
@@ -28,35 +33,37 @@ export function seedDefaultRoles(store) {
     { name: "super_admin", permissions: ["*"] },
   ];
 
-  return roles.map((role) => store.roles.create(role));
+  return roles.map((role) => store.roles.find((item) => item.name === role.name) ?? store.roles.create(role));
 }
 
-export function createUserRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "usr", now, validate: validateUser });
+export function createUserRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.users, now, database, validate: validateUser });
 }
 
-export function createSessionRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "ses", now, validate: validateSession });
+export function createSessionRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.sessions, now, database, validate: validateSession });
 }
 
-export function createRoleRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "rol", now, validate: validateRole });
+export function createRoleRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.roles, now, database, validate: validateRole });
 }
 
-export function createAuditLogRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "aud", now, validate: validateAuditLog });
+export function createAuditLogRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.auditLogs, now, database, validate: validateAuditLog });
 }
 
-export function createContentRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "cnt", now, validate: validateContent });
+export function createContentRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.content, now, database, validate: validateContent });
 }
 
-export function createExportJobRepository({ now = () => new Date() } = {}) {
-  return createTypedRepository({ idPrefix: "exp", now, validate: validateExportJob });
+export function createExportJobRepository({ now = () => new Date(), database } = {}) {
+  return createTypedRepository({ table: databaseTables.exportJobs, now, database, validate: validateExportJob });
 }
 
-function createTypedRepository({ idPrefix, now, validate }) {
-  const repository = createMemoryRepository({ idPrefix, now });
+function createTypedRepository({ table, now, database, validate }) {
+  const repository = database
+    ? createDatabaseRepository({ database, tableName: table.name, idPrefix: table.idPrefix, now, validate })
+    : createMemoryRepository({ idPrefix: table.idPrefix, now });
 
   return {
     create(input) {

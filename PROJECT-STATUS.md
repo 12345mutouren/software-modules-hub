@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v2.1.0`
+Current milestone: `v2.2.0`
 
-Status: `v2.1.0` real web admin app release complete.
+Status: `v2.2.0` professional backend foundation release in progress.
 
 ## What This Repository Is
 
@@ -40,8 +40,9 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Stack Composer page that turns auth, data, deployment, AI frontend layer and optional capabilities into a recommended technical stack.
 - CopilotKit / AG-UI reference coverage for AI Agent UI and Generative UI frontend stacks.
 - Code foundation packages for core errors, repositories, audit logs, password hashing, rate limiting, auth sessions and RBAC permission checks.
+- Database foundation package with migrations, table registry, unique indexes, transaction rollback, memory adapter and JSON file persistence adapter.
 - Data foundation package with User, Session, Role, AuditLog, Content and ExportJob repositories.
-- API foundation package with health, auth, content, review, export and audit-log routes.
+- API foundation package with health, auth, content, review, export and audit-log routes plus service-layer business logic.
 - Admin code foundation app that reuses the packages for registration, login, content review, export jobs and audit logs.
 - Web admin app that serves a browser UI over the API foundation for login, content review, exports and audit logs.
 - Maturity Scorecard page that scores readiness across the 10 software modules and suggests priority gaps.
@@ -70,6 +71,7 @@ The root test runs:
 - Runnable template tests.
 - Runnable app template tests.
 - Code foundation package tests.
+- Database foundation package tests.
 - Data and API foundation tests.
 - Web admin app HTTP tests.
 - Deployment playground smoke check.
@@ -97,3 +99,4 @@ https://12345mutouren.github.io/software-modules-hub/
 - [v1.9.0](releases/v1.9.0.md)
 - [v2.0.0](releases/v2.0.0.md)
 - [v2.1.0](releases/v2.1.0.md)
+- [v2.2.0](releases/v2.2.0.md)

@@ -45,7 +45,7 @@
 | 看技术栈参考模板 | [runnable-templates/README.md](runnable-templates/README.md) |
 | 看业务应用模板 | [runnable-apps/README.md](runnable-apps/README.md) |
 | 看可复用底层代码包 | [packages/README.md](packages/README.md) |
-| 看数据层和 API 层代码 | [packages/data/README.md](packages/data/README.md) · [packages/api/README.md](packages/api/README.md) |
+| 看数据库、数据层和 API 层代码 | [packages/database/README.md](packages/database/README.md) · [packages/data/README.md](packages/data/README.md) · [packages/api/README.md](packages/api/README.md) |
 | 跑管理后台代码底座 | [apps/admin-code-foundation/README.md](apps/admin-code-foundation/README.md) |
 | 打开真实 Web 管理后台 | [apps/web-admin-app/README.md](apps/web-admin-app/README.md) |
 | 本地试部署流程 | [deployment-playground/README.md](deployment-playground/README.md) |

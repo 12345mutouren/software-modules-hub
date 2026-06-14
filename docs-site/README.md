@@ -22,7 +22,8 @@
 
 | Entry | Purpose |
 | --- | --- |
-| `packages/README.md` | 可复用底层代码包：core、security、auth、data、api |
+| `packages/README.md` | 可复用底层代码包：core、security、auth、database、data、api |
+| `packages/database/README.md` | 迁移、适配器、事务和持久化数据库底层 |
 | `packages/data/README.md` | 数据模型和 Repository 层 |
 | `packages/api/README.md` | HTTP 风格 API 路由、校验、权限和错误响应 |
 | `apps/admin-code-foundation/README.md` | 复用底层包的管理后台代码底座 |

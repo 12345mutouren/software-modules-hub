@@ -40,6 +40,7 @@
 - [可运行模板](runnable-templates/README.md)
 - [可运行应用模板](runnable-apps/README.md)
 - [底层代码包](packages/README.md)
+- [数据库底层代码包](packages/database/README.md)
 - [数据层代码包](packages/data/README.md)
 - [API 层代码包](packages/api/README.md)
 - [管理后台代码底座](apps/admin-code-foundation/README.md)
@@ -66,7 +67,7 @@
 - [治理说明](GOVERNANCE.md)
 - [项目状态](PROJECT-STATUS.md)
 - [最终审查](FINAL-REVIEW.md)
-- [v2.1.0 发布说明](releases/v2.1.0.md)
+- [v2.2.0 发布说明](releases/v2.2.0.md)
 - [发布记录](CHANGELOG.md)
 - [模块文档模板](templates/module-template.md)
 
@@ -102,7 +103,8 @@
 - 参考资料：代表性 GitHub 仓库索引、真实项目案例研究、架构图和决策指南。
 - 项目启动：产品简报、模块选择、权限矩阵、数据模型、API 合同、测试计划、发布计划和风险登记模板。
 - 可运行材料：模块 Demo、完整应用方向模板、项目生成器、可运行技术栈模板和可运行业务应用模板。
-- 底层代码：`core`、`security`、`auth`、`data`、`api` 五个可测试代码包，以及复用这些包的管理后台代码底座。
+- 底层代码：`core`、`security`、`auth`、`database`、`data`、`api` 六个可测试代码包，以及复用这些包的管理后台代码底座。
+- 数据库底座：迁移账本、表注册、唯一索引、事务回滚、内存适配器和 JSON 文件持久化适配器。
 - Web 应用：一个可启动的管理后台，浏览器里可登录、创建内容、审核、导出和查看审计日志。
 - 项目启动：项目启动器、构建计划器、技术栈组合器、模板选择器、生成命令、启动包输出说明和第一版发布门槛。
 - AI 产品选型：CopilotKit/AG-UI 等 AI Agent UI、Generative UI 和人机确认参考。

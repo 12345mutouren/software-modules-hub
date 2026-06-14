@@ -2,7 +2,7 @@
 
 `packages/data` defines the first reusable data layer for Software Modules Hub.
 
-It keeps the storage implementation in memory for now, but the application code talks to repositories instead of raw arrays or maps. That boundary is what lets a later release add SQLite, PostgreSQL or Prisma without rewriting the API layer.
+It can run on the in-memory repository for fast tests or on `packages/database` adapters for durable local storage. Application code talks to repositories instead of raw arrays, maps or files. That boundary is what lets a later release add SQLite, PostgreSQL, Drizzle or Prisma without rewriting the API layer.
 
 ## Models
 
@@ -24,6 +24,13 @@ Every repository exposes:
 - `find(predicate)`
 - `list(predicate)`
 - `update(id, patchOrUpdater)`
+
+## Storage Modes
+
+| Mode | Use |
+| --- | --- |
+| In-memory | Fast unit tests and examples |
+| Database adapter | Durable local data, migrations, unique indexes and restart-safe tests |
 
 ## Run
 

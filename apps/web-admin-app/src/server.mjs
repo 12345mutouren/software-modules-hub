@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createApiApp } from "../../../packages/api/src/index.mjs";
+import { createJsonFileDatabase } from "../../../packages/database/src/index.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const defaultPublicDir = path.resolve(__dirname, "../public");
@@ -13,7 +14,14 @@ export const demoUsers = [
   { email: "writer@example.com", password: "StrongPass123", roles: ["user"] },
 ];
 
-export function createWebAdminServer({ api = createApiApp({ seedUsers: demoUsers }), publicDir = defaultPublicDir } = {}) {
+export function createDemoApi({ dataFile } = {}) {
+  return createApiApp({
+    database: dataFile ? createJsonFileDatabase({ filePath: dataFile }) : undefined,
+    seedUsers: demoUsers,
+  });
+}
+
+export function createWebAdminServer({ api = createDemoApi({ dataFile: process.env.DATA_FILE }), publicDir = defaultPublicDir } = {}) {
   const absolutePublicDir = path.resolve(publicDir);
 
   return http.createServer(async (req, res) => {

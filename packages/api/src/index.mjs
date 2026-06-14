@@ -1,28 +1,24 @@
 import { AppError, assertCondition } from "../../core/src/index.mjs";
 import { createAuthService } from "../../auth/src/index.mjs";
 import { createDataStore, seedDefaultRoles } from "../../data/src/index.mjs";
-import { escapeHtml } from "../../security/src/index.mjs";
+import { createAuditService, createContentService, createExportService } from "./services.mjs";
 
-export function createApiApp({ now = () => new Date(), seedUsers = [] } = {}) {
-  const data = createDataStore({ now });
+export function createApiApp({ now = () => new Date(), seedUsers = [], database } = {}) {
+  const data = createDataStore({ now, database });
   seedDefaultRoles(data);
 
-  const auditLog = {
-    record(entry) {
-      return data.auditLogs.create(entry);
-    },
-    list(filter) {
-      return data.auditLogs.list(filter);
-    },
-  };
+  const auditLog = createAuditService({ auditRepository: data.auditLogs });
   const auth = createAuthService({
     now,
     auditLog,
     userRepository: data.users,
     sessionRepository: data.sessions,
   });
+  const contentService = createContentService({ contentRepository: data.content, auditLog });
+  const exportService = createExportService({ exportRepository: data.exportJobs, auditLog });
 
   seedUsers.forEach((user) => {
+    if (auth.getUserByEmail(user.email)) return;
     auth.register({
       email: user.email,
       password: user.password,
@@ -74,19 +70,13 @@ export function createApiApp({ now = () => new Date(), seedUsers = [] } = {}) {
     if (method === "POST" && pathname === "/content") {
       const user = requirePermission(request, "content:create");
       const body = requireBody(request, ["title", "body"]);
-      const content = data.content.create({
-        authorId: user.id,
-        title: escapeHtml(body.title),
-        body: escapeHtml(body.body),
-        reviewStatus: "pending",
-      });
-      auditLog.record({ actorId: user.id, action: "content.created", resourceType: "content", resourceId: content.id });
+      const content = contentService.createDraft({ actor: user, title: body.title, body: body.body });
       return { status: 201, body: { content } };
     }
 
     if (method === "GET" && pathname === "/content") {
       const { user, readAll } = requireContentRead(request);
-      const content = data.content.list((item) => readAll || item.authorId === user.id);
+      const content = contentService.listVisible({ actor: user, readAll });
       return { status: 200, body: { content } };
     }
 
@@ -94,32 +84,20 @@ export function createApiApp({ now = () => new Date(), seedUsers = [] } = {}) {
     if (method === "POST" && reviewMatch) {
       const user = requirePermission(request, "content:review");
       const body = requireBody(request, ["decision"]);
-      assertCondition(["approved", "rejected"].includes(body.decision), "decision is invalid.", {
-        code: "VALIDATION_ERROR",
-        status: 400,
-        details: { field: "decision" },
-      });
-      const content = data.content.update(reviewMatch[1], { reviewStatus: body.decision, reviewedBy: user.id });
-      auditLog.record({
-        actorId: user.id,
-        action: `content.${body.decision}`,
-        resourceType: "content",
-        resourceId: content.id,
-      });
+      const content = contentService.review({ actor: user, contentId: reviewMatch[1], decision: body.decision });
       return { status: 200, body: { content } };
     }
 
     if (method === "POST" && pathname === "/exports") {
       const user = requirePermission(request, "export:create");
       const body = requireBody(request, ["type"]);
-      const exportJob = data.exportJobs.create({ type: body.type, status: "queued", requestedBy: user.id });
-      auditLog.record({ actorId: user.id, action: "export.created", resourceType: "export", resourceId: exportJob.id });
+      const exportJob = exportService.create({ actor: user, type: body.type });
       return { status: 201, body: { exportJob } };
     }
 
     if (method === "GET" && pathname === "/exports") {
       requirePermission(request, "export:create");
-      return { status: 200, body: { exportJobs: data.exportJobs.list() } };
+      return { status: 200, body: { exportJobs: exportService.list() } };
     }
 
     if (method === "GET" && pathname === "/audit-logs") {
