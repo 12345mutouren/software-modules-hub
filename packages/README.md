@@ -2,7 +2,7 @@
 
 这些包把仓库从“模块说明”推进到“可复用底层代码”。
 
-它们不复制 React、Auth.js、Prisma 或 CopilotKit 的源码，而是提供完整软件常见底层边界：核心类型、认证、权限、安全、数据库适配、数据、API 和审计。后续可以把 JSON 文件适配器替换成 SQLite、PostgreSQL/Prisma，把 Session 替换成真实 Cookie/JWT，把 API 挂到 Node.js、Next.js 或 Fastify。
+它们不复制 React、Auth.js、Prisma 或 CopilotKit 的源码，而是提供完整软件常见底层边界：核心类型、认证、权限、安全、数据库适配、数据、API 和审计。后续可以把 SQLite 适配器替换成 PostgreSQL/Prisma，把 Session 替换成真实 Cookie/JWT，把 API 挂到 Node.js、Next.js 或 Fastify。
 
 ## Packages
 
@@ -11,7 +11,7 @@
 | `packages/core` | `AppError`、断言、ID 工厂、系统时钟、内存 Repository、审计日志 |
 | `packages/security` | 密码策略、scrypt 密码哈希、密码验证、登录限流、HTML 转义 |
 | `packages/auth` | 注册、登录、Session、RBAC 权限校验、审计事件 |
-| `packages/database` | 迁移账本、表注册、唯一索引、事务和持久化数据库适配器 |
+| `packages/database` | 迁移账本、表注册、唯一索引、事务、JSON 文件适配器和 SQLite SQL 适配器 |
 | `packages/data` | User、Session、Role、AuditLog、Content、ExportJob 模型和 Repository |
 | `packages/api` | 健康检查、认证、内容、审核、导出、审计日志 API 路由 |
 

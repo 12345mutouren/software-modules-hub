@@ -1,9 +1,11 @@
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 
 import { AppError, assertCondition } from "../../core/src/index.mjs";
 
 const databaseVersion = 1;
+const require = createRequire(import.meta.url);
 
 export const databaseTables = {
   users: {
@@ -282,6 +284,160 @@ export function createJsonFileDatabase({ filePath, now = () => new Date() }) {
   return adapter;
 }
 
+export function createSqliteDatabase({ filePath = ":memory:", now = () => new Date() } = {}) {
+  const { DatabaseSync } = loadNodeSqlite();
+  let connection;
+
+  const adapter = {
+    kind: "sqlite",
+    filePath,
+    connect() {
+      if (connection) return adapter;
+
+      if (filePath !== ":memory:") {
+        fs.mkdirSync(path.dirname(filePath), { recursive: true });
+      }
+
+      connection = new DatabaseSync(filePath);
+      connection.exec("PRAGMA foreign_keys = ON");
+      return adapter;
+    },
+    close() {
+      connection?.close();
+      connection = undefined;
+    },
+    ensureMigrationStore() {
+      adapter.connect();
+      connection.exec(`
+        CREATE TABLE IF NOT EXISTS __migrations (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          applied_at TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS __indexes (
+          name TEXT PRIMARY KEY,
+          table_name TEXT NOT NULL,
+          fields_json TEXT NOT NULL,
+          is_unique INTEGER NOT NULL DEFAULT 0
+        );
+      `);
+    },
+    hasMigration(id) {
+      adapter.ensureMigrationStore();
+      return Boolean(connection.prepare("SELECT id FROM __migrations WHERE id = ?").get(id));
+    },
+    recordMigration(migration) {
+      adapter.ensureMigrationStore();
+      connection
+        .prepare("INSERT INTO __migrations (id, name, applied_at) VALUES (?, ?, ?)")
+        .run(migration.id, migration.name, migration.appliedAt);
+      return clone(migration);
+    },
+    listMigrations() {
+      adapter.ensureMigrationStore();
+      return connection
+        .prepare("SELECT id, name, applied_at AS appliedAt FROM __migrations ORDER BY id")
+        .all()
+        .map(clone);
+    },
+    createTable(tableName) {
+      adapter.connect();
+      connection.exec(`CREATE TABLE IF NOT EXISTS ${quoteIdentifier(tableName)} (id TEXT PRIMARY KEY, record_json TEXT NOT NULL)`);
+    },
+    createIndex(tableName, index) {
+      adapter.ensureMigrationStore();
+      adapter.createTable(tableName);
+      const unique = index.unique ? "UNIQUE " : "";
+      const fields = index.fields.map((field) => `json_extract(record_json, '$.${validateJsonField(field)}')`).join(", ");
+      connection.exec(`CREATE ${unique}INDEX IF NOT EXISTS ${quoteIdentifier(index.name)} ON ${quoteIdentifier(tableName)} (${fields})`);
+      connection
+        .prepare(
+          `INSERT OR IGNORE INTO __indexes (name, table_name, fields_json, is_unique)
+           VALUES (?, ?, ?, ?)`,
+        )
+        .run(index.name, tableName, JSON.stringify(index.fields), index.unique ? 1 : 0);
+    },
+    listIndexes() {
+      adapter.ensureMigrationStore();
+      return connection
+        .prepare("SELECT name, table_name AS tableName, fields_json AS fieldsJson, is_unique AS isUnique FROM __indexes ORDER BY name")
+        .all()
+        .map((row) => ({
+          name: row.name,
+          tableName: row.tableName,
+          fields: JSON.parse(row.fieldsJson),
+          unique: Boolean(row.isUnique),
+        }));
+    },
+    insert(tableName, record) {
+      adapter.createTable(tableName);
+      assertSqlUniqueIndexes(adapter, tableName, record);
+      connection.prepare(`INSERT INTO ${quoteIdentifier(tableName)} (id, record_json) VALUES (?, ?)`).run(record.id, JSON.stringify(record));
+      return clone(record);
+    },
+    get(tableName, id) {
+      adapter.createTable(tableName);
+      const row = connection.prepare(`SELECT record_json AS recordJson FROM ${quoteIdentifier(tableName)} WHERE id = ?`).get(id);
+      return row ? JSON.parse(row.recordJson) : null;
+    },
+    find(tableName, predicate) {
+      return adapter.list(tableName).find(predicate) ?? null;
+    },
+    list(tableName, predicate = () => true) {
+      adapter.createTable(tableName);
+      return connection
+        .prepare(`SELECT record_json AS recordJson FROM ${quoteIdentifier(tableName)} ORDER BY id`)
+        .all()
+        .map((row) => JSON.parse(row.recordJson))
+        .filter(predicate)
+        .map(clone);
+    },
+    update(tableName, id, updater) {
+      adapter.createTable(tableName);
+      const existing = adapter.get(tableName, id);
+      assertCondition(existing, "Record not found.", { code: "NOT_FOUND", status: 404, details: { tableName, id } });
+      const next = typeof updater === "function" ? updater(clone(existing)) : updater;
+      assertSqlUniqueIndexes(adapter, tableName, next, id);
+      connection.prepare(`UPDATE ${quoteIdentifier(tableName)} SET record_json = ? WHERE id = ?`).run(JSON.stringify(next), id);
+      return clone(next);
+    },
+    transaction(work) {
+      adapter.connect();
+      connection.exec("BEGIN IMMEDIATE");
+      try {
+        const result = work();
+        connection.exec("COMMIT");
+        return result;
+      } catch (error) {
+        connection.exec("ROLLBACK");
+        throw error;
+      }
+    },
+    snapshot() {
+      adapter.connect();
+      const tableNames = connection
+        .prepare(
+          `SELECT name FROM sqlite_master
+           WHERE type = 'table' AND substr(name, 1, 2) != '__' AND name NOT LIKE 'sqlite_%'
+           ORDER BY name`,
+        )
+        .all()
+        .map((row) => row.name);
+      const tables = Object.fromEntries(tableNames.map((tableName) => [tableName, adapter.list(tableName)]));
+
+      return {
+        version: databaseVersion,
+        migrations: adapter.listMigrations(),
+        indexes: adapter.listIndexes(),
+        tables,
+      };
+    },
+    now,
+  };
+
+  return adapter;
+}
+
 export function createDatabaseRepository({ database, tableName, idPrefix, now = () => new Date(), validate }) {
   assertCondition(database, "database is required.", { code: "DATABASE_CONFIG_ERROR", status: 500 });
   assertCondition(typeof validate === "function", "validate is required.", { code: "DATABASE_CONFIG_ERROR", status: 500 });
@@ -384,6 +540,22 @@ function assertUniqueIndexes(state, tableName, record, existingId) {
   }
 }
 
+function assertSqlUniqueIndexes(database, tableName, record, existingId) {
+  const uniqueIndexes = database.listIndexes().filter((index) => index.tableName === tableName && index.unique);
+
+  for (const index of uniqueIndexes) {
+    const duplicate = database.list(tableName).find((item) => {
+      if (item.id === existingId) return false;
+      return index.fields.every((field) => item[field] === record[field]);
+    });
+    assertCondition(!duplicate, "Unique index violation.", {
+      code: "UNIQUE_CONSTRAINT",
+      status: 409,
+      details: { tableName, index: index.name },
+    });
+  }
+}
+
 function createNextId(database, tableName, idPrefix) {
   const max = database
     .list(tableName)
@@ -393,6 +565,35 @@ function createNextId(database, tableName, idPrefix) {
     .reduce((highest, value) => Math.max(highest, value), 0);
 
   return `${idPrefix}_${String(max + 1).padStart(4, "0")}`;
+}
+
+function quoteIdentifier(identifier) {
+  assertCondition(/^[A-Za-z_][A-Za-z0-9_]*$/.test(identifier), "Unsafe SQL identifier.", {
+    code: "DATABASE_IDENTIFIER_INVALID",
+    status: 500,
+    details: { identifier },
+  });
+  return `"${identifier}"`;
+}
+
+function validateJsonField(field) {
+  assertCondition(/^[A-Za-z_][A-Za-z0-9_]*$/.test(field), "Unsafe JSON index field.", {
+    code: "DATABASE_INDEX_FIELD_INVALID",
+    status: 500,
+    details: { field },
+  });
+  return field;
+}
+
+function loadNodeSqlite() {
+  try {
+    return require("node:sqlite");
+  } catch (error) {
+    throw new AppError("node:sqlite is not available in this Node.js runtime.", {
+      code: "SQLITE_UNAVAILABLE",
+      status: 500,
+    });
+  }
 }
 
 function clone(value) {

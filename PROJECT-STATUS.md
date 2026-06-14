@@ -1,8 +1,8 @@
 # Project Status
 
-Current milestone: `v2.2.0`
+Current milestone: `v2.3.0`
 
-Status: `v2.2.0` professional backend foundation release in progress.
+Status: `v2.3.0` SQLite database adapter release in progress.
 
 ## What This Repository Is
 
@@ -40,7 +40,7 @@ Software Modules Hub is a complete software systems knowledge hub. It combines:
 - Stack Composer page that turns auth, data, deployment, AI frontend layer and optional capabilities into a recommended technical stack.
 - CopilotKit / AG-UI reference coverage for AI Agent UI and Generative UI frontend stacks.
 - Code foundation packages for core errors, repositories, audit logs, password hashing, rate limiting, auth sessions and RBAC permission checks.
-- Database foundation package with migrations, table registry, unique indexes, transaction rollback, memory adapter and JSON file persistence adapter.
+- Database foundation package with migrations, table registry, unique indexes, transaction rollback, memory adapter, JSON file adapter and SQLite SQL adapter.
 - Data foundation package with User, Session, Role, AuditLog, Content and ExportJob repositories.
 - API foundation package with health, auth, content, review, export and audit-log routes plus service-layer business logic.
 - Admin code foundation app that reuses the packages for registration, login, content review, export jobs and audit logs.
@@ -100,3 +100,4 @@ https://12345mutouren.github.io/software-modules-hub/
 - [v2.0.0](releases/v2.0.0.md)
 - [v2.1.0](releases/v2.1.0.md)
 - [v2.2.0](releases/v2.2.0.md)
+- [v2.3.0](releases/v2.3.0.md)

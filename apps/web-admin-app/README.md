@@ -36,8 +36,10 @@ http://localhost:4310
 To keep demo data after restart, point the app at a local database file:
 
 ```bash
-DATA_FILE=.local/web-admin.json npm --prefix apps/web-admin-app start
+DATA_FILE=.local/web-admin.sqlite npm --prefix apps/web-admin-app start
 ```
+
+Use a `.json` file extension if you want the lightweight JSON adapter instead.
 
 ## Test
 

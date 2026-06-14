@@ -4,7 +4,7 @@ Date: 2026-06-14
 
 ## Scope
 
-Final v2.2 review for the professional backend foundation release.
+Final v2.3 review for the SQLite database adapter release.
 
 ## Review Areas
 
@@ -45,6 +45,7 @@ Final v2.2 review for the professional backend foundation release.
 | Database package | Ready |
 | Database migrations | Ready |
 | Durable JSON file adapter | Ready |
+| SQLite SQL adapter | Ready |
 | Database repository factory | Ready |
 | Data package | Ready |
 | API package | Ready |
@@ -93,11 +94,11 @@ Final v2.2 review for the professional backend foundation release.
 - Build Planner routes are planning guidance and still need project-specific sequencing judgment.
 - Stack Composer outputs are starting recommendations and still require project-specific architecture review.
 - AI frontend frameworks still require project-specific security review for tool permissions, state writes and human confirmation.
-- Database foundation is dependency-light and uses memory plus JSON file adapters; production still needs a SQLite/PostgreSQL adapter, backups and operational hardening.
+- Database foundation is dependency-light and uses memory, JSON file and SQLite SQL adapters; production still needs a PostgreSQL adapter, backups and operational hardening.
 - API package exposes a framework-neutral request handler first; a Fastify, Next.js or edge runtime adapter is still a later production step.
 - Web admin app is a dependency-light demo server and browser UI; production deployment still needs hardened sessions, CSRF protection and deployment-specific secrets.
 - Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v2.2.0 release after local and GitHub Actions verification.
+Ready for v2.3.0 release after local and GitHub Actions verification.

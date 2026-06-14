@@ -5,7 +5,7 @@ import path from "node:path";
 import { test } from "node:test";
 
 import { createSystemClock } from "../../core/src/index.mjs";
-import { createJsonFileDatabase } from "../../database/src/index.mjs";
+import { createJsonFileDatabase, createSqliteDatabase } from "../../database/src/index.mjs";
 import { createDataStore, dataModels, seedDefaultRoles } from "../src/index.mjs";
 
 test("data store exposes the expected software models", () => {
@@ -78,4 +78,29 @@ test("data store can run on a durable database adapter", () => {
 
   assert.equal(secondStore.users.get(user.id).email, "durable@example.com");
   assert.equal(secondStore.content.list().length, 1);
+});
+
+test("data store can run on a sqlite adapter", () => {
+  const filePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-data-sqlite-")), "app.sqlite");
+  const firstDatabase = createSqliteDatabase({ filePath });
+  const firstStore = createDataStore({ database: firstDatabase });
+  const user = firstStore.users.create({
+    email: "sqlite-data@example.com",
+    roles: ["user"],
+    status: "active",
+    passwordHash: "hash",
+    passwordSalt: "salt",
+  });
+  firstStore.content.create({ authorId: user.id, title: "SQLite Persisted", body: "Body" });
+  firstDatabase.close();
+
+  const secondDatabase = createSqliteDatabase({ filePath });
+  const secondStore = createDataStore({ database: secondDatabase });
+
+  try {
+    assert.equal(secondStore.users.get(user.id).email, "sqlite-data@example.com");
+    assert.equal(secondStore.content.list()[0].title, "SQLite Persisted");
+  } finally {
+    secondDatabase.close();
+  }
 });

@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.3.0 - SQLite Database Adapter
+
+Added:
+
+- `createSqliteDatabase` adapter backed by Node's built-in SQLite runtime.
+- SQL migration storage using `__migrations`.
+- SQL index metadata storage using `__indexes`, plus SQLite expression indexes.
+- SQLite-backed repository reads, writes, updates, transactions and snapshots.
+- SQLite persistence tests across database, data, API and web admin layers.
+
+Updated:
+
+- Root version is now `2.3.0`.
+- Web admin app now auto-selects SQLite when `DATA_FILE` ends in `.sqlite`, `.sqlite3` or `.db`.
+- Web admin persistence docs now default to `.local/web-admin.sqlite`.
+- README, package docs, Project Status, Final Review and Master Index now describe the SQLite adapter.
+- Repository verifier now requires the SQLite adapter and v2.3.0 release notes.
+
 ## 2.2.0 - Professional Backend Foundation
 
 Added:

@@ -6,7 +6,7 @@ It keeps the public contract small and explicit:
 
 - database adapters own storage, migrations and transactions
 - repositories own record IDs, timestamps and validation hooks
-- higher packages can switch between memory and file-backed storage without changing business logic
+- higher packages can switch between memory, JSON file and SQLite storage without changing business logic
 
 ## Included Adapters
 
@@ -14,14 +14,25 @@ It keeps the public contract small and explicit:
 | --- | --- |
 | `createMemoryDatabase` | Fast test database with the same migration contract |
 | `createJsonFileDatabase` | Local durable database stored as a JSON file |
+| `createSqliteDatabase` | SQL-backed durable database using Node's built-in SQLite runtime |
 
 ## Professional Patterns Represented
 
 - Migration ledger with applied migration IDs.
 - Explicit table registry for account, session, role, content, export and audit data.
+- SQLite expression indexes over JSON-backed records.
 - Transaction wrapper for rollback on failed writes.
 - Generic repository factory used by the data package.
-- Storage contract that can later receive SQLite, PostgreSQL, Drizzle or Prisma adapters.
+- Storage contract that can later receive PostgreSQL, Drizzle or Prisma adapters.
+
+## SQLite Example
+
+```js
+import { createSqliteDatabase, runMigrations } from "./src/index.mjs";
+
+const database = createSqliteDatabase({ filePath: ".local/app.sqlite" });
+runMigrations(database);
+```
 
 ## Run
 

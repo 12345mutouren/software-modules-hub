@@ -8,6 +8,7 @@ import {
   createDatabaseRepository,
   createJsonFileDatabase,
   createMemoryDatabase,
+  createSqliteDatabase,
   databaseTables,
   runMigrations,
 } from "../src/index.mjs";
@@ -66,6 +67,41 @@ test("json file database persists data across adapter instances", () => {
   assert.equal(secondDatabase.listMigrations().length, 2);
 });
 
+test("sqlite database runs SQL migrations and exposes table metadata", () => {
+  const database = createSqliteDatabase();
+
+  try {
+    runMigrations(database);
+    const snapshot = database.snapshot();
+
+    assert.ok(snapshot.tables.users);
+    assert.ok(snapshot.tables.content_items);
+    assert.ok(snapshot.indexes.some((index) => index.name === "sessions_token_unique"));
+  } finally {
+    database.close();
+  }
+});
+
+test("sqlite database persists data across adapter instances", () => {
+  const filePath = createTempDatabasePath("app.sqlite");
+  const firstDatabase = createSqliteDatabase({ filePath });
+  runMigrations(firstDatabase);
+  const firstUsers = createUserRepository(firstDatabase);
+  const user = firstUsers.create({ email: "sqlite@example.com", roles: ["user"], status: "active" });
+  firstDatabase.close();
+
+  const secondDatabase = createSqliteDatabase({ filePath });
+  runMigrations(secondDatabase);
+  const secondUsers = createUserRepository(secondDatabase);
+
+  try {
+    assert.equal(secondUsers.get(user.id).email, "sqlite@example.com");
+    assert.equal(secondDatabase.listMigrations().length, 2);
+  } finally {
+    secondDatabase.close();
+  }
+});
+
 test("database transactions roll back failed writes", () => {
   const database = createMemoryDatabase();
   runMigrations(database);
@@ -83,6 +119,27 @@ test("database transactions roll back failed writes", () => {
   assert.equal(users.list().length, 0);
 });
 
+test("sqlite transactions roll back failed writes", () => {
+  const database = createSqliteDatabase();
+  runMigrations(database);
+  const users = createUserRepository(database);
+
+  try {
+    assert.throws(
+      () =>
+        database.transaction(() => {
+          users.create({ email: "sqlite-rollback@example.com", roles: ["user"], status: "active" });
+          throw new Error("stop");
+        }),
+      /stop/,
+    );
+
+    assert.equal(users.list().length, 0);
+  } finally {
+    database.close();
+  }
+});
+
 test("unique indexes reject duplicate lookup values", () => {
   const database = createMemoryDatabase();
   runMigrations(database);
@@ -94,6 +151,23 @@ test("unique indexes reject duplicate lookup values", () => {
     () => users.create({ email: "unique@example.com", roles: ["admin"], status: "active" }),
     /Unique index violation/,
   );
+});
+
+test("sqlite unique indexes reject duplicate lookup values", () => {
+  const database = createSqliteDatabase();
+  runMigrations(database);
+  const users = createUserRepository(database);
+
+  try {
+    users.create({ email: "sqlite-unique@example.com", roles: ["user"], status: "active" });
+
+    assert.throws(
+      () => users.create({ email: "sqlite-unique@example.com", roles: ["admin"], status: "active" }),
+      /Unique index violation/,
+    );
+  } finally {
+    database.close();
+  }
 });
 
 test("json file database reports invalid files with a database error", () => {
@@ -113,6 +187,6 @@ function createUserRepository(database) {
   });
 }
 
-function createTempDatabasePath() {
-  return path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-db-")), "app.json");
+function createTempDatabasePath(fileName = "app.json") {
+  return path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-db-")), fileName);
 }

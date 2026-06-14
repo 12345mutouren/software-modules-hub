@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createApiApp } from "../../../packages/api/src/index.mjs";
-import { createJsonFileDatabase } from "../../../packages/database/src/index.mjs";
+import { createJsonFileDatabase, createSqliteDatabase } from "../../../packages/database/src/index.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const defaultPublicDir = path.resolve(__dirname, "../public");
@@ -16,9 +16,16 @@ export const demoUsers = [
 
 export function createDemoApi({ dataFile } = {}) {
   return createApiApp({
-    database: dataFile ? createJsonFileDatabase({ filePath: dataFile }) : undefined,
+    database: createDemoDatabase({ dataFile }),
     seedUsers: demoUsers,
   });
+}
+
+export function createDemoDatabase({ dataFile } = {}) {
+  if (!dataFile) return undefined;
+  return [".sqlite", ".sqlite3", ".db"].some((extension) => dataFile.endsWith(extension))
+    ? createSqliteDatabase({ filePath: dataFile })
+    : createJsonFileDatabase({ filePath: dataFile });
 }
 
 export function createWebAdminServer({ api = createDemoApi({ dataFile: process.env.DATA_FILE }), publicDir = defaultPublicDir } = {}) {

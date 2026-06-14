@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
-import { createJsonFileDatabase } from "../../database/src/index.mjs";
+import { createJsonFileDatabase, createSqliteDatabase } from "../../database/src/index.mjs";
 import { createApiApp } from "../src/index.mjs";
 
 test("api exposes a health endpoint", async () => {
@@ -86,6 +86,34 @@ test("api can run against a durable database adapter", async () => {
 
   assert.equal(contentList.status, 200);
   assert.equal(contentList.body.content[0].title, "Durable Note");
+});
+
+test("api can run against a sqlite database adapter", async () => {
+  const filePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-api-sqlite-")), "app.sqlite");
+  const firstDatabase = createSqliteDatabase({ filePath });
+  const firstApi = createApiApp({
+    database: firstDatabase,
+    seedUsers: [{ email: "admin@example.com", password: "StrongPass123", roles: ["admin"] }],
+  });
+  const adminLogin = await firstApi.handle({ method: "POST", path: "/auth/login", body: { email: "admin@example.com", password: "StrongPass123" } });
+  await firstApi.handle({
+    method: "POST",
+    path: "/content",
+    headers: bearer(adminLogin.body.session.token),
+    body: { title: "SQLite Note", body: "Stored in SQL" },
+  });
+  firstDatabase.close();
+
+  const secondDatabase = createSqliteDatabase({ filePath });
+  const secondApi = createApiApp({ database: secondDatabase });
+  const contentList = await secondApi.handle({ method: "GET", path: "/content", headers: bearer(adminLogin.body.session.token) });
+
+  try {
+    assert.equal(contentList.status, 200);
+    assert.equal(contentList.body.content[0].title, "SQLite Note");
+  } finally {
+    secondDatabase.close();
+  }
 });
 
 test("api blocks missing auth and missing permissions", async () => {

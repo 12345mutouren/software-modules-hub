@@ -107,8 +107,8 @@ test("writer cannot access admin-only surfaces", async () => {
   assert.equal(auditDenied.status, 403);
 });
 
-test("web app can use a durable database file", async () => {
-  const dataFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-web-")), "app.json");
+test("web app can use a durable sqlite database file", async () => {
+  const dataFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "software-modules-hub-web-")), "app.sqlite");
   const durableServer = createWebAdminServer({ api: createDemoApi({ dataFile }) });
   await new Promise((resolve) => durableServer.listen(0, resolve));
   const durableUrl = `http://127.0.0.1:${durableServer.address().port}`;

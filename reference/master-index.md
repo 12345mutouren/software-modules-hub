@@ -114,7 +114,7 @@
 | 准备版本发布 | [release-playbook.md](../showcase/release-playbook.md) |
 | 维护内容质量 | [maintainer-handbook.md](../showcase/maintainer-handbook.md) |
 | 查看发布记录 | [CHANGELOG.md](../CHANGELOG.md) |
-| 查看 v2.2 发布说明 | [v2.2.0.md](../releases/v2.2.0.md) |
+| 查看 v2.3 发布说明 | [v2.3.0.md](../releases/v2.3.0.md) |
 
 ## Generate A Starter
 
