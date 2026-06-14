@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.0.0 - Data And API Foundation
+
+Added:
+
+- `packages/data` with User, Session, Role, AuditLog, Content and ExportJob models.
+- Repository contract and in-memory data store for the first real data layer.
+- Default RBAC role seed data.
+- `packages/api` with framework-neutral HTTP-style routing.
+- API routes for health, registration, login, content creation, content review, export jobs and audit logs.
+- Structured API validation, auth, permission and error responses.
+- Root `test:data-api` script.
+
+Updated:
+
+- Root version is now `2.0.0`.
+- Auth service can now use external user and session repositories.
+- README, Start Here, Master Index, Project Status and Final Review now describe the data/API foundation.
+- Repository verifier now requires the data/API packages and v2.0.0 release notes.
+- Root `npm test` now runs data and API foundation tests.
+
 ## 1.9.0 - Code Foundation
 
 Added:

@@ -4,7 +4,7 @@ Date: 2026-06-14
 
 ## Scope
 
-Final v1.9 review for the code foundation release.
+Final v2.0 review for the data and API foundation release.
 
 ## Review Areas
 
@@ -42,6 +42,8 @@ Final v1.9 review for the code foundation release.
 | Core package | Ready |
 | Security package | Ready |
 | Auth package | Ready |
+| Data package | Ready |
+| API package | Ready |
 | Admin code foundation app | Ready |
 | Docs site deployment package | Ready |
 | Online GitHub catalog audit | Ready |
@@ -84,8 +86,9 @@ Final v1.9 review for the code foundation release.
 - Stack Composer outputs are starting recommendations and still require project-specific architecture review.
 - AI frontend frameworks still require project-specific security review for tool permissions, state writes and human confirmation.
 - Code foundation packages are intentionally dependency-light and use in-memory repositories so the boundaries stay clear before adding PostgreSQL, Redis or framework adapters.
+- API package exposes a framework-neutral request handler first; a real server adapter is still a later production step.
 - Maturity scores are planning guidance; production readiness still requires real project review, threat modeling and operations rehearsal.
 
 ## Decision
 
-Ready for v1.9.0 release after local and GitHub Actions verification.
+Ready for v2.0.0 release after local and GitHub Actions verification.

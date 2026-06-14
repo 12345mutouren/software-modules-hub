@@ -1,4 +1,4 @@
-import { AppError, assertCondition, createIdFactory, createMemoryRepository, toPublicUser } from "../../core/src/index.mjs";
+import { AppError, assertCondition, createMemoryRepository, toPublicUser } from "../../core/src/index.mjs";
 import { createRateLimiter, createSessionToken, hashPassword, verifyPassword } from "../../security/src/index.mjs";
 
 const defaultRolePermissions = {
@@ -13,10 +13,11 @@ export function createAuthService({
   auditLog,
   rolePermissions = defaultRolePermissions,
   loginLimiter = createRateLimiter({ limit: 5, windowMs: 60_000, now }),
+  userRepository,
+  sessionRepository,
 } = {}) {
-  const users = createMemoryRepository({ idPrefix: "usr", now });
-  const sessions = new Map();
-  const createSessionId = createIdFactory("ses");
+  const users = userRepository ?? createMemoryRepository({ idPrefix: "usr", now });
+  const sessions = sessionRepository ?? createMemoryRepository({ idPrefix: "ses", now });
 
   function register({ email, password, roles = ["user"], status = "active" }) {
     const normalizedEmail = normalizeEmail(email);
@@ -49,19 +50,17 @@ export function createAuthService({
     }
 
     const session = {
-      id: createSessionId(),
       token: createSessionToken(),
       userId: user.id,
-      createdAt: now().toISOString(),
       expiresAt: new Date(now().getTime() + 1000 * 60 * 60 * 8).toISOString(),
     };
-    sessions.set(session.token, session);
-    auditLog?.record({ actorId: user.id, action: "session.created", resourceType: "session", resourceId: session.id });
-    return { session: { ...session }, user: toPublicUser(user) };
+    const createdSession = sessions.create(session);
+    auditLog?.record({ actorId: user.id, action: "session.created", resourceType: "session", resourceId: createdSession.id });
+    return { session: createdSession, user: toPublicUser(user) };
   }
 
   function requireSession(token) {
-    const session = sessions.get(token);
+    const session = sessions.find((item) => item.token === token);
     assertCondition(session, "Authentication required.", { code: "AUTH_REQUIRED", status: 401 });
     assertCondition(new Date(session.expiresAt).getTime() > now().getTime(), "Session expired.", {
       code: "SESSION_EXPIRED",
